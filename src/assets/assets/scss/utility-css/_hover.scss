@@ -1,0 +1,119 @@
+ /*
+  Hover:Backgrounds
+ 
+  hovers can easily be added to objects
+
+  hover_primary              - background color modified light to dark
+  hover_secondary              - background color modified light to dark
+  hover_info              - background color modified light to dark
+  hover_hightlight              - background color success color
+  hover_success              - background color modified light to dark
+  hover_warning              - background color modified light to dark
+  hover_alert              - background color modified light to dark
+
+  markup:
+  <div class="grid-x margin_5">
+    <div class="{$modifiers}-5 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2">5</div>
+    <div class="{$modifiers}-4 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2">4</div>
+    <div class="{$modifiers}-3 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2">3</div>
+    <div class="{$modifiers}-2 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2">2</div>
+    <div class="{$modifiers}-1 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2">1</div>
+    <div class="{$modifiers}-0 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2">0</div>
+    <div class="{$modifiers}-n1 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2 hover-text_white">n1</div>
+    <div class="{$modifiers}-n2 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2 hover-text_white">n2</div>
+    <div class="{$modifiers}-n3 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2 hover-text_white">n3</div>
+    <div class="{$modifiers}-n4 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2 hover-text_white">n4</div>
+    <div class="{$modifiers}-n5 cell auto text-center border-width_1 border-solid border_secondary-4 padding_2 hover-text_white">n5</div>
+  </div>
+
+ 
+  Styleguide 84.1
+ 
+ */
+
+%hover-transition,*[class^="hover_"],*[class^=" hover_"]{
+  transition: all ease-out .75s;
+}
+
+
+@each $color-name, $color in $acc-palette{
+    @include hover-loop(hover-bg, $color-name, $color);
+    @include hover-loop(hover-text, $color-name, $color);
+
+}
+
+
+
+ /*
+  Hover: Text 
+ 
+  hovers can easily be added to objects
+
+  hover-text_primary              - text color modified light to dark
+  hover-text_secondary              - text color modified light to dark
+  hover-text_info              - text color modified light to dark
+  hover-text_hightlight              - text color success color
+  hover-text_success              - text color modified light to dark
+  hover-text_warning              - text color modified light to dark
+  hover-text_alert              - text color modified light to dark
+
+  markup:
+  <div class="grid-x margin_5">
+    <div class="{$modifiers}-5 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1">5</div>
+    <div class="{$modifiers}-4 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1">4</div>
+    <div class="{$modifiers}-3 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1">3</div>
+    <div class="{$modifiers}-2 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1">2</div>
+    <div class="{$modifiers}-1 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1">1</div>
+    <div class="{$modifiers}-0 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1">0</div>
+    <div class="{$modifiers}-n1 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1 hover-text_white">n1</div>
+    <div class="{$modifiers}-n2 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1 hover-text_white">n2</div>
+    <div class="{$modifiers}-n3 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1 hover-text_white">n3</div>
+    <div class="{$modifiers}-n4 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1 hover-text_white">n4</div>
+    <div class="{$modifiers}-n5 cell auto font_bold back_secondary-3 font_4 font_slab text-center border-width_1 border-solid border_secondary-4 padding_1 hover-text_white">n5</div>
+  </div>
+
+ 
+  Styleguide 84.2
+ 
+ */
+
+%hover-transition-in{
+  transition: all ease-in .5s;
+}
+
+.hover-text_white.hover-text_black{
+  @extend %hover-transition-in;
+
+}
+.hover-text_white:hover{
+  color:white;
+}
+.hover-text_black:hover{
+  color:black;
+}
+
+.hover_underline{
+  text-decoration: none;
+  &:hover{text-decoration: underline;}
+}
+
+ /*
+  Hover: Underline 
+ 
+  Sometimes is is needed to add an underline on a peice of text when it hovers.
+
+  markup:
+  <p class="font_1">
+    Lorem ipsum dolor sit amet, 
+    <span class="color_primary hover_underline hover-text_primary-n3">consectetur</span>
+    adipisicing elit. 
+    <span class="color_warning hover_underline hover-text_warning-n3">Tenetur, similique</span>. 
+    Sapiente facilis ipsam unde, dolorem illo ullam, tempore quos maiores quaerat quibusdam voluptatibus laboriosam. Nisi 
+    <span class="color_alert hover_underline hover-text_alert-n3">harum magni</span>
+    aut nulla et.
+  </p>
+
+ 
+  Styleguide 84.3
+ 
+ */

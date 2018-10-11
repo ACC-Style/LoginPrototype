@@ -1,0 +1,264 @@
+/*
+
+ Basic HTML
+
+ Strathmroe is strongly based on semantic HTML so much of the design will come together with basic structured html and minimal classes.  The product uses zurb foundation so please read and understand its documentation to see how many basic items should be constructed or manipulated.  
+ 
+ Styleguide 10.0
+
+*/
+
+
+/*
+  Basic Table
+
+  Most common layout of the table
+
+  markup:
+  <table>
+    <thead>
+      <tr>
+        <th>Table Header</th>
+        <th>Table Header</th>
+        <th>Table Header</th>
+        <th>Table Header</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Content Goes Here</td>
+        <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+        <td>Content Goes Here</td>
+        <td>Content Goes Here</td>
+      </tr>
+      <tr>
+        <td>Content Goes Here</td>
+        <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+        <td>Content Goes Here</td>
+        <td>Content Goes Here</td>
+      </tr>
+      <tr>
+        <td>Content Goes Here</td>
+        <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+        <td>Content Goes Here</td>
+        <td>Content Goes Here</td>
+      </tr>
+    </tbody>
+  </table>
+
+ Styleguide 10.0.1
+*/
+
+/*
+
+  Switches
+
+  markup:
+  <div class="switch tiny switch_radius">
+    <input class="switch-input" id="tinySwitch" type="checkbox" name="exampleSwitch">
+    <label class="switch-paddle" for="tinySwitch">
+      <span class="show-for-sr">Tiny Sandwiches Enabled</span>
+    </label>
+  </div>
+  <div class="switch small round">
+    <input class="switch-input" id="smallSwitch" type="checkbox" name="exampleSwitch">
+    <label class="switch-paddle" for="smallSwitch">
+      <span class="show-for-sr">Small Portions Only</span>
+    </label>
+  </div>
+  <div class="switch large">
+    <input class="switch-input" id="largeSwitch" type="checkbox" name="exampleSwitch">
+    <label class="switch-paddle" for="largeSwitch">
+      <span class="show-for-sr">Show Large Elephants</span>
+    </label>
+  </div>
+
+  Styleguide 10.0.2
+  */
+
+
+/*
+
+  Progress Bars
+
+  markup:
+<div class="row">
+  <div class="primary progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+    <div class="progress-meter" style="width: 25%">
+      <p class="progress-meter-text">25%</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="warning progress">
+    <div class="progress-meter" style="width: 50%">
+      <p class="progress-meter-text">50%</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="alert progress">
+    <div class="progress-meter" style="width: 75%">
+      <p class="progress-meter-text">75%</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="success progress" role="progressbar" tabindex="0" aria-valuenow="100" aria-valuemin="0" aria-valuetext="100 percent" aria-valuemax="100">
+    <div class="progress-meter" style="width: 100%">
+      <p class="progress-meter-text">100%</p>
+    </div>
+  </div>
+</div>
+
+  Styleguide 10.0.3
+  */
+
+
+
+// <ul class="pagination" role="navigation" aria-label="Pagination">
+//   <li class="disabled">Previous <span class="show-for-sr">page</span></li>
+//   <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+//   <li><a href="#0" aria-label="Page 2">2</a></li>
+//   <li><a href="#0" aria-label="Page 3">3</a></li>
+//   <li><a href="#0" aria-label="Page 4">4</a></li>
+//   <li class="ellipsis" aria-hidden="true"></li>
+//   <li><a href="#0" aria-label="Page 12">12</a></li>
+//   <li><a href="#0" aria-label="Page 13">13</a></li>
+//   <li><a href="#0" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+// </ul>
+// <span class="primary label">Primary Label</span>
+// <span class="secondary label">Secondary Label</span>
+// <span class="success label">Success Label</span>
+// <span class="alert label">Alert Label</span>
+// <span class="warning label">Warning Label</span>
+// <button class="button" type="button" data-toggle="example-dropdown">Toggle Dropdown</button>
+// <div class="dropdown-pane" id="example-dropdown" data-dropdown>
+//   Just some junk that needs to be said. Or not. Your choice.
+// </div>
+// <div class="callout" data-closable>
+//   <button class="close-button" aria-label="Close alert" type="button" data-close>
+//     <span aria-hidden="true"><i class="fas fa-times"></i></span>
+//   </button>
+//   <p>This is a close button example.</p>
+// </div>
+// <ul class="accordion" data-accordion>
+//   <li class="accordion-item is-active" data-accordion-item>
+//     <a href="#" class="accordion-title">Accordion 1</a>
+//     <div class="accordion-content" data-tab-content >
+//       <p>Panel 1. Lorem ipsum dolor</p>
+//       <a href="#">Nowhere to Go</a>
+//     </div>
+//   </li>
+//   <li class="accordion-item" data-accordion-item>
+//     <a href="#" class="accordion-title">Accordion 2</a>
+//     <div class="accordion-content" data-tab-content>
+//       <textarea></textarea>
+//       <button class="button">I do nothing!</button>
+//     </div>
+//   </li>
+//   <li class="accordion-item" data-accordion-item>
+//     <a href="#" class="accordion-title">Accordion 3</a>
+//     <div class="accordion-content" data-tab-content>
+//       Type your name!
+//       <input type="text"></input>
+//     </div>
+//   </li>
+// </ul>
+// <nav aria-label="You are here:" role="navigation">
+//   <ul class="breadcrumbs">
+//     <li><a href="#0">Home</a></li>
+//     <li><a href="#0">Features</a></li>
+//     <li class="disabled">Gene Splicing</li>
+//     <li>
+//       <span class="show-for-sr">Current: </span> Cloning
+//     </li>
+//   </ul>
+// </nav>
+//  <form>
+//   <label>Input Label
+//     <input type="text" placeholder=".small-12.columns" aria-describedby="exampleHelpText">
+//   </label>
+//   <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+//   <label>
+//     How many puppies?
+//     <input type="number" value="100">
+//   </label>
+//   <label>
+//     What books did you read over summer break?
+//     <textarea placeholder="None"></textarea>
+//   </label>
+//   <label>Select Menu
+//     <select>
+//       <option value="husker">Husker</option>
+//       <option value="starbuck">Starbuck</option>
+//       <option value="hotdog">Hot Dog</option>
+//       <option value="apollo">Apollo</option>
+//     </select>
+//   </label>
+//   <div class="callout">
+//   <h5>This is a callout.</h5>
+//   <p>It has an easy to override visual style, and is appropriately subdued.</p>
+//   <a href="#0">It's dangerous to go alone, take this.</a>
+// </div>
+
+// <div class="callout primary">
+//   <h5>This is a primary callout.</h5>
+//   <p>It has an easy to override visual style, and is appropriately subdued.</p>
+//   <a href="#0">It's dangerous to go alone, take this.</a>
+// </div>
+
+// <div class="callout secondary">
+//   <h5>This is a secondary callout</h5>
+//   <p>It has an easy to override visual style, and is appropriately subdued.</p>
+//   <a href="#0">It's dangerous to go alone, take this.</a>
+// </div>
+
+// <div class="callout success">
+//   <h5>This is a success callout</h5>
+//   <p>It has an easy to override visual style, and is appropriately subdued.</p>
+//   <a href="#0">It's dangerous to go alone, take this.</a>
+// </div>
+
+// <div class="callout warning">
+//   <h5>This is a warning callout</h5>
+//   <p>It has an easy to override visual style, and is appropriately subdued.</p>
+//   <a href="#0">It's dangerous to go alone, take this.</a>
+// </div>
+
+// <div class="callout alert">
+//   <h5>This is an alert callout</h5>
+//   <p>It has an easy to override visual style, and is appropriately subdued.</p>
+//   <a href="#0">It's dangerous to go alone, take this.</a>
+// </div>
+//   <div class="grid-x grid-margin-x">
+//     <fieldset class="cell large-6">
+//       <legend>Choose Your Favorite</legend>
+//       <input type="radio" name="pokemon" value="Red" id="formRed" required><label for="formRed">Red</label>
+//       <input type="radio" name="pokemon" value="Blue" id="formBlue"><label for="formBlue">Blue</label>
+//       <input type="radio" name="pokemon" value="Yellow" id="formYellow"><label for="formYellow">Yellow</label>
+//     </fieldset>
+//     <fieldset class="cell large-6">
+//       <legend>Check these out</legend>
+//       <input id="formCheckbox1" type="checkbox"><label for="formCheckbox1">Checkbox 1</label>
+//       <input id="formCheckbox2" type="checkbox"><label for="formCheckbox2">Checkbox 2</label>
+//       <input id="formCheckbox3" type="checkbox"><label for="formCheckbox3">Checkbox 3</label>
+//     </fieldset>
+//   </div>
+//   <div class="grid-x grid-margin-x">
+//     <div class="cell small-3">
+//       <label for="middle-label" class="text-right middle">Label</label>
+//     </div>
+//     <div class="cell small-9">
+//       <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
+//     </div>
+//   </div>
+//   <div class="input-group">
+//     <span class="input-group-label">$</span>
+//     <input class="input-group-field" type="url">
+//     <div class="input-group-button">
+//       <input type="submit" class="button" value="Submit">
+//     </div>
+//   </div>
+// </form>
+
