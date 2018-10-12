@@ -20,7 +20,9 @@
 						</form>
 						<div class="grid-container">
 							<div class="grid-x justify-end">
-								<div class="medium-4 cell "><a href="/#/search" class="button disabled display-block color_white margin-bottom_0 border_radius expanded">Log in <i class="fal fa-arrow-alt-right"></i></a></div>
+								<div class="medium-4 cell ">
+<router-link to="/search"  class="button disabled display-block color_white margin-bottom_0 border_radius expanded">Log In <i class="fal fa-arrow-alt-right"></i></router-link>
+									</div>
 							</div>
 						</div>
 					</div>
