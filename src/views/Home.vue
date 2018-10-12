@@ -2,28 +2,21 @@
 	<div class="home texture_light padding_4" style="height:100vh;">
 		<div class="grid-x">
 			<div class="cell small-10 medium-8 large-6 margin_auto">
-				<div class="card shadow_n2 back_alert_2">
-					<div class="card-divider back_alert texture_dust color_white font_3">
-						Error Loging In. 
-					</div>
-					<div class="card-section font_1"> <p>Your email and password does not match our records.</p></div>
-				</div>
-			</div>
-		</div>
-		<div class="grid-x">
-			<div class="cell small-10 medium-8 large-6 margin_auto">
 				<div class="card shadow_2 cell  ">
-					<div class="card-divider color_white font-size_3 padding_4 texture_dust  back_primary">
+					<div class="card-divider color_white font-size_3 padding_4 texture_dust" style="z-index:10"  v-bind:class="{'back_alert': pageHasError() , 'back_primary': !pageHasError()}">
 						ACC Staff Login
 					</div>
 					<div class="card-section">
+						<transition name="slideInDown">
+								<div v-if="pageHasError()" style="z-index:0"class="back_alert-2 font_0 margin-bottom_0 margin_n4 padding_3 shadow_n2"> <p><span class="font_bold">Error Loging In:</span>{{pageError}}</p></div>
+						</transition>
 						<form class="grid-container">
-						    <div class="grid-x grid-padding-x">
+						    <div class="grid-x grid-padding-x padding-top_3">
 						        <div class="medium-6 cell">
-						                <label>Username  <input type="text" v-model="username" placeholder="youremail@acc.org" required></label>
+						                <label v-bind:class="{'color_alert': pageHasError()}">Username  <input type="text" v-model="username" placeholder="youremail@acc.org" required  v-bind:class="{'border_alert': pageHasError()}"></label>
 						        </div>
 						        <div class="medium-6 cell">
-						                <label>Email  <input type="password" v-model="password" placeholder="password" required></label>
+						                <label v-bind:class="{'color_alert': pageHasError()}">Email  <input type="password" v-model="password" placeholder="password" required  v-bind:class="{'border_alert': pageHasError()}"></label>
 						            
 						        </div>
 						    </div>
@@ -52,7 +45,8 @@ export default {
   data() {
     return {
     	username:'',
-    	password:''
+    	password:'',
+    	pageError:'Your email and password does not match our records.'
 
     };
 	},
@@ -62,9 +56,16 @@ export default {
 				return true;
 			}
 			return false;
+		},
+		pageHasError:function(){
+			if(this.pageError != ""){
+				return true;
+			}
+			return false;
 		}
 	}
 };
 </script>
-<style>
+<style scoped>
+	.margin-bottom_0{margin-bottom: 0 !important;}
 </style>

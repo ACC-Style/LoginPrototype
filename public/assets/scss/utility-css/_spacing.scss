@@ -37,6 +37,8 @@
 
 .margin_auto{ margin:0 auto;}
 @include size-loop(margin, positive, 1rem, "", "");
+@include size-loop(margin, negative, 1rem, "", "");
+
 @include size-loop(margin-top, positive, 1rem, "", "");
 @include size-loop(margin-bottom , positive, 1rem, "", "");
 @include size-loop(margin-right, positive, 1rem, "", "");
@@ -46,7 +48,7 @@
 @include size-loop(margin-bottom , negative, 1rem, "", "");
 @include size-loop(margin-right, negative, 1rem, "", "");
 @include size-loop(margin-left, negative, 1rem, "", "");
-@include size-loop(margin, negative, 1rem, "", "");
+
 
 
 /*
