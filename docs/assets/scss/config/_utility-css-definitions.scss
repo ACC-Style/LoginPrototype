@@ -1,0 +1,224 @@
+$values:(
+	wholenumber:(
+		0:0,
+		1:1px,
+		2:.25,
+		3:.5,
+		4:1,
+		5:2,
+		n1:-1px,
+		n2:-.25,
+		n3:-.5,
+		n4:-1,
+		n5:-2
+		),
+	positive:(
+		0:0,
+		1:1px,
+		2:.25,
+		3:.5,
+		4:1,
+		5:2
+		),
+	negative:(
+		n1: -1px,
+		n2: -.25,
+		n3: -.5,
+		n4: -1,
+		n5: -2
+		),
+	unitless-positive:(
+		0:0,
+		1:1,
+		2:2,
+		3:3,
+		4:4,
+		5:5
+		),
+	unitless-negative:(
+		n1:-1,
+		n2:-2,
+		n3:-3,
+		n4:-4,
+		n5:-5
+		),
+	line-height:(
+		0:0,
+		1:1,
+		2:1.45,
+		3:1.655,
+		4:1.75,
+		5:2,
+		),
+	percent-positive:(
+		0:0%,
+		1:15%,
+		2:37%,
+		3:60%,
+		4:78%,
+		5:90%
+		),
+	percent-negative:(
+		n1:10%,
+		n2:25%,
+		n3:45%,
+		n4:60%,
+		n5:75%
+		),
+	border-radius:(
+		square: 0px,
+		radius: 5px,
+		round: 999px,
+		circle:100%,
+		),
+);
+
+$style-definition:(
+	margin:(
+		short-name:'.m',
+		css-style:'margin',
+		long-name:'.margin',
+		),
+	margin-top:(
+		short-name:'.mt',
+		css-style:'margin-top',
+		long-name:'.margin-top',
+		),
+	margin-bottom:(
+		short-name:'.mb',
+		css-style:'margin-bottom',
+		long-name:'.margin-bottom',
+		),
+	margin-left:(
+		short-name:'.ml',
+		css-style:'margin-left',
+		long-name:'.margin-left',
+		),
+	margin-right:(
+		short-name:'.mr',
+		css-style:'margin-right',
+		long-name:'.margin-right',
+		),
+	padding:(
+		short-name:'.p',
+		css-style:'padding',
+		long-name:'.padding',
+		),
+	padding-top:(
+		short-name:'.pt',
+		css-style:'padding-top',
+		long-name:'.padding-top',
+		),
+	padding-bottom:(
+		short-name:'.pb',
+		css-style:'padding-bottom',
+		long-name:'.padding-bottom',
+		),
+	padding-left:(
+		short-name:'.pl',
+		css-style:'padding-left',
+		long-name:'.padding-left',
+		),
+	padding-right:(
+		short-name:'.pr',
+		css-style:'padding-right',
+		long-name:'.padding-right',
+		),
+	line-height:(
+		short-name:'.lh',
+		css-style:'line-height',
+		long-name:'.line-height',
+		),	
+	font-size:(
+		short-name:'.fs',
+		css-style:'font-size',
+		long-name:'.font-size',
+		),	 
+	color:(
+		short-name:'.color',
+		css-style:'color',
+		long-name:'.font-color',
+	 	),	 
+	background-color:(
+		short-name:'.back',
+		css-style:'background-color',
+		long-name:'.background-color',
+		),
+	border-color:(
+		short-name:'.border',
+		css-style:'border-color',
+		long-name:'.border-color',
+		),
+	border-radius:(
+		short-name:'.br',
+		css-style:'border-radius',
+		long-name:'.border-radius',
+		),
+	border-top-right-radius:(
+		short-name:'.br-tr',
+		css-style:'border-top-right-radius',
+		long-name:'.border-top-right-radius',
+		),
+	border-top-left-radius:(
+		short-name:'.br-tl',
+		css-style:'border-top-left-radius',
+		long-name:'.border-top-left-radius',
+		),
+	border-bottom-right-radius:(
+		short-name:'.br-br',
+		css-style:'border-bottom-right-radius',
+		long-name:'.border-bottom-right-radius',
+		),
+	border-bottom-left-radius:(
+		short-name:'.br-bl',
+		css-style:'border-bottom-left-radius',
+		long-name:'.border-bottom-left-radius',
+		),
+	width:(
+		short-name:'.w',
+		css-style:'width',
+		long-name:'.width',
+		),
+	border-width:(
+		short-name:'.border',
+		css-style:'border-width',
+		long-name:'.border-width',
+		),	
+	border-top-width:(
+		short-name:'.border-top',
+		css-style:'border-top-width',
+		long-name:'.border-top-width',
+		),	
+	border-right-width:(
+		short-name:'.border-right',
+		css-style:'border-right-width',
+		long-name:'.border-right-width',
+		),	
+	border-left-width:(
+		short-name:'.border-left',
+		css-style:'border-left-width',
+		long-name:'.border-left-width',
+		),	
+	border-bottom-width:(
+		short-name:'.border-bottom',
+		css-style:'border-bottom-width',
+		long-name:'.border-bottom-width',
+		),
+	hover-bg:(
+		short-name:'.hover',
+		css-style:'background-color',
+		long-name:'.hover-back',
+		),
+	hover-text:(
+		short-name: '.hover-text',
+		css-style: 'color',
+		long-name: '.hover-text',
+		),		
+
+);
+
+
+
+
+
+
