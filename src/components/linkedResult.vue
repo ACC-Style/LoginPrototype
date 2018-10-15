@@ -100,12 +100,8 @@ export default {
     return {};
   },
   methods: {
-    remove_item: function() {
-      
-    },
-    make_primary: function() {
-     
-    }
+    remove_item: function() {},
+    make_primary: function() {}
   }
 };
 </script>

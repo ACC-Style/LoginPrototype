@@ -8,7 +8,7 @@
 					</div>
 					<div class="card-section">
 						<transition name="slideInDown">
-								<div v-if="pageHasError()" style="z-index:0" class="back_alert-2 font_0 margin-bottom_0 margin_n4 padding_3 shadow_n2"> <p><span class="font_bold">Error Loging In:</span>{{pageError}}</p></div>
+								<div v-if="pageHasError()" style="z-index:0" class="back_alert-2 font_0 margin-bottom_0 margin_n4 padding_3 shadow_n2"> <p><span class="font_bold">Error Loging In:</span>  {{pageError}}</p></div>
 						</transition>
 						<form class="grid-container">
 						    <div class="grid-x grid-padding-x padding-top_3">
