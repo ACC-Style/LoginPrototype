@@ -6972,6 +6972,12 @@ markup:
 .button {
   white-space: nowrap;
 }
+.button.hollow {
+  background-color: transparent;
+}
+.button.clear {
+  border-color: transparent;
+}
 .button.shadow {
   box-shadow: 1.5px 1.5px 6px 0.75px rgba(0, 0, 0, 0.4);
 }
@@ -9132,6 +9138,26 @@ Utility CSS
   margin: 2rem;
 }
 
+.margin_n1 {
+  margin: -1px;
+}
+
+.margin_n2 {
+  margin: -0.25rem;
+}
+
+.margin_n3 {
+  margin: -0.5rem;
+}
+
+.margin_n4 {
+  margin: -1rem;
+}
+
+.margin_n5 {
+  margin: -2rem;
+}
+
 .margin-top_0 {
   margin-top: 0rem;
 }
@@ -9306,26 +9332,6 @@ Utility CSS
 
 .margin-left_n5 {
   margin-left: -2rem;
-}
-
-.margin_n1 {
-  margin: -1px;
-}
-
-.margin_n2 {
-  margin: -0.25rem;
-}
-
-.margin_n3 {
-  margin: -0.5rem;
-}
-
-.margin_n4 {
-  margin: -1rem;
-}
-
-.margin_n5 {
-  margin: -2rem;
 }
 
 /*

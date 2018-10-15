@@ -3,12 +3,12 @@
 		<div class="grid-x">
 			<div class="cell small-10 medium-8 large-6 margin_auto">
 				<div class="card shadow_2 cell  ">
-					<div class="card-divider color_white font-size_3 padding_4 texture_dust" style="z-index:10"  v-bind:class="{'back_alert': pageHasError() , 'back_primary': !pageHasError()}">
+					<div class="card-divider color_white font-size_3 padding_4 texture_dust" style="z-index:10"  v-bind:class="{'back_alert': pageHasError() , 'back_primary': !pageHasError()}"  @click="pageValidation()" >
 						ACC Staff Login
 					</div>
 					<div class="card-section">
 						<transition name="slideInDown">
-								<div v-if="pageHasError()" style="z-index:0"class="back_alert-2 font_0 margin-bottom_0 margin_n4 padding_3 shadow_n2"> <p><span class="font_bold">Error Loging In:</span>{{pageError}}</p></div>
+								<div v-if="pageHasError()" style="z-index:0" class="back_alert-2 font_0 margin-bottom_0 margin_n4 padding_3 shadow_n2"> <p><span class="font_bold">Error Loging In:</span>{{pageError}}</p></div>
 						</transition>
 						<form class="grid-container">
 						    <div class="grid-x grid-padding-x padding-top_3">
@@ -44,28 +44,32 @@ export default {
   name: "home",
   data() {
     return {
-    	username:'',
-    	password:'',
-    	pageError:'Your email and password does not match our records.'
-
+      username: "",
+      password: "",
+      pageError: ""
     };
-	},
-	methods:{
-		submitDisabled:function(){
-			if(this.username != "" && this.password != "" ){
-				return true;
-			}
-			return false;
-		},
-		pageHasError:function(){
-			if(this.pageError != ""){
-				return true;
-			}
-			return false;
-		}
-	}
+  },
+  methods: {
+    submitDisabled: function() {
+      if (this.username != "" && this.password != "") {
+        return true;
+      }
+      return false;
+    },
+    pageHasError: function() {
+      if (this.pageError != "") {
+        return true;
+      }
+      return false;
+    },
+    pageValidation() {
+      this.pageError = "Your email and password does not match our records.";
+    }
+  }
 };
 </script>
 <style scoped>
-	.margin-bottom_0{margin-bottom: 0 !important;}
+.margin-bottom_0 {
+  margin-bottom: 0 !important;
+}
 </style>

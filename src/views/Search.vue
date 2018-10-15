@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        <searchResult v-for="member in members" v-bind="member"/>
+        <searchResult v-for="(member, index) in members" v-bind="member" v-bind:key="index"/>
 
     </div>
 </template>
@@ -24,34 +24,62 @@ export default {
 
   data() {
     return {
-    	members:[{
-    	fullName:"Mel Colm-Cille Gerard Gibson",
-    	personifyNumber:"0002124321",
-    	badgeNumber:"541896",
-    	email:"mwatier@acc.org",
-    	location: "Vienna, USA",
-    	userName: "Mwatier@acc.org",
-    	password:"********",
-    	memberType:"Fellow",
-    	},{
-    	fullName:"Julia Scarlett Elizabeth Louis-Dreyfus",
-    	personifyNumber:"00012344321",
-    	badgeNumber:"",
-    	email:"mwatier@acc.org",
-    	location: "Arlington, USA",
-    	userName: "Mwatier@acc.org",
-    	password:"********",
-    	memberType:"Fellow",
-    	},{
-    	fullName:"Morena Silva de Vaz Setta Baccarin",
-    	personifyNumber:"000234193",
-    	badgeNumber:"541896",
-    	email:"mwatier@acc.org",
-    	location: "Distric of Columbia, USA",
-    	userName: "Mwatier@acc.org",
-    	password:"********",
-    	memberType:"Fellow",
-    	}]
+      members: [
+        {
+          fullName: "Mel Colm-Cille Gerard Gibson",
+          personifyNumber: "0002124321",
+          badgeNumber: 541896,
+          email: "mwatier@acc.org",
+          location: "Vienna, USA",
+          userName: "Mwatier@acc.org",
+          password: "********",
+          memberType: "Fellow",
+          expoBadge: true,
+          children: [
+            {
+              fullName: "Mel C  Gibson",
+              personifyNumber: "0012648325",
+              email: "mb@abc.com",
+              location: "Vienna, USA",
+              userName: "mb@abc.com",
+              password: "********",
+              memberType: "",
+              expoBadge: true
+            },
+            {
+              fullName: "Mel C G Gibson",
+              personifyNumber: "0012648325",
+              email: "",
+              location: "Vienna, USA",
+              userName: "mb@abc.com",
+              password: "********",
+              memberType: "",
+              expoBadge: true,
+              bruteForceLock: true
+            }
+          ]
+        },
+        {
+          fullName: "Julia Scarlett Elizabeth Louis-Dreyfus",
+          personifyNumber: "00012344321",
+          email: "mwatier@acc.org",
+          location: "Arlington, USA",
+          userName: "Mwatier@acc.org",
+          password: "********",
+          memberType: "NPI"
+        },
+        {
+          fullName: "Morena Silva de Vaz Setta Baccarin",
+          personifyNumber: "000234193",
+          badgeNumber: undefined,
+          email: "mwatier@acc.org",
+          location: "Distric of Columbia, USA",
+          userName: "Mwatier@acc.org",
+          password: "********",
+          iscienceBadge: 52143,
+          bruteForceLock: true
+        }
+      ]
     };
   }
 };
