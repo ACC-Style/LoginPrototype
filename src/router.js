@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Search from "./views/Search.vue";
 
+
 Vue.use(Router);
 
 export default new Router({
@@ -25,6 +26,26 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
+    }
+    ,
+    {
+      path: "/history",
+      name: "history",
+      // route level code-splitting
+      // this generates a separate chunk (history.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "history" */ "./views/History.vue")
+    }
+    ,
+    {
+      path: "/share",
+      name: "share",
+      // route level code-splitting
+      // this generates a separate chunk (share.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "share" */ "./views/Share.vue")
     }
   ],
   scrollBehavior(to, from, savedPosition) {

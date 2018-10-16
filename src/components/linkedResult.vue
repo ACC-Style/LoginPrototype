@@ -67,7 +67,7 @@ export default {
     fullName: String,
     personifyNumber: String,
     badgeNumber: { type: Number, default: -1 },
-    email: String,
+    emailAddress: String,
     location: String,
     userName: String,
     password: String,
@@ -97,7 +97,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      email: this.emailAddress
+    };
   },
   methods: {
     remove_item: function() {},

@@ -2,6 +2,9 @@
 	<div class="home texture_light padding_4" style="height:100vh;">
 		<div class="grid-x">
 			<div class="cell small-10 medium-8 large-6 margin_auto">
+				<div>
+					<h1 class="logo-lockup padding-bottom_3"><img src="assets/img/mobileLogo.svg" alt="American College of Cardiology" class="logo"><span class="text">Customer<br>Service Tool</span></h1>
+				</div>
 				<div class="card shadow_2 cell  ">
 					<div class="card-divider color_white font-size_3 padding_4 texture_dust" style="z-index:10"  v-bind:class="{'back_alert': pageHasError() , 'back_primary': !pageHasError()}"  @click="pageValidation()" >
 						ACC Staff Login
@@ -16,7 +19,7 @@
 						                <label v-bind:class="{'color_alert': pageHasError()}">Username  <input type="text" v-model="username" placeholder="youremail@acc.org" required  v-bind:class="{'border_alert': pageHasError()}"></label>
 						        </div>
 						        <div class="medium-6 cell">
-						                <label v-bind:class="{'color_alert': pageHasError()}">Email  <input type="password" v-model="password" placeholder="password" required  v-bind:class="{'border_alert': pageHasError()}"></label>
+						                <label v-bind:class="{'color_alert': pageHasError()}">Password  <input type="password" v-model="password" placeholder="password" required  v-bind:class="{'border_alert': pageHasError()}"></label>
 						            
 						        </div>
 						    </div>
@@ -68,8 +71,25 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style  scoped>
 .margin-bottom_0 {
   margin-bottom: 0 !important;
+}
+
+.logo-lockup {
+  display: flex;
+}
+.logo-lockup .logo {
+  height: 80px;
+  flex: 0 1 0px;
+}
+.logo-lockup .text {
+  flex: 1 1 auto;
+  line-height: 1;
+  font-size: 40px;
+  align-self: center;
+  border-left: 3px solid #00386b;
+  padding-left: 1rem;
+  color: #00386b;
 }
 </style>

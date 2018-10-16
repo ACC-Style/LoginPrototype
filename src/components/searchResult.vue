@@ -1,6 +1,6 @@
 <template>
     <div class="grid-y">
-        <transition appear name="slideIn">
+        <transition appear name="search" enter-active-class="animate fadeInRight">
         	<div class="searchResults result card shadow_2 margin_3 border_secondary-3" v-bind:class="{ selectable: selectable }">
             <div class="select-container back_acc" @click="select_toggle">
                 <div class="padding_3">
@@ -24,9 +24,9 @@
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-at"></i>
-                                    {{email}} 
-                                    <span class="color_alert" v-if="email == ''"> <i class="fas fa-exclamation-square"></i> account must have an email</span>
-                                    <a href="#" class="link float-right padding_2"><i class="fal fa-pencil"></i></a>
+                                    {{emailAddress}} 
+                                    <span class="color_alert" v-if="emailAddress == ''"> <i class="fas fa-exclamation-square"></i> account must have an email</span>
+                                    <a @click="openEmailReveal()" class="link float-right padding_2"><i class="fal fa-pencil"></i></a>
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-map-pin"></i>
@@ -40,7 +40,7 @@
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-user-circle"></i>
                                    {{userName}}
-                                    <a href="#" class="link float-right padding_2"><i class="fal fa-pencil"></i></a>
+                                    <a href="#" class="link float-right padding_2" @click="openUserNameReveal"><i class="fal fa-pencil"></i></a>
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-key"></i>
@@ -70,15 +70,16 @@
                 </div>
             </div>
         </div>
-        
     	</transition>
     	<transition-group name="slideInDown" tag="div">
     		<linkedResult v-if="showChildren" v-for="(child, index) in children" v-bind="child" v-bind:key="index"/>
     	</transition-group>
+    	
     </div>
 </template>
 <script>
 import linkedResult from "@/components/linkedResult.vue";
+
 export default {
   name: "searchResults",
   components: {
@@ -89,7 +90,7 @@ export default {
     fullName: String,
     personifyNumber: String,
     badgeNumber: { type: Number, default: -1 },
-    email: String,
+    emailAddress: { type: String, default: "" },
     location: String,
     userName: String,
     password: String,
@@ -140,6 +141,14 @@ export default {
       if (this.selectable) {
         this.selected = !this.selected;
       }
+    },
+    openEmailReveal: function(event) {
+      console.log("emit from child open-email-reveal");
+      this.$emit("open-email-reveal");
+    },
+    openUserNameReveal: function(event) {
+      console.log('emit from child "open-username-reveal');
+      this.$emit("open-username-reveal");
     }
   }
 };
