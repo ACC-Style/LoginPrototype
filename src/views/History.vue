@@ -19,23 +19,21 @@
   </template>
 
 <script>
-import {mapState, mapGetters} from "vuex";
+import { mapState, mapGetters } from "vuex";
 import router from "@/router";
-  export default {
-    name:"History",
-    computed:{
-      ...mapState(['searchHistory']),
-      ...mapGetters(['searchHistoryCount']),
-    },
-    methods:{
-      searchFromHistory: function(result){
-        router.push({ path: 'search', query: { q: result.searchTerm }})
-
-      }
+export default {
+  name: "History",
+  computed: {
+    ...mapState(["searchHistory"]),
+    ...mapGetters(["searchHistoryCount"])
+  },
+  methods: {
+    searchFromHistory: function(result) {
+      router.push({ path: "search/", query: { q: result.searchTerm } });
     }
   }
+};
 </script>
 
 <style scoped>
-
 </style>

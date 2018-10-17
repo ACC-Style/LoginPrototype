@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
 .viewport {
   min-height: 100vh;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 #nav {
   position: sticky;

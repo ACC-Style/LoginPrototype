@@ -87,11 +87,9 @@
 </template>
 
 <script>
-
 import searchResult from "@/components/searchResult.vue";
 import reveal from "@/components/Reveal.vue";
-import router from "../router.js";
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "Search",
@@ -103,15 +101,15 @@ export default {
     ...mapState(["search", "share", "searchReturn"])
   },
   methods: {
-    ...mapMutations(['ADD_SEARCH_HISTORY']),
-    runSearch: function(){
+    ...mapMutations(["ADD_SEARCH_HISTORY", "REPLACE_MEMBER_DATA"]),
+    ...mapActions(["replaceMemberData"]),
+    runSearch: function() {
       let result = Object({
         searchTerm: this.searchTerm.toLowerCase(),
-        resultCount: parseInt(Math.random()*100)
+        resultCount: parseInt(Math.random() * 100)
       });
       this.ADD_SEARCH_HISTORY(result);
       this.searchTerm = "";
-      console.log("Run Search")
     },
     openEmailReveal: function(member) {
       this.setMemberEdit(member);
@@ -119,7 +117,7 @@ export default {
     },
     changeEmail: function(val) {
       this.memberEdit.emailAddress = val;
-      this.replaceMemberData();
+      this.REPLACE_MEMBER_DATA(this.memberEdit);
       this.$refs.emailReveal.closeReveal();
     },
     openUserNameReveal: function(member) {
@@ -128,16 +126,16 @@ export default {
     },
     changeUserName: function(val) {
       this.memberEdit.userName = val;
-      this.replaceMemberData();
-      this.$refs.emailReveal.closeReveal();
+      this.replaceMemberData(this.memberEdit);
+      this.$refs.userName.closeReveal();
     },
-    openBruteForceLockReveal:function(member) {
+    openBruteForceLockReveal: function(member) {
       this.setMemberEdit(member);
       this.$refs.bruteForce.openReveal();
     },
     removeBruteForceLock() {
       this.memberEdit.bruteForceLock = false;
-      this.replaceMemberData();
+      this.REPLACE_MEMBER_DATA(this.memberEdit);
       this.$refs.bruteForce.closeReveal();
     },
     setMemberEdit: function(member) {
@@ -145,25 +143,22 @@ export default {
       this.editUserName = member.userName;
       this.editPassword = member.userName;
       this.editEmailAddress = member.emailAddress;
-    },
-    replaceMemberData: function() {
-      var index = this.members.indexOf(this.memberEdit);
-      if (index !== -1) {
-        //this.members[index] = this.memberEdit;
-      }
     }
+    // ,
+    // replaceMemberData: function() {
+    //   var index = this.members.indexOf(this.memberEdit);
+    //   if (index !== -1) {
+    //this.members[index] = this.memberEdit;
+    //   }
+    // }
   },
-  watch: {
-    '$route' (to, from) {
-      // react to route changes...
-    }},
   data() {
     return {
       editEmailAddress: "",
       editUserName: "",
       editPassword: "",
-      memberEdit: {}, 
-      searchTerm:''
+      memberEdit: {},
+      searchTerm: this.$route.query.q
     };
   }
 };

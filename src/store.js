@@ -79,14 +79,17 @@ export default new Vuex.Store({
     ADD_SEARCH_HISTORY: function(state, result) {
       if (state.searchHistory.indexOf(result) === -1) {
         state.searchHistory.unshift(result);
-        console.log(result + " was added from VUEX");
-      } else {
-        console.log(result + " is a repeat from VUEX");
       }
       state.searchHistory = state.searchHistory.slice(
         0,
         Math.max(15, state.searchHistory.length - 1)
       );
+    },
+    REPLACE_MEMBER_DATA: function(state, member) {
+      var index = state.searchReturn.indexOf(member);
+      if (index !== -1) {
+        state.searchReturn[index] = member;
+      }
     }
   },
   getters: {
@@ -94,5 +97,9 @@ export default new Vuex.Store({
       return state.searchHistory.length;
     }
   },
-  actions: {}
+  actions: {
+    replaceMemberData({ commit }) {
+      commit("REPLACE_MEMBER_DATA");
+    }
+  }
 });
