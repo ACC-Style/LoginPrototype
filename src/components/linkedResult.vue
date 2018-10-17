@@ -19,8 +19,6 @@
                                     <i class="margin-left_3 margin-right_3 fal fa-at"></i>
                                     {{email}}
                                      <span class="color_alert" v-if="email == ''"> <i class="fas fa-exclamation-square"></i> account must have an email</span>
-                                    
-                                    <a href="#" class="link color_primary-4 float-right padding-left_2 padding-right_2"><i class="fal fa-pencil"></i></a>
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 fal fa-map-pin"></i>
@@ -34,17 +32,16 @@
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 fal fa-user-circle"></i>
                                    {{userName}}
-                                    <a href="#" class="link color_primary-4 float-right padding-left_2 padding-right_2"><i class="fal fa-pencil"></i></a>
+                                    <span class="color_alert" v-if="userName == ''"> <i class="fas fa-exclamation-square"></i> account must have a username</span>
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 fal fa-key"></i>
                                     {{password}}
-                                    <a href="#" class="link color_primary-4 float-right padding-left_2 padding-right_2"></a>
+                                    <span class="color_alert" v-if="password == ''"> <i class="fas fa-exclamation-square"></i> account must have a username</span>
                                 </li>
-                                <li class="cell small-12 large-6 padding_2"><a v-on:click="make_primary" class="link color_primary-4 padding_2"><i class="margin-left_3 margin-right_3  fas fa-crown"></i> make primary</a><a  v-on:click="remove_item" class="link color_primary-4 float-right">remove item<i class="margin-left_3 margin-right_3 fas fa-times"></i></a></li>
+                                <li class="cell small-12 large-6 padding_2"><a v-on:click="make_primary" class="link color_primary-4 padding_2"><i class="margin-left_3 margin-right_3  fas fa-crown"></i> make primary</a><a  v-on:click="break_link" class="link color_primary-4 float-right">break link<i class="margin-left_3 margin-right_3 fas fa-times"></i></a></li>
                             </ul>
-                        </div>
-                        
+                        </div>                        
                     </div>
                     <div class="cell shrink texture_medium back_secondary-n3 margin-right_3 color_secondary">
                         <ul class="flag no-bullet font_n1">
@@ -102,7 +99,7 @@ export default {
     };
   },
   methods: {
-    remove_item: function() {},
+    break_link: function() {},
     make_primary: function() {}
   }
 };

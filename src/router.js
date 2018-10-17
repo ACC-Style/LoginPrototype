@@ -15,7 +15,8 @@ export default new Router({
     {
       path: "/search",
       name: "search",
-      component: Search
+      component: Search,
+      props: route => ({ query: route.query.q })
     },
     {
       path: "/about",

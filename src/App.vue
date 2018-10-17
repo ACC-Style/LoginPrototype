@@ -1,7 +1,7 @@
 <template>
   <div id="app"> 
-    <div class="viewport">
-      <router-view v-on:search-history="addSearchHistory"/>
+    <div class="viewport texture_light">
+      <router-view />
     </div>
     
     <div id="nav" class="back_acc grid-x color_white shadow_5">
@@ -20,21 +20,15 @@
 export default {
   name: "App",
   data() {
-    return {
-      search: [],
-      share: ""
-    };
+    return {};
   },
-  methods: {
-    addSearchHistory: function(searchhistory) {
-      this.search.unshift(searchhistory);
-    }
-  }
+  methods: {}
 };
 </script>
-<style scoped>
+<style lang="scss">
 .viewport {
   min-height: 100vh;
+  overflow-x:hidden;
 }
 #nav {
   position: sticky;

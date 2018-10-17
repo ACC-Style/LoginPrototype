@@ -1,6 +1,12 @@
 <template>
     <div class="grid-y">
-        <transition appear name="search" enter-active-class="animate fadeInRight">
+        <transition 
+          appear 
+          name="search"
+          enter-active-class="animate fadeInRight"
+          appear-active-class="animated fadeInRight" leave-active-class="animated fadeOutLeft"
+          :duration="1000"
+          >
         	<div class="searchResults result card shadow_2 margin_3 border_secondary-3" v-bind:class="{ selectable: selectable }">
             <div class="select-container back_acc" @click="select_toggle">
                 <div class="padding_3">

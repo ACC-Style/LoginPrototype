@@ -1,15 +1,18 @@
 <template>
 	<div class="search texture_light" style="min-height:100vh;">
 		<div class="back_white border_secondary-3 border_solid border-bottom-width_1 padding_3">
-			<div class="input-group margin-bottom_0">
-				<input class="input-group-field" type="text" v-model="searchTerm">
-				<div class="input-group-button">
-					<button type="submit" class="button" @click="$emit('search-history',searchTerm)"><i class="fas fa-search"></i></button>
-				</div>
-			</div>
+			<form @submit.prevent="runSearch">
+          <div class="input-group margin-bottom_0">
+          <input class="input-group-field" type="text" v-model="searchTerm" placeholder="Search via Name, email, badge...">
+          <div class="input-group-button">
+            <button type="submit" class="button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
 		</div>
+  
 		<searchResult 
-			v-for="(member, index) in members" 
+			v-for="(member, index) in searchReturn" 
 			v-bind="member" 
 			v-bind:key="index"  
 			v-on:open-email-reveal="openEmailReveal(member)"
@@ -84,73 +87,33 @@
 </template>
 
 <script>
-const searchReturn = [
-  {
-    fullName: "Mel Colm-Cille Gerard Gibson",
-    personifyNumber: "0002124321",
-    badgeNumber: 541896,
-    emailAddress: "mwatier@acc.org",
-    location: "Vienna, USA",
-    userName: "Mwatier@acc.org",
-    password: "********",
-    memberType: "Fellow",
-    expoBadge: true,
-    children: [
-      {
-        fullName: "Mel C Gibson",
-        personifyNumber: "0012648325",
-        emailAddress: "mb@abc.com",
-        location: "Vienna, USA",
-        userName: "mb@abc.com",
-        password: "********",
-        memberType: "",
-        expoBadge: true
-      },
-      {
-        fullName: "Mel C G Gibson",
-        personifyNumber: "0012648325",
-        emailAddress: "",
-        location: "Vienna, USA",
-        userName: "mb@abc.com",
-        password: "********",
-        memberType: "",
-        expoBadge: true,
-        bruteForceLock: true
-      }
-    ]
-  },
-  {
-    fullName: "Julia Scarlett Elizabeth Louis-Dreyfus",
-    personifyNumber: "00012344321",
-    emailAddress: "Julia@acc.org",
-    location: "Arlington, USA",
-    userName: "Julia@aol.com",
-    password: "********",
-    memberType: "NPI"
-  },
-  {
-    fullName: "Morena Silva de Vaz Setta Baccarin",
-    personifyNumber: "000234193",
-    badgeNumber: undefined,
-    emailAddress: "Morena@acc.org",
-    location: "Distric of Columbia, USA",
-    userName: "Morena@gmail.org",
-    password: "********",
-    iscienceBadge: 52143,
-    bruteForceLock: true
-  }
-];
+
 import searchResult from "@/components/searchResult.vue";
-import Reveal from "@/components/Reveal.vue";
+import reveal from "@/components/Reveal.vue";
+import router from "../router.js";
+import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "Search",
   components: {
     searchResult,
-    Reveal
+    reveal
+  },
+  computed: {
+    ...mapState(["search", "share", "searchReturn"])
   },
   methods: {
+    ...mapMutations(['ADD_SEARCH_HISTORY']),
+    runSearch: function(){
+      let result = Object({
+        searchTerm: this.searchTerm.toLowerCase(),
+        resultCount: parseInt(Math.random()*100)
+      });
+      this.ADD_SEARCH_HISTORY(result);
+      this.searchTerm = "";
+      console.log("Run Search")
+    },
     openEmailReveal: function(member) {
-      console.log("parent has heard the emit");
       this.setMemberEdit(member);
       this.$refs.emailReveal.openReveal();
     },
@@ -160,7 +123,6 @@ export default {
       this.$refs.emailReveal.closeReveal();
     },
     openUserNameReveal: function(member) {
-      console.log("parent has heard the emit User Name Reveal");
       this.setMemberEdit(member);
       this.$refs.userName.openReveal();
     },
@@ -169,37 +131,39 @@ export default {
       this.replaceMemberData();
       this.$refs.emailReveal.closeReveal();
     },
-    openBruteForceLockReveal(member){
-		console.log("parent has heard the emit User Name Reveal");
+    openBruteForceLockReveal:function(member) {
       this.setMemberEdit(member);
       this.$refs.bruteForce.openReveal();
     },
-    removeBruteForceLock(){
-		this.memberEdit.bruteForceLock = false;
-		this.replaceMemberData();
-		this.$refs.bruteForce.closeReveal();
+    removeBruteForceLock() {
+      this.memberEdit.bruteForceLock = false;
+      this.replaceMemberData();
+      this.$refs.bruteForce.closeReveal();
     },
-    setMemberEdit: function(member){
-    	this.memberEdit = member;
-    	this.editUserName = member.userName;
-    	this.editPassword = member.userName;
-    	this.editEmailAddress = member.emailAddress;
+    setMemberEdit: function(member) {
+      this.memberEdit = member;
+      this.editUserName = member.userName;
+      this.editPassword = member.userName;
+      this.editEmailAddress = member.emailAddress;
     },
-    replaceMemberData: function(){
-    	var index = this.members.indexOf(this.memberEdit);
-		if (index !== -1) {
-			this.members[index] = this.memberEdit;
-		}
+    replaceMemberData: function() {
+      var index = this.members.indexOf(this.memberEdit);
+      if (index !== -1) {
+        //this.members[index] = this.memberEdit;
+      }
     }
   },
+  watch: {
+    '$route' (to, from) {
+      // react to route changes...
+    }},
   data() {
     return {
       editEmailAddress: "",
       editUserName: "",
       editPassword: "",
-      memberEdit: {},
-      members: searchReturn,
-      searchTerm:""
+      memberEdit: {}, 
+      searchTerm:''
     };
   }
 };

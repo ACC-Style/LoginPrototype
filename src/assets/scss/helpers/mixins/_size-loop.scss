@@ -12,8 +12,8 @@ $debug-trace: true !default;
 		@if $debug-trace{ @debug $sizes;}
 		@each  $val-name, $val in $sizes {
 			$unit:0;
-			@if $val == 1px{ $unit:1px }
-			@else if $val == -1px{ $unit: -1px }
+			@if ($val-name == 1 ){ $unit:1px }
+			@else if ($val-name == n1){ $unit: -1px }
 			@else{ $unit: $multiplier * $val;}
 
 			#{ $long-name }_#{ $val-name }#{$breakpoint}{
