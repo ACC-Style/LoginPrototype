@@ -5,8 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    adminUserName:"Simon Pegg",
     searchHistory: [],
-    share: [],
+    shares: [],
     singleReturn: [
       {
         fullName: "Julia Scarlett Elizabeth Louis-Dreyfus",
@@ -86,10 +87,26 @@ export default new Vuex.Store({
       );
     },
     REPLACE_MEMBER_DATA: function(state, member) {
-      var index = state.searchReturn.indexOf(member);
+      let index = state.searchReturn.indexOf(member);
       if (index !== -1) {
         state.searchReturn[index] = member;
       }
+    },
+    SET_SINGLE_RESULT:function(state, result){
+      state.singleReturn = result;
+      let date = new Date(),
+        timestamp = date.toLocaleString();
+      let packet = Object({
+        sharedBy: state.adminUserName,
+        timestamp: timestamp,
+        memberName: result.fullName,
+        memberType: result.memberType,
+        badgeNumber: result.badgeNumber,
+        personifyNumber: result.personifyNumber,
+        emailAddress: result.emailAddress
+      });
+
+      state.shares.unshift(packet); 
     }
   },
   getters: {

@@ -18,6 +18,7 @@
 			v-on:open-email-reveal="openEmailReveal(member)"
 			v-on:open-username-reveal="openUserNameReveal(member)"
 			v-on:open-bruteforce-reveal="openBruteForceLockReveal(member)"
+      v-on:share-record="setSharedRecord(member)"
 
 			/>
 		<reveal ref="emailReveal">
@@ -101,7 +102,7 @@ export default {
     ...mapState(["search", "share", "searchReturn"])
   },
   methods: {
-    ...mapMutations(["ADD_SEARCH_HISTORY", "REPLACE_MEMBER_DATA"]),
+    ...mapMutations(["ADD_SEARCH_HISTORY", "REPLACE_MEMBER_DATA","SET_SINGLE_RESULT"]),
     ...mapActions(["replaceMemberData"]),
     runSearch: function() {
       let result = Object({
@@ -143,14 +144,10 @@ export default {
       this.editUserName = member.userName;
       this.editPassword = member.userName;
       this.editEmailAddress = member.emailAddress;
+    },
+    setSharedRecord: function(member){
+      this.SET_SINGLE_RESULT(member);
     }
-    // ,
-    // replaceMemberData: function() {
-    //   var index = this.members.indexOf(this.memberEdit);
-    //   if (index !== -1) {
-    //this.members[index] = this.memberEdit;
-    //   }
-    // }
   },
   data() {
     return {
