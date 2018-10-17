@@ -71,13 +71,17 @@ export default {
   }
 };
 </script>
-<style  scoped>
+<style lang="scss" scoped>
 .margin-bottom_0 {
   margin-bottom: 0 !important;
 }
 
 .logo-lockup {
   display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 500px) {
+    flex-direction: row;
+  }
 }
 .logo-lockup .logo {
   height: 80px;
@@ -88,8 +92,16 @@ export default {
   line-height: 1;
   font-size: 40px;
   align-self: center;
-  border-left: 3px solid #00386b;
-  padding-left: 1rem;
+  border-top: 3px solid #00386b;
+  padding-top: 1rem;
+  text-align: center;
   color: #00386b;
+  @media only screen and (min-width: 500px) {
+    border-left: 3px solid #00386b;
+    padding-left: 1rem;
+    text-align: left;
+    padding-top: 0;
+    border-top: 0 none;
+  }
 }
 </style>

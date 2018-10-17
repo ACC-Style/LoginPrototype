@@ -11,7 +11,7 @@
             <div class="detail-container ">
                 <div class="grid-x">
                     <div class="cell auto ">
-                        <div class="member-name font_1 font_slab line-height_2 member-name padding_3 padding-left_4 padding-right_3">{{fullName}}</div>
+                        <div class="member-name font_1 font_slab line-height_2 member-name padding_3 padding-left_4 padding-right_3">{{fullName}} <a @click="$emit('share-record')" class="back_secondary-4 float-right font_0 hover-back_secondary padding-left_3 padding-right_3 padding_2"><i class="fa fa-share"></i></a></div>
                         <div class="">
                             <ul class="details no-bullet padding-left_3 padding-right_3 margin-bottom_0 font_0 grid-x grid-margin-x">
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
@@ -26,7 +26,7 @@
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-at"></i>
                                     {{emailAddress}} 
                                     <span class="color_alert" v-if="emailAddress == ''"> <i class="fas fa-exclamation-square"></i> account must have an email</span>
-                                    <a @click="openEmailReveal()" class="link float-right padding_2"><i class="fal fa-pencil"></i></a>
+                                    <a @click="$emit('open-email-reveal')" class="link float-right padding_2"><i class="fal fa-pencil"></i></a>
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-map-pin"></i>
@@ -40,7 +40,7 @@
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-user-circle"></i>
                                    {{userName}}
-                                    <a href="#" class="link float-right padding_2" @click="openUserNameReveal"><i class="fal fa-pencil"></i></a>
+                                    <a href="#" class="link float-right padding_2" @click="$emit('open-username-reveal')"><i class="fal fa-pencil"></i></a>
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-key"></i>
@@ -63,7 +63,8 @@
                             <li class="padding_3 center member" v-bind:class="{ active: hasMembership }"><i class="fal fa-user-md"></i></li>
                             <li class="padding_3 center accbadge" v-bind:class="{ active: hasBadge }"><i class="fal fa-badge-check"></i></li>
                             <li class="padding_3 center iscience" v-bind:class="{ active: hasIScience }"><i class="fal fa-flask"></i></li>
-                            <li class="padding_3 center bruteforce" v-bind:class="{ active: hasBruteForceLock }"><i class="fal fa-lock-alt"></i></li>
+                            <li v-if="hasBruteForceLock" class="padding_3 center bruteforce active" @click="$emit('open-bruteforce-reveal');"><i class="fal fa-lock-alt"></i></li>
+                            <li v-else class="padding_3 center bruteforce"><i class="fal fa-lock-alt"></i></li>
                             <li class="padding_3 center expobadge" v-bind:class="{ active: hasExpoBadge }"><i class="fal fa-exclamation-circle"></i></li>
                         </ul>
                     </div>
@@ -141,14 +142,6 @@ export default {
       if (this.selectable) {
         this.selected = !this.selected;
       }
-    },
-    openEmailReveal: function(event) {
-      console.log("emit from child open-email-reveal");
-      this.$emit("open-email-reveal");
-    },
-    openUserNameReveal: function(event) {
-      console.log('emit from child "open-username-reveal');
-      this.$emit("open-username-reveal");
     }
   }
 };

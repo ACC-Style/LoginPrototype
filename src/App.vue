@@ -1,7 +1,7 @@
 <template>
   <div id="app"> 
     <div class="viewport">
-      <router-view/>
+      <router-view v-on:search-history="addSearchHistory"/>
     </div>
     
     <div id="nav" class="back_acc grid-x color_white shadow_5">
@@ -16,15 +16,31 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      search: [],
+      share: ""
+    };
+  },
+  methods: {
+    addSearchHistory: function(searchhistory) {
+      this.search.unshift(searchhistory);
+    }
+  }
+};
+</script>
 <style scoped>
 .viewport {
   min-height: 100vh;
 }
-#nav{
+#nav {
   position: sticky;
-  bottom:0;
-  left:0;
-  right:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 </style>
