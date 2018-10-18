@@ -17,7 +17,7 @@
             <div class="detail-container ">
                 <div class="grid-x">
                     <div class="cell auto ">
-                        <div class="member-name font_1 font_slab line-height_2 member-name padding_3 padding-left_4 padding-right_3">{{fullName}} <a @click="$emit('share-record')" class="back_secondary-4 float-right font_0 hover-back_secondary padding-left_3 padding-right_3 padding_2"><i class="fa fa-share"></i></a></div>
+                        <div class="member-name font_1 font_slab line-height_2 member-name padding_3 padding-left_4 padding-right_3">{{fullName}} <a @click="$emit('share-record')" class="back_secondary-4 float-right font_0 hover-back_secondary padding-left_3 padding-right_3 padding_2"><i class="fas fa-share-alt-square"></i></a></div>
                         <div class="">
                             <ul class="details no-bullet padding-left_3 padding-right_3 margin-bottom_0 font_0 grid-x grid-margin-x">
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">

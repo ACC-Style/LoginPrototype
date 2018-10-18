@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="padding_3 font_n1 text-center">
-          <a href="/#/about" class="link secondary text_underline">About this Utlity</a>
+        	 <router-link class="link secondary text_underline" to="/about"><i class="fas fa-info-square"></i> About this utility</router-link>
         </div>
       </div>
     </div>
@@ -61,77 +61,77 @@
 </template>
 
 <script>
-  // @ is an alias to /src
-  export default {
-    name: "home",
-    data() {
-      return {
-        username: "",
-        password: "",
-        pageError: "",
-        passwordShow: false
-      };
-    },
-    methods: {
-      submitDisabled: function() {
-        if (this.username != "" && this.password != "") {
-          return true;
-        }
-        return false;
-      },
-      pageHasError: function() {
-        if (this.pageError != "") {
-          return true;
-        }
-        return false;
-      },
-      pageValidation() {
-        if (this.pageError == "") {
-          this.pageError = "Your email and password does not match our records.";
-        } else {
-          this.pageError = "";
-        }
-      },
-      passwordShowToggle() {
-        this.passwordShow = !this.passwordShow;
+// @ is an alias to /src
+export default {
+  name: "home",
+  data() {
+    return {
+      username: "",
+      password: "",
+      pageError: "",
+      passwordShow: false
+    };
+  },
+  methods: {
+    submitDisabled: function() {
+      if (this.username != "" && this.password != "") {
+        return true;
       }
+      return false;
+    },
+    pageHasError: function() {
+      if (this.pageError != "") {
+        return true;
+      }
+      return false;
+    },
+    pageValidation() {
+      if (this.pageError == "") {
+        this.pageError = "Your email and password does not match our records.";
+      } else {
+        this.pageError = "";
+      }
+    },
+    passwordShowToggle() {
+      this.passwordShow = !this.passwordShow;
     }
-  };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-  .margin-bottom_0 {
-    margin-bottom: 0 !important;
+.margin-bottom_0 {
+  margin-bottom: 0 !important;
+}
+
+.logo-lockup {
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 500px) {
+    flex-direction: row;
   }
-  
-  .logo-lockup {
-    display: flex;
-    flex-direction: column;
-    @media only screen and (min-width: 500px) {
-      flex-direction: row;
-    }
+}
+
+.logo-lockup .logo {
+  height: 80px;
+  flex: 0 1 0px;
+}
+
+.logo-lockup .text {
+  flex: 1 1 auto;
+  line-height: 1;
+  font-size: 40px;
+  align-self: center;
+  border-top: 3px solid #00386b;
+  padding-top: 1rem;
+  text-align: center;
+  color: #00386b;
+  @media only screen and (min-width: 500px) {
+    border-left: 3px solid #00386b;
+    padding-left: 1rem;
+    text-align: left;
+    padding-top: 0;
+    border-top: 0 none;
   }
-  
-  .logo-lockup .logo {
-    height: 80px;
-    flex: 0 1 0px;
-  }
-  
-  .logo-lockup .text {
-    flex: 1 1 auto;
-    line-height: 1;
-    font-size: 40px;
-    align-self: center;
-    border-top: 3px solid #00386b;
-    padding-top: 1rem;
-    text-align: center;
-    color: #00386b;
-    @media only screen and (min-width: 500px) {
-      border-left: 3px solid #00386b;
-      padding-left: 1rem;
-      text-align: left;
-      padding-top: 0;
-      border-top: 0 none;
-    }
-  }
+}
 </style>

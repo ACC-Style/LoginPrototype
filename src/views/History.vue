@@ -16,10 +16,10 @@
         ">Results: {{result.resultCount}}</small> <i class="fal fa-search float-right margin-top_3 margin-right_3"></i></li>
       </transition-group>
   </div>
-  </template>
+</template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 import router from "@/router";
 export default {
   name: "History",
@@ -28,9 +28,13 @@ export default {
     ...mapGetters(["searchHistoryCount"])
   },
   methods: {
+    ...mapMutations(["HISTORY_NEW_OFF"]),
     searchFromHistory: function(result) {
       router.push({ path: "search/", query: { q: result.searchTerm } });
     }
+  },
+  mounted() {
+    this.$emit("history-new-off");
   }
 };
 </script>

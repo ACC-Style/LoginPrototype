@@ -6,10 +6,10 @@
       </div>
     </transition>
     <div class="back_white border_secondary-3 border_solid border-bottom-width_1 padding_3" style="z-index=1;">
-      <form @submit.prevent="runSearch">
+      <form @submit.prevent="runSearch(searchTerm)">
         <div class="input-group margin-bottom_0">
           <input class="input-group-field" type="text" v-model="searchTerm" placeholder="Search via Name, email, badge...">
-          <div class="input-group-button">
+            <div class="input-group-button">
             <button type="submit" class="button"><i class="fas fa-search"></i></button>
           </div>
         </div>
@@ -130,118 +130,138 @@
 </template>
 
 <script>
-  import searchResult from "@/components/searchResult.vue";
-  import reveal from "@/components/Reveal.vue";
-  import {
-    mapState,
-    mapMutations,
-    mapActions
-  } from "vuex";
+import searchResult from "@/components/searchResult.vue";
+import reveal from "@/components/Reveal.vue";
+import { mapState, mapMutations, mapActions } from "vuex";
 
-  export default {
-    name: "Search",
-    components: {
-      searchResult,
-      reveal
+export default {
+  name: "Search",
+  components: {
+    searchResult,
+    reveal
+  },
+  computed: {
+    ...mapState([
+      "search",
+      "share",
+      "searchReturn",
+      "passwordPart1",
+      "passwordPart2",
+      "passwordPart3"
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      "ADD_SEARCH_HISTORY",
+      "REPLACE_MEMBER_DATA",
+      "SET_SINGLE_RESULT"
+    ]),
+    ...mapActions(["replaceMemberData"]),
+    runSearch: function(val) {
+      let result = Object({
+        searchTerm: val.toLowerCase(),
+        resultCount: parseInt(Math.random() * 100)
+      });
+      this.ADD_SEARCH_HISTORY(result);
+      this.searchTerm = "";
     },
-    computed: {
-      ...mapState(["search", "share", "searchReturn", "passwordPart1", "passwordPart2", "passwordPart3"])
+    openEmailReveal: function(member) {
+      this.setMemberEdit(member);
+      this.$refs.emailReveal.openReveal();
     },
-    methods: {
-      ...mapMutations(["ADD_SEARCH_HISTORY", "REPLACE_MEMBER_DATA", "SET_SINGLE_RESULT"]),
-      ...mapActions(["replaceMemberData"]),
-      runSearch: function () {
-        let result = Object({
-          searchTerm: this.searchTerm.toLowerCase(),
-          resultCount: parseInt(Math.random() * 100)
-        });
-        this.ADD_SEARCH_HISTORY(result);
-        this.searchTerm = "";
-      },
-      openEmailReveal: function (member) {
-        this.setMemberEdit(member);
-        this.$refs.emailReveal.openReveal();
-      },
-      changeEmail: function (val) {
-        this.memberEdit.emailAddress = val;
-        this.REPLACE_MEMBER_DATA(this.memberEdit);
-        this.firePageMessage('success',"Email of " +this.memberEdit.fullName + "has been saved");
+    changeEmail: function(val) {
+      this.memberEdit.emailAddress = val;
+      this.REPLACE_MEMBER_DATA(this.memberEdit);
+      this.firePageMessage(
+        "success",
+        "Email of " + this.memberEdit.fullName + "has been saved"
+      );
 
-        this.$refs.emailReveal.closeReveal();
-      },
-      openUserNameReveal: function (member) {
-        this.setMemberEdit(member);
-        this.$refs.userName.openReveal();
-      },
-      openPasswordReveal: function (member) {
-        this.setMemberEdit(member);
-        this.$refs.password.openReveal();
-      },
-      generatePassword: function () {
-        this.editPassword = this.passwordPart1[this.randomNumber(25) - 1] + this.passwordPart2[this.randomNumber(25) -
-          1] + this.passwordPart3[this.randomNumber(25) - 1]
-      },
-      randomNumber: function (val) {
-        return parseInt(Math.random() * val);
-      },
-      changeUserName: function (val) {
-        this.memberEdit.userName = val;
-        this.replaceMemberData(this.memberEdit);
-        this.firePageMessage('success',"UserName of " +this.memberEdit.fullName + "has been saved");
-        this.$refs.userName.closeReveal();
-      },
-      openBruteForceLockReveal: function (member) {
-        this.setMemberEdit(member);
-        this.$refs.bruteForce.openReveal();
-      },
-      removeBruteForceLock: function () {
-        this.memberEdit.bruteForceLock = false;
-        this.REPLACE_MEMBER_DATA(this.memberEdit);
-        this.$refs.bruteForce.closeReveal();
-        this.firePageMessage('success',"Brute force lockout has been removed from the account of " + this.memberEdit.fullName);
-        
-      },
-      saveChangedPassword: function (val) {
-        this.memberEdit.password = val;
-        this.REPLACE_MEMBER_DATA(this.memberEdit);
-        this.$refs.password.closeReveal();
-      },
-      setMemberEdit: function (member) {
-        this.memberEdit = member;
-        this.editUserName = member.userName;
-        this.editPassword = member.password;
-        this.editEmailAddress = member.emailAddress;
-      },
-      setSharedRecord: function (member) {
-        this.SET_SINGLE_RESULT(member);
-        this.firePageMessage('message',"Member Number " + member.personifyNumber + " has been shared.");
-
-      },
-      clearPageMessge: function(){
-          this.hasPageMessage = false;
-          this.pageMessageType = 'message';
-          this.pageMessage = '';
-      },
-      firePageMessage: function(type,text){
-        this.hasPageMessage = true;
-        this.pageMessageType = type;
-        this.pageMessage = text;
-        setTimeout(this.clearPageMessge, 3000);
-      }
+      this.$refs.emailReveal.closeReveal();
     },
-    data() {
-      return {
-        editEmailAddress: "",
-        editUserName: "",
-        editPassword: "",
-        memberEdit: {},
-        searchTerm: this.$route.query.q,
-        hasPageMessage:false,
-        pageMessageType:'message',
-        pageMessage:'',
-      };
+    openUserNameReveal: function(member) {
+      this.setMemberEdit(member);
+      this.$refs.userName.openReveal();
+    },
+    openPasswordReveal: function(member) {
+      this.setMemberEdit(member);
+      this.$refs.password.openReveal();
+    },
+    generatePassword: function() {
+      this.editPassword =
+        this.passwordPart1[this.randomNumber(25) - 1] +
+        this.passwordPart2[this.randomNumber(25) - 1] +
+        this.passwordPart3[this.randomNumber(25) - 1];
+    },
+    randomNumber: function(val) {
+      return parseInt(Math.random() * val);
+    },
+    changeUserName: function(val) {
+      this.memberEdit.userName = val;
+      this.replaceMemberData(this.memberEdit);
+      this.firePageMessage(
+        "success",
+        "UserName of " + this.memberEdit.fullName + "has been saved"
+      );
+      this.$refs.userName.closeReveal();
+    },
+    openBruteForceLockReveal: function(member) {
+      this.setMemberEdit(member);
+      this.$refs.bruteForce.openReveal();
+    },
+    removeBruteForceLock: function() {
+      this.memberEdit.bruteForceLock = false;
+      this.REPLACE_MEMBER_DATA(this.memberEdit);
+      this.$refs.bruteForce.closeReveal();
+      this.firePageMessage(
+        "success",
+        "Brute force lockout has been removed from the account of " +
+          this.memberEdit.fullName
+      );
+    },
+    saveChangedPassword: function(val) {
+      this.memberEdit.password = val;
+      this.REPLACE_MEMBER_DATA(this.memberEdit);
+      this.$refs.password.closeReveal();
+    },
+    setMemberEdit: function(member) {
+      this.memberEdit = member;
+      this.editUserName = member.userName;
+      this.editPassword = member.password;
+      this.editEmailAddress = member.emailAddress;
+    },
+    setSharedRecord: function(member) {
+      this.SET_SINGLE_RESULT(member);
+      this.firePageMessage(
+        "message",
+        "Member Number " + member.personifyNumber + " has been shared."
+      );
+    },
+    clearPageMessge: function() {
+      this.hasPageMessage = false;
+      this.pageMessageType = "message";
+      this.pageMessage = "";
+    },
+    firePageMessage: function(type, text) {
+      this.hasPageMessage = true;
+      this.pageMessageType = type;
+      this.pageMessage = text;
+      setTimeout(this.clearPageMessge, 3000);
     }
-  };
+  },
+  data() {
+    return {
+      editEmailAddress: "",
+      editUserName: "",
+      editPassword: "",
+      memberEdit: {},
+      searchTerm: this.$route.query.q !== undefined ? this.$route.query.q : "",
+      hasPageMessage: false,
+      pageMessageType: "message",
+      pageMessage: ""
+    };
+  }
+};
 </script>
 <style lang="css" scoped>
   .white-space_nowrap {
