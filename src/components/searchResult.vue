@@ -50,8 +50,11 @@
                                 </li>
                                 <li class="border-bottom-width_1 border_secondary-5 border_solid padding_2 cell small-12 large-6">
                                     <i class="margin-left_3 margin-right_3 color_secondary-2 fal fa-key"></i>
-                                    {{password}}
-                                    <a href="#" class="link float-right padding_2"></a>
+                                    {{password}}<span v-if="password==''">******</span>
+                                    <a href="#" class="link float-right padding_2">
+                                       <a href="#" class="link float-right padding_2" @click="$emit('open-password-reveal')"><i class="fal fa-pencil"></i></a>
+                           
+                                    </a>
                                 </li>
                                 
                             </ul>
