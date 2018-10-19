@@ -39,7 +39,7 @@
                                     {{password}}
                                     <span class="color_alert" v-if="password == ''"> <i class="fas fa-exclamation-square"></i> account must have a username</span>
                                 </li>
-                                <li class="cell small-12 large-6 padding_2"><a v-on:click="make_primary" class="link color_primary-4 padding_2"><i class="margin-left_3 margin-right_3  fas fa-crown"></i> make primary</a><a  v-on:click="break_link" class="link color_primary-4 float-right">break link<i class="margin-left_3 margin-right_3 fas fa-times"></i></a></li>
+                                <li class="cell small-12 large-6 padding_2"><a v-on:click="make_primary" class="link color_primary-4 padding_2"><i class="margin-left_3 margin-right_3  fas fa-crown"></i> make primary</a><a  v-on:click="$emit('breaklink')" class="link color_primary-4 float-right">break link<i class="margin-left_3 margin-right_3 fas fa-times"></i></a></li>
                             </ul>
                         </div>                        
                     </div>
@@ -62,7 +62,7 @@ export default {
   name: "linkedResult",
   props: {
     fullName: String,
-    personifyNumber: String,
+    personifyNumber: Number,
     badgeNumber: { type: Number, default: -1 },
     emailAddress: String,
     location: String,
@@ -99,7 +99,9 @@ export default {
     };
   },
   methods: {
-    break_link: function() {},
+    break_link: function() {
+        
+    },
     make_primary: function() {}
   }
 };

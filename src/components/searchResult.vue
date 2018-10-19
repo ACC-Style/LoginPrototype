@@ -1,12 +1,6 @@
 <template>
     <div class="grid-y">
-        <transition 
-          appear 
-          name="search"
-          enter-active-class="animate fadeInRight"
-          appear-active-class="animated fadeInRight" leave-active-class="animated fadeOutLeft"
-          :duration="1000"
-          >
+
         	<div class="searchResults result card shadow_2 margin_3 border_secondary-3" v-bind:class="{ selectable: selectable }">
             <div class="select-container back_acc" @click="select_toggle">
                 <div class="padding_3">
@@ -80,15 +74,16 @@
                 </div>
             </div>
         </div>
-    	</transition>
+   
     	<transition-group name="slideInDown" tag="div">
-    		<linkedResult v-if="showChildren" v-for="(child, index) in children" v-bind="child" v-bind:key="index"/>
+    		<linkedResult v-if="showChildren" v-for="(child, index) in children" v-bind="child" v-on:breaklink="$emit('breakLinkRepeater',{child:child})" v-bind:key="index"/>
     	</transition-group>
     	
     </div>
 </template>
 <script>
 import linkedResult from "@/components/linkedResult.vue";
+import {mapMutations} from "vuex";
 
 export default {
   name: "searchResults",
@@ -98,7 +93,7 @@ export default {
   props: {
     member: Object,
     fullName: String,
-    personifyNumber: String,
+    personifyNumber: Number,
     badgeNumber: { type: Number, default: -1 },
     emailAddress: { type: String, default: "" },
     location: String,

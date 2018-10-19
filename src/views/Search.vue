@@ -6,7 +6,7 @@
       </div>
     </transition>
     <div class="back_white border_secondary-3 border_solid border-bottom-width_1 padding_3" style="z-index=1;">
-      <form @submit.prevent="runSearch(searchTerm)">
+      <form @submit.prevent="fireSearch(searchTerm)">
         <div class="input-group margin-bottom_0">
           <input class="input-group-field" type="text" v-model="searchTerm" placeholder="Search via Name, email, badge...">
             <div class="input-group-button">
@@ -15,9 +15,21 @@
         </div>
       </form>
     </div>
-    <searchResult v-for="(member, index) in searchReturn" v-bind="member" v-bind:key="index" v-on:open-email-reveal="openEmailReveal(member)"
-      v-on:open-username-reveal="openUserNameReveal(member)" v-on:open-bruteforce-reveal="openBruteForceLockReveal(member)"
-      v-on:open-password-reveal="openPasswordReveal(member)" v-on:share-record="setSharedRecord(member)" />
+    <transition-group
+    appear 
+    name="search"
+    enter-active-class="animate fadeInRight"
+    appear-active-class="animated fadeInRight" leave-active-class="animated fadeOutLeft"
+    :duration="1000"
+    >
+    <searchResult v-for="(member, index) in resultsOnPage" v-bind="member" v-bind:key="index" 
+      v-on:open-email-reveal="openEmailReveal(member)"
+      v-on:open-username-reveal="openUserNameReveal(member)" 
+      v-on:open-bruteforce-reveal="openBruteForceLockReveal(member)"
+      v-on:open-password-reveal="openPasswordReveal(member)" 
+      v-on:share-record="setSharedRecord(member)"
+      v-on:breakLinkRepeater="breakLinkData(member,$event.child)" />
+       	</transition-group>
     <reveal ref="emailReveal">
       <h3 slot="header">Edit Email</h3>
       <div slot="content">
@@ -154,16 +166,24 @@ export default {
     ...mapMutations([
       "ADD_SEARCH_HISTORY",
       "REPLACE_MEMBER_DATA",
-      "SET_SINGLE_RESULT"
+      "SET_SINGLE_RESULT",
+      "UNLINK_ACCOUNT"
     ]),
     ...mapActions(["replaceMemberData"]),
-    runSearch: function(val) {
-      let result = Object({
-        searchTerm: val.toLowerCase(),
-        resultCount: parseInt(Math.random() * 100)
-      });
-      this.ADD_SEARCH_HISTORY(result);
-      this.searchTerm = "";
+    fireSearch: function(val) {
+        this.runSearch(val);
+        this.saveSearchHistory(val);
+
+    },
+    saveSearchHistory:function(val){
+        if(this.resultsOnPage.length>0)
+        this.ADD_SEARCH_HISTORY(Object({searchTerm: val.toLowerCase(), resultCount: this.resultsOnPage.length}));
+    },
+    runSearch:function(val){
+      this.resultsOnPage = this.searchReturn.filter(function(result){ 
+        return result.fullName.includes(val) || result.emailAddress.includes(val)|| String(result.personifyNumber).includes(val) || String(result.badgeNumber).includes(val) || result.userName.includes(val);
+    });
+      
     },
     openEmailReveal: function(member) {
       this.setMemberEdit(member);
@@ -219,6 +239,10 @@ export default {
           this.memberEdit.fullName
       );
     },
+    breakLinkData:function(parent, child){
+      let payload = Object({parent:parent,child:child})
+      this.UNLINK_ACCOUNT(payload);
+    },
     saveChangedPassword: function(val) {
       this.memberEdit.password = val;
       this.REPLACE_MEMBER_DATA(this.memberEdit);
@@ -258,8 +282,12 @@ export default {
       searchTerm: this.$route.query.q !== undefined ? this.$route.query.q : "",
       hasPageMessage: false,
       pageMessageType: "message",
-      pageMessage: ""
+      pageMessage: "",
+      resultsOnPage:[],
     };
+  },
+  mounted () {
+    this.runSearch(this.$route.query.q !== undefined ? this.$route.query.q : "");
   }
 };
 </script>
@@ -271,4 +299,7 @@ export default {
   .link:hover {
     text-decoration: underline;
   }
+  .slideInDown-move {
+  transition: transform 0.5s ease;
+}
 </style>
