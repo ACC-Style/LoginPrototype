@@ -1,10 +1,10 @@
 /*
- Documentation Templates
+ Styleguide Templates
 
 ## This is not part of the style of Strathmore
 This is a collection of documentation types that can be used as templates when doecuemting the Styles of Strathmore.  It is all based off of the ["SC5"](https://github.com/SC5/sc5-styleguide)
 
- Styleguide 99.0
+ Styleguide 999.0
 */
 /* No styleguide reference. */
 
@@ -23,7 +23,7 @@ This is how you define a container
    <sg-wrapper-content/>
  </div>
 
- Styleguide 99.1
+ Styleguide 999.1
 */
 
 .parent{background-color:red;}
@@ -41,7 +41,7 @@ This is how you define a container
    <sg-wrapper-content/>
  </div> </div>
 
- Styleguide 99.2
+ Styleguide 999.2
 */
 .child{background-color:blue;}
 /*
@@ -53,7 +53,7 @@ This is how you define a container
  <span class="child sub">child</span>
 
 
- Styleguide 99.2.1
+ Styleguide 999.2.1
 */
 .child.sub{background-color:green;}
 /*
@@ -75,7 +75,7 @@ default		- Default Design
    <sg-wrapper-content/>
  </ul></div>
 
- Styleguide 99.3
+ Styleguide 999.3
 */
 
 li{
@@ -112,7 +112,7 @@ default		- Default Design
  sg-wrapper:
  <div  class="templateDocumentation"><sg-wrapper-content/></div>
 
- Styleguide 99.4
+ Styleguide 999.4
 */
 
 

@@ -1,14 +1,4 @@
 /*
- Border Utility CSS: Borders
-
-  Borders a complex utlit that demands a combo of many classes to acheive the effect. 
-
-  Styleguide 83.0
- 
- */
-
-
-/*
 	Border Type
 
 	Depends on base border module in _borders.css
@@ -21,7 +11,7 @@
 	markup:
 	<div class="{$modifiers} border_black border-width_1 padding_3">{$modifiers} border</div>
 
-	Styleguide 83.1
+	Styleguide 103.1
 
  */
 .border_dotted,.border_dashed,.border_solid,.border_none{border-width:0;}
@@ -68,7 +58,7 @@
   markup:
   <div class="{$modifiers} padding_3 border_solid border-width_3">{$modifiers} border</div>
  
-  Styleguide 83.2
+  Styleguide 103.2
  
  */
 
@@ -93,7 +83,7 @@
   markup:
   <div class="{$modifiers} padding_3 border_solid border-width_5 back_primary-1 color_white">{$modifiers} border</div>
  
-  Styleguide 83.2.1
+  Styleguide 103.2.1
  
  */
  
@@ -117,7 +107,7 @@
   markup:
   <div class="{$modifiers} padding_3 border_solid border-width_5 back_primary-1 color_white">{$modifiers} border</div>
  
-  Styleguide 83.2.2
+  Styleguide 103.2.2
  
  */
  
@@ -173,7 +163,7 @@
 	markup:
 	<div class="{$modifiers} padding_3 border_black border_solid border-width_2">{$modifiers} border</div>
 
-	Styleguide 83.3
+	Styleguide 103.3
 
  */
 
@@ -217,7 +207,7 @@
   markup:
   <div class="{$modifiers} padding_3 border_solid border-width_1 color_white">{$modifiers} border</div>
  
-  Styleguide 83.4
+  Styleguide 103.4
  
  */
  
@@ -248,7 +238,7 @@
   markup:
   <div class="{$modifiers} padding_3 border_solid border_black color_black">{$modifiers} border</div>
  
-  Styleguide 83.5
+  Styleguide 103.5
  
  */
 

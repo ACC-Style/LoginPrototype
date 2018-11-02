@@ -55,3 +55,24 @@
     // @return  map-style-get($style-definition, $key, css-style);
     	@return map-get(map-get($style-list, $key),css-style);
 }
+
+
+/// get-css-unit
+/// @author Matt Watier
+/// @access public
+/// @param {Arglist} $keys - Key chain
+/// @return {Map} - Desired value
+@function get-css-unit($key, $style-list:$style-definition) {
+    @return map-get(map-get($style-list, $key), unit);
+}
+
+/// get-css-size
+/// @author Matt Watier
+/// @access public
+/// @param {Arglist} $keys - Key chain
+/// @return {Map} - Desired value
+@function get-css-size($key, $size, $style-list:$style-definition) {
+    @return map-get(map-get(map-get($style-list, $key), unit),$size);
+}
+
+

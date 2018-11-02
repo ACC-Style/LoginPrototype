@@ -10,26 +10,24 @@ $debug-trace: true !default;
         @debug "Color Loop for #{$key} painting it with #{$color-name}";
 
     }
-      #{$short-name}{
+      #{$short-name},#{$long-name}{
             #{$style}: $color!important;
       }   
   		@each  $val-name, $val in $white-mix {
-        #{$short-name}-#{$val-name}{
+        #{$short-name}-#{$val-name},#{$long-name}-#{$val-name}{
             #{$style}:mix(white, $color,  $val) !important;
         }
       }
       @each  $val-name, $val in $black-mix {
-        #{$short-name}-#{$val-name}{
+        #{$short-name}-#{$val-name},#{$long-name}-#{$val-name}{
   		    #{$style}:mix(black, $color,  $val) !important;
   		  }
       }
 }
-
-%hover-cursor{
+div[class^="hover_"]{
      cursor: pointer;
 }
-%hover-text-white{ color: $white; }
-%hover-text-black{ color: $black; }
+
 
 @mixin hover-loop($key, $color-name, $color){
     $white-mix:     map-get($values, percent-positive);
@@ -39,24 +37,18 @@ $debug-trace: true !default;
     $style:         get-css-style($key); 
     @if $debug-trace{ 
         @debug "Color Loop for #{$key} painting it with #{$color-name}";
-
     }
-      #{$short-name}:hover{
-            @extend %hover-cursor;
+      #{$short-name}:hover,
+      #{$long-name}:hover {            
             #{$style}: $color !important;
-            @if( $key == "hover-bg" ){
-              
-            }
       }   
       @each  $val-name, $val in $white-mix {
-        #{$short-name}-#{$val-name}:hover{
-            @extend %hover-cursor;
+        #{$short-name}-#{$val-name}:hover,#{$long-name}-#{$val-name}:hover{     
             #{$style}:mix(white, $color,  $val) !important;
         }
       }
       @each  $val-name, $val in $black-mix {
-        #{$short-name}-#{$val-name}:hover{
-            @extend %hover-cursor;
+        #{$short-name}-#{$val-name}:hover,#{$long-name}-#{$val-name}:hover{    
           #{$style}:mix(black, $color,  $val) !important;
         }
       }

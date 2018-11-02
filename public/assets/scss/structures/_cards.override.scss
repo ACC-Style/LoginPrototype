@@ -1,17 +1,17 @@
 /*
 	Cards
 
-	Build on the foundation card some utiltiy classes have been added to give it the full look and feel.   
+	Build from the basicfoundation card utility classes can be added to make many variations on the theme.
 
-	.back_primary				- textures are slightly transparent so they can be colored with background-color classess
-	.back_secondary				- textures are slightly transparent so they can be colored with background-color classess
-	.back_highligh				- textures are slightly transparent so they can be colored with background-color classess
-	.back_warning				- textures are slightly transparent so they can be colored with background-color classess
-	.back_alert				- textures are slightly transparent so they can be colored with background-color classess
+	.card-divider.back_primary				- textures are slightly transparent so they can be colored with background-color classess
+	.card-divider.back_secondary			- textures are slightly transparent so they can be colored with background-color classess
+	.card-divider.back_highlight 		- textures are slightly transparent so they can be colored with background-color classess
+	.card-divider.back_warning				- textures are slightly transparent so they can be colored with background-color classess
+	.card-divider.back_alert					- textures are slightly transparent so they can be colored with background-color classess
 
 	markup:
 	<div class="card shadow_2 cell small-6 large-4" style="width: 300px;">
-	  <div class="card-divider font_slab border-top-left-square color_white font-size_3 padding_4 texture_dust {$modifiers}">
+	  <div class=" font_slab border-top-left-square color_white font-size_3 padding_4 texture_dust {$modifiers}">
 	    This is a header
 	  </div>
 	  <img src="https://picsum.photos/400/300">
@@ -29,6 +29,3 @@
 	Styleguide 40.1
 
  */
- .cards{
- 	foo:foo;
- }

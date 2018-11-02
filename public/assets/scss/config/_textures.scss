@@ -1,13 +1,13 @@
-$texture-light:"../img/whisper.png";
-$texture-medium:"../img/billie-holiday-speck.png";
-$texture-dust:"../img/dust.png";
-$texture-dark:"../img/cross_stripes.png";
-$texture-disabled:"../img/cross_disabled.png";
-$texture-cross:"../img/cross_color.png";
+$texture-light:"./assets/img/whisper.png";
+$texture-medium:"./assets/img/billie-holiday-speck.png";
+$texture-dust:"./assets/img/dust.png";
+$texture-dark:"./assets/img/cross_stripes.png";
+$texture-disabled:"./assets/img/cross_disabled.png";
+$texture-cross:"./assets/img/cross_color.png";
 
 
 
-%texture-base{
+div[class^="texture_"]{
 	background-attachment:local;
 	background-repeat: repeat;
 	background-position: top right;
@@ -15,35 +15,30 @@ $texture-cross:"../img/cross_color.png";
 }
 
 @mixin texture-light(){
-	@extend %texture-base;
 	background-image: url( $texture-light );
 }
 @mixin texture-medium{
-	@extend %texture-base;
 	background-image: url( $texture-medium );
 }
 @mixin texture-dust{
-	@extend %texture-base;
 	background-image: url( $texture-dust );
 }
 @mixin texture-medium-shaded($level:0){
-	@extend %texture-base;
 	background-color: scale-color(map-get($acc-palette, secondary),$lightness: 20% * $level );
 	background-image: url( $texture-medium );
 }
 
 @mixin texture-dark(){
-	@extend %texture-base;
 	background-image: url( $texture-dark );
 }
 
 @mixin texture-disabled(){
-	@extend %texture-base;
+
 	background-image: url( $texture-disabled );
 }
 
 @mixin texture-cross(){
-	@extend %texture-base;
+
 	background-image: url( $texture-cross );
 }
 
