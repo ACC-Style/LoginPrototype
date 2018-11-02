@@ -138,19 +138,22 @@
         </div>
       </div>
     </reveal>
+    <pagination :paginator="{currentPage:currentPage, maxPages:maxPages, listSize:paginatorListSize}"></pagination>
   </div>
 </template>
 
 <script>
 import searchResult from "@/components/searchResult.vue";
 import reveal from "@/components/Reveal.vue";
+import pagination from "@/components/pagination.vue";
 import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "Search",
   components: {
     searchResult,
-    reveal
+    reveal,
+    pagination
   },
   computed: {
     ...mapState([
@@ -160,7 +163,10 @@ export default {
       "passwordPart1",
       "passwordPart2",
       "passwordPart3"
-    ])
+    ]),
+    maxPages: function(){
+      return Math.round(50/10);
+    }
   },
   methods: {
     ...mapMutations([
@@ -283,6 +289,8 @@ export default {
       hasPageMessage: false,
       pageMessageType: "message",
       pageMessage: "",
+      currentPage:1,
+      paginatorListSize:5,
       resultsOnPage:[],
     };
   },
