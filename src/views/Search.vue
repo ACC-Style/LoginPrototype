@@ -29,7 +29,8 @@
       v-on:open-password-reveal="openPasswordReveal(member)" 
       v-on:share-record="setSharedRecord(member)"
       v-on:breakLinkRepeater="breakLinkData(member,$event.child)" />
-       	</transition-group>
+    </transition-group>
+    <pagination :paginator="{currentPage:currentPage, maxPages:maxPages, listSize:paginatorListSize}" class="margin-right_3 margin-left_3"></pagination>
     <reveal ref="emailReveal">
       <h3 slot="header">Edit Email</h3>
       <div slot="content">
@@ -138,8 +139,9 @@
         </div>
       </div>
     </reveal>
-    <pagination :paginator="{currentPage:currentPage, maxPages:maxPages, listSize:paginatorListSize}"></pagination>
-  </div>
+
+</div>
+
 </template>
 
 <script>
@@ -165,7 +167,7 @@ export default {
       "passwordPart3"
     ]),
     maxPages: function(){
-      return Math.round(50/10);
+      return Math.round(this.fullResults.length/10);
     }
   },
   methods: {
@@ -186,9 +188,10 @@ export default {
         this.ADD_SEARCH_HISTORY(Object({searchTerm: val.toLowerCase(), resultCount: this.resultsOnPage.length}));
     },
     runSearch:function(val){
-      this.resultsOnPage = this.searchReturn.filter(function(result){ 
+      this.fullResults = this.searchReturn.filter(function(result){ 
         return result.fullName.includes(val) || result.emailAddress.includes(val)|| String(result.personifyNumber).includes(val) || String(result.badgeNumber).includes(val) || result.userName.includes(val);
-    });
+      });
+      this.resultsOnPage = this.fullResults.slice(0 , 10);
       
     },
     openEmailReveal: function(member) {
@@ -292,6 +295,7 @@ export default {
       currentPage:1,
       paginatorListSize:5,
       resultsOnPage:[],
+      fullResults:[],
     };
   },
   mounted () {
