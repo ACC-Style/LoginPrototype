@@ -1,14 +1,10 @@
-
-
-
-
 /* Robto Slab Regular */
 @font-face {
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 400;
   src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(https://fonts.gstatic.com/s/robotoslab/v7/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:  U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* Robto Slab Bold */
 
@@ -17,7 +13,7 @@
   font-style: normal;
   font-weight: 700;
   src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(https://fonts.gstatic.com/s/robotoslab/v7/BngRUXZYTXPIvIBgJJSb6u92w7CGwR0.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:  U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* Maven PRo */
 @font-face {
@@ -25,7 +21,7 @@
   font-style: normal;
   font-weight: 500;
   src: local('Maven Pro Medium'), local('MavenPro-Medium'), url(https://fonts.gstatic.com/s/mavenpro/v11/7Au4p_AqnyWWAxW2Wk3OPkcdP3kD.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:  U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* Muli */
@@ -34,7 +30,7 @@
   font-style: normal;
   font-weight: 400;
   src: local('Muli Regular'), local('Muli-Regular'), url(https://fonts.gstatic.com/s/muli/v11/7Auwp_0qiz-afTLGLQ.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+  unicode-range:  U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 
 /*Muli */
 @font-face {
@@ -42,7 +38,7 @@
   font-style: normal;
   font-weight: 800;
   src: local('Muli ExtraBold'), local('Muli-ExtraBold'), url(https://fonts.gstatic.com/s/muli/v11/7Au_p_0qiz-adZXgOCX2zw.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:  U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 
@@ -96,13 +92,13 @@
 }
 @mixin font-bold {
     font-family:  'Muli','Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -.25px;
 
 }
 @mixin font-italic-bold {
     font-family: 'Muli','Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-    font-weight: 800;
+    font-weight: 700;
     font-style: italic;
 
 }
@@ -112,4 +108,5 @@ html{
     -webkit-line-break:after-white-space;
     -webkit-locale:"en";
     -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    line-break: white-space;
 }

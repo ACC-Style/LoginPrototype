@@ -1,82 +1,73 @@
 /*
-  Utility CSS: Backgrounds 
- 
-  Background of containers can be easily maniputlated with textures and colors.  
-  
-  Styleguide 81.0
-*/
-/*
   Background Colors
  
-  Background colors can be easily change with back_{{color-name}}  
+  Background colors can be easily change with bg_{{color-name}}  
  
-  back_primary            	- background color warning color
-  back_secondary            	- background color warning color
-  back_alert            	- background color alert color
-  back_warning            	- background color warning color
-  back_success              - background color success color
-  back_info              - background color success color
-  back_hightlight              - background color success color
+  bg_primary            	- background color warning color
+  bg_secondary            	- background color warning color
+  bg_alert            	- background color alert color
+  bg_warning            	- background color warning color
+  bg_success              - background color success color
+  bg_info              - background color success color
+  bg_highlight              - background color success color
 
 
   markup:
-  <div class="{$modifiers} padding_3 color_white">Background Color of {$modifiers}</div>
+  <div class="{$modifiers} p_3 c_white">Background Color of {$modifiers}</div>
  
-  Styleguide 81.1
+  Styleguide 104.1
  
  */
- /*
+/*
   Background Color Shades
  
-  Background colors can be shifted by appending a modifier back_{{color-name}}-{{n5 to 5}}.  The negative(n) numbers mix the color with black and the positive numbers mix the color with white.   
+  Background colors can be shifted by appending a modifier bg_{{color-name}}-{{n5 to 5}}.  The negative(n) numbers mix the color with black and the positive numbers mix the color with white.   
  
-  back_primary              - background color modified light to dark
-  back_secondary              - background color modified light to dark
-  back_info              - background color modified light to dark
-  back_hightlight              - background color success color
-  back_success              - background color modified light to dark
-  back_warning              - background color modified light to dark
-  back_alert              - background color modified light to dark
+  bg_primary              - background color modified light to dark
+  bg_secondary              - background color modified light to dark
+  bg_info              - background color modified light to dark
+  bg_highlight              - background color success color
+  bg_success              - background color modified light to dark
+  bg_warning              - background color modified light to dark
+  bg_alert              - background color modified light to dark
 
   markup:
   <div class="grid-x">
-    <div class="back_white cell auto text-center padding_2 padding-top_5 padding-bottom_5 ">white</div>
-    <div class="{$modifiers}-5 cell auto text-center  padding_2 padding-top_5 padding-bottom_5">5</div>
-    <div class="{$modifiers}-4 cell auto text-center  padding_2 padding-top_5 padding-bottom_5">4</div>
-    <div class="{$modifiers}-3 cell auto text-center  padding_2 padding-top_5 padding-bottom_5">3</div>
-    <div class="{$modifiers}-2 cell auto text-center  padding_2 padding-top_5 padding-bottom_5">2</div>
-    <div class="{$modifiers}-1 cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">1</div>
-    <div class="{$modifiers}-0 cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">0</div>
-    <div class="{$modifiers}-n1 cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">n1</div>
-    <div class="{$modifiers}-n2 cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">n2</div>
-    <div class="{$modifiers}-n3 cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">n3</div>
-    <div class="{$modifiers}-n4 cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">n4</div>
-    <div class="{$modifiers}-n5 cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">n5</div>
-    <div class="back_black cell auto text-center  color_white padding_2 padding-top_5 padding-bottom_5">black</div>
+    <div class="bg_white cell auto text-center p_2 p-y_5 ">white</div>
+    <div class="{$modifiers}-5 cell auto text-center  p_2 p-y_5">5</div>
+    <div class="{$modifiers}-4 cell auto text-center  p_2 p-y_5">4</div>
+    <div class="{$modifiers}-3 cell auto text-center  p_2 p-y_5">3</div>
+    <div class="{$modifiers}-2 cell auto text-center  p_2 p-y_5">2</div>
+    <div class="{$modifiers}-1 cell auto text-center  c_white p_2 p-y_5">1</div>
+    <div class="{$modifiers}-0 cell auto text-center  c_white p_2 p-y_5">0</div>
+    <div class="{$modifiers}-n1 cell auto text-center  c_white p_2 p-y_5">n1</div>
+    <div class="{$modifiers}-n2 cell auto text-center  c_white p_2 p-y_5">n2</div>
+    <div class="{$modifiers}-n3 cell auto text-center  c_white p_2 p-y_5">n3</div>
+    <div class="{$modifiers}-n4 cell auto text-center  c_white p_2 p-y_5">n4</div>
+    <div class="{$modifiers}-n5 cell auto text-center  c_white p_2 p-y_5">n5</div>
+    <div class="bg_black cell auto text-center  c_white p_2 p-y_5">black</div>
   </div>
 
  
-  Styleguide 81.2
+  Styleguide 104.2
  
  */
 
-@each $color-name, $color in $acc-palette{
-  	@include color-loop(background-color, $color-name, $color);
+@each $color-name, $color in $acc-palette {
+	@include color-loop(background-color, $color-name, $color);
 }
 
-.back_white{
-  background-color: $white;
+.bg_white {
+	background-color: $white;
 }
-.back_black{
-  background-color: $black;
+.bg_black {
+	background-color: $black;
 }
-
-
-/*
-  CSS Utlitiy: Hover
-
-  Make any Object hover action. 
-
-  Styleguide 84.0
-*/
-
+@if $short-names-only {
+	.bg_white {
+		@extend .bg_white;
+	}
+	.bg_black {
+		@extend .bg_black;
+	}
+}

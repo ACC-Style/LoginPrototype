@@ -1,0 +1,373 @@
+/*
+
+table
+
+table description
+
+markup:
+<table class="table">
+  <thead class="table__thead">
+    <tr>
+      <th>table header</th>
+      <th>table header</th>
+      <th>table header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>table row 1 table cell A
+        <br>
+        <small class="color_primary">this is small text in blue</small>
+      </td>
+      <td>table row 1 table cell B
+        <br>
+        <small class="color_highlight">this is small text with magenta</small>
+      </td>
+      <td>table row 1 table cell C</td>
+    </tr>
+    <tr>
+      <td>table row 2 table cell A</td>
+      <td>table row 2 table cell B</td>
+      <td>table row 2 table cell C</td>
+    </tr>
+  </tbody>
+  <tfoot class="table__tfoot">
+    <tr>
+      <td colspan="3">footer cell</td>
+    </tr>
+  </tfoot>
+</table>
+
+Styleguide 10.2.1
+*/
+.table {
+	
+}
+.table__thead, thead{
+	 @extend .font_0;
+	 background-color: $white;
+
+		th, td{
+			border-bottom: 2px solid get-themecolor(primary, 1);
+
+			
+
+		}
+}
+.table__tfoot, tfoot{
+	 @extend .font_n1;
+	 background-color: get-themecolor(secondary, 5);
+
+		th, td{
+			border-top: 1px solid get-themecolor(secondary, 1);
+			font-style: italic;
+
+			
+
+		}
+}
+
+/*
+
+table (Banded Recipe)
+
+table banded description
+
+.primary - column colored primary
+.info - column colored info 
+
+markup:
+<table class="table ">
+  <thead>
+    <tr>
+      <th>table header</th>
+      <th class="back_{$modifiers}-4">table header</th>
+      <th>table header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row 1 cell A</td>
+      <td class="back_{$modifiers}-5">row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+    <tr>
+      <td>row 2 cell A</td>
+      <td class="back_{$modifiers}-4">row 2 cell B</td>
+      <td>row 2 cell C</td>
+    </tr>
+    <tr>
+      <td>row 3 cell A</td>
+      <td class="back_{$modifiers}-5">row 3 cell B</td>
+      <td>row 3 cell C</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">footer cell</td>
+    </tr>
+  </tfoot>
+</table>
+
+Styleguide 10.2.2
+*/
+
+
+
+/*
+
+table banded
+
+table banded description
+
+
+
+markup:
+<table class="table banded">
+  <thead>
+    <tr>
+      <th>table header</th>
+      <th>table header</th>
+      <th>table header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+    <tr>
+      <td>row 2 cell A</td>
+      <td>row 2 cell B</td>
+      <td>row 2 cell C</td>
+    </tr>
+    <tr>
+      <td>row 3 cell A</td>
+      <td>row 3 cell B</td>
+      <td>row 3 cell C</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">footer cell</td>
+    </tr>
+  </tfoot>
+</table>
+
+Styleguide 10.2.3
+*/
+.table.banded {
+  .table__head, thead{
+    th:nth-child(even){
+     // @extend .back_acc-5;
+      background-color: get-themecolor(acc, 5);
+
+
+
+
+          }
+  }
+    .table__body, tbody{
+    td:nth-child(even){
+     // @extend .back_primary-5;
+      background-color: get-themecolor(primary, 5);
+  
+          }
+    tr:nth-child(even){
+      td:nth-child(even){
+     // @extend .back_acc-4;
+       background-color: get-themecolor(acc, 4);
+
+
+
+          }
+      
+    }
+      
+  }
+
+
+}
+
+/*
+
+
+table unstripped
+
+table unstripped description
+
+markup:
+<table class="table unstripped">
+  <thead>
+    <tr>
+      <th>table header</th>
+      <th>table header</th>
+      <th>table header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+    <tr>
+      <td>row 2 cell A</td>
+      <td>row 2 cell B</td>
+      <td>row 2 cell C</td>
+    </tr>
+    <tr>
+      <td>row 3 cell A</td>
+      <td>row 3 cell B</td>
+      <td>row 3 cell C</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">footer cell</td>
+    </tr>
+  </tfoot>
+</table>
+
+Styleguide 10.2.4
+*/
+.table.unstripped {
+
+  
+}
+
+/*
+Table (States Cells Recipe)
+
+Example of utilities classes to show cell states
+
+
+markup:
+<table class="table">
+  <tr>
+    <td class="back_alert-4 border_solid border-width_1 border_alert font-weight_bold text-center">
+      <i class="fas fa-times-circle"></i>
+    </td>
+    <td class="">
+    </td>
+    <td class="">Text</td>
+    <td class="back_warning-4 border_solid border-width_1 border_warning font-weight_bold">
+      <i class="fas fa-exclamation-triangle"></i> Warning</td>
+  </tr>
+  <tr>
+    <td class="">
+    </td>
+    <td class="back_info-4 border_solid border-width_1 border_info font-weight_bold text-center">
+      <i class="fas fa-lightbulb-exclamation"></i>
+    </td>
+    <td class="">Text</td>
+    <td class="back_info-4 border_solid border-width_1 border_info font-weight_bold">
+      <i class="fas fa-lightbulb-exclamation"></i>
+      Info</td>
+  </tr>
+  <tr>
+    <td class="">
+    </td>
+    <td class="warning icon">
+    </td>  
+    <td class="back_alert-4 border_solid border-width_1 border_alert font-weight_bold">Alert</td>
+    <td class=""> Text</td>
+  </tr>
+  <tr>
+    <td class="success icon">
+    </td>
+    <td class="info icon">
+    </td>
+    <td class="back_success-4 border_solid border-width_1 border_success font-weight_bold"><i class="fas fa-check"></i> Success</td>
+    <td class=""> text</td>
+  </tr>
+</table>
+
+Styleguide 10.2.5
+*/
+
+
+/*
+
+Table Row(Seperator + State Recipe)
+
+Example of utilities classes to show seperator and state
+
+
+
+markup:
+<table class="table stripped">
+  <thead>
+    <tr>
+      <th>table header</th>
+      <th>table header</th>
+      <th>table header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+    <tr class="back_info-1 border_solid border-left-width_0  border-right-width_0 border-width_1 border border_info font-weight_bold font-size_n2 text-left color_white">
+      <td colspan='3' class="padding_2">Separator With Info</td>
+    </tr>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+    <tr class="back_success-1 border_solid border-left-width_0  border-right-width_0 border-width_1 border border_success font-weight_bold font-size_n2 text-left color_white">
+      <td colspan='3' class="padding_2">Separator With success</td>
+    </tr>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+    <tr class="back_alert-1 border_solid border-left-width_0 border-right-width_0 border-width_1 border border_alert font-weight_bold font-size_n2 text-left color_white">
+      <td colspan='3' class="padding_2">Separator With Alert</td>
+    </tr>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+   <tr class="back_warning-1 border_solid border-left-width_0  border-right-width_0 border-width_1 border border_warning font-weight_bold font-size_n2 text-left">
+      <td colspan='3' class="padding_2">Separator With warning</td>
+    </tr>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+   <tr class="back_secondary-3 border_solid border-left-width_0  border-right-width_0 border-width_1 border border_secondary font-weight_bold font-size_n2 text-left">
+      <td colspan='3' class="padding_2">Separator With disabled</td>
+    </tr>
+    <tr>
+      <td>row 1 cell A</td>
+      <td>row 1 cell B</td>
+      <td>row 1 cell C</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">footer cell</td>
+    </tr>
+  </tfoot>
+</table>
+
+Styleguide 10.2.6
+*/
+
+
+
+
+
+
+
+
+
+

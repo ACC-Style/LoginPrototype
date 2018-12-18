@@ -1,11 +1,10 @@
-$debug-trace:false;
-$short-classnames:false;
-// ACC definision, colors, fonts etc... 
+// ACC definision, colors, fonts etc...
 @import "vars";
 @import "utility-css-definitions";
 @import "colors";
 @import "fonts";
 @import "textures";
+@import "logo";
 
 // Foundation alteration
 @import "foundation-settings";

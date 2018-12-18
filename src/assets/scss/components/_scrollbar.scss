@@ -1,0 +1,21 @@
+/* Let's get this party started */
+.scrollbar-mini::-webkit-scrollbar {
+    width: .5rem;
+} 
+/* Track */
+.scrollbar-mini::-webkit-scrollbar-track {
+    box-shadow: make-shadow(2,"inset",#000,.2); 
+    background-color:rgba( get-themecolor(primary, -3), .1);
+} 
+/* Handle */
+.scrollbar-mini::-webkit-scrollbar-thumb {
+    border-radius: get-css-size(border-radius,round);
+    background:  get-themecolor(primary, -1); 
+    box-shadow: make-shadow(2,"inset",#000,.2); 
+}
+.scrollbar-mini::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba( get-themecolor(primary, -1), .1); 
+}
+.scrollbar-mini::-webkit-scrollbar-track:window-inactive{
+    background: rgba( get-themecolor(primary, -3), .1);
+}

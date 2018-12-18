@@ -1,8 +1,7 @@
+/*
+	Opacity Levels
 
- /*
-	Utility CSS: Opacity
-
-	Set the Opacity of an object
+	Set the Opacity of an object.  Unlike the 
 
 	.opacity_0                        - Opacity of 0%
 	.opacity_1                        - Opacity of 10%
@@ -17,48 +16,71 @@
 	.opacity_none                     - No Opacity
 
 	markup:
-	<div class="{$modifiers} border-width_1 border-solid border_white padding_2 back_warning color_white">{$modifiers}</div>
+	<div class="{$modifiers} br_1 br_solid br_white p_2 bg_warning c_white">{$modifiers}</div>
 
 	sg-wrapper: 
-	<div class="padding_4 back_primary">
+	<div class="p_4 bg_primary">
 		<sg-wrapper-content/>
 	</div>
 
-	Styleguide 85.0
+	Styleguide 105.1
  
  */
-.opacity_0{ opacity:0;}
-.opacity_1{opacity:.1;}
-.opacity_2{opacity:.2;}
-.opacity_3{opacity:.3;}
-.opacity_4{opacity:.4;}
-.opacity_5{opacity:.5;}
-.opacity_6{opacity:.6;}
-.opacity_7{opacity:.7;}
-.opacity_8{opacity:.8;}
-.opacity_9{opacity:.9;}
-.opacity_none{opacity:1;}
+.opacity_0 {
+	opacity: 0;
+}
+.opacity_1 {
+	opacity: 0.1;
+}
+.opacity_2 {
+	opacity: 0.2;
+}
+.opacity_3 {
+	opacity: 0.3;
+}
+.opacity_4 {
+	opacity: 0.4;
+}
+.opacity_5 {
+	opacity: 0.5;
+}
+.opacity_6 {
+	opacity: 0.6;
+}
+.opacity_7 {
+	opacity: 0.7;
+}
+.opacity_8 {
+	opacity: 0.8;
+}
+.opacity_9 {
+	opacity: 0.9;
+}
+.opacity_none {
+	opacity: 1;
+}
 
- /*
+/*
 	Opacity: Hover
 
 	Set the Opacity of an object to 100% while hovered.
 
-	.opacity_1.hover_opacity                        - Opacity of 10%
+	.opacity_1.hover:opacity                        - Opacity of 10%
 
 	markup:
-	<div class="{$modifiers} border-width_1 border-solid border_white padding_2 back_warning color_white">{$modifiers}</div>
+	<div class="{$modifiers} br_1 br_solid br_white p_2 bg_warning c_white">{$modifiers}</div>
 
 	sg-wrapper: 
-	<div class="padding_4 back_primary">
+	<div class="p_4 bg_primary">
 		<sg-wrapper-content/>
 	</div>
 
-	Styleguide 85.1
+	Styleguide 105.2
  
  */
-.hover_opacity{@extend %hover-transition;}
-.hover_opacity:hover{
-	opacity:1;
+.hover\:opacity {
+	@extend %hover_transition;
 }
-
+.hover\:opacity:hover {
+	opacity: 1;
+}

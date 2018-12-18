@@ -1,8 +1,8 @@
 
  /*
-	Utility CSS: Opacity
+	Opacity Levels
 
-	Set the Opacity of an object
+	Set the Opacity of an object.  Unlike the 
 
 	.opacity_0                        - Opacity of 0%
 	.opacity_1                        - Opacity of 10%
@@ -24,7 +24,7 @@
 		<sg-wrapper-content/>
 	</div>
 
-	Styleguide 85.0
+	Styleguide 105.1
  
  */
 .opacity_0{ opacity:0;}
@@ -44,7 +44,7 @@
 
 	Set the Opacity of an object to 100% while hovered.
 
-	.opacity_1.hover_opacity                        - Opacity of 10%
+	.opacity_1.hover:opacity                        - Opacity of 10%
 
 	markup:
 	<div class="{$modifiers} border-width_1 border-solid border_white padding_2 back_warning color_white">{$modifiers}</div>
@@ -54,11 +54,11 @@
 		<sg-wrapper-content/>
 	</div>
 
-	Styleguide 85.1
+	Styleguide 105.2
  
  */
-.hover_opacity{@extend %hover-transition;}
-.hover_opacity:hover{
+.hover\:opacity{@extend %hover_transition;}
+.hover\:opacity:hover{
 	opacity:1;
 }
 

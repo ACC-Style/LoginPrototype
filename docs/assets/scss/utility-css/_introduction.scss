@@ -1,0 +1,63 @@
+/*
+Anatomy
+
+<h2>Anatomy of a Utility Class Name</h2>
+The breakdown of the names for UCs follow a structured patter for easy muscle memory learning. 
+
+  markup:
+  <p class="font_2">All of the Class Names follow this ordered pattern of construction.</p>
+  <ol class="font_1 font_bold m_4 br_solid br_1 br_secondary-4 lh_4" style="list-style-position: inside;">
+      <li class="p_2 c_success">State: Hover, Focus <em>limited usage</em></li>
+      <li class="p_2 c_primary">Class Name</li>
+      <li class="p_2 c_highlight">Value</li>
+      <li class="p_2 c_info">Modifier of Value</li>
+      <li class="p_2 c_info">Modifier of Responsive Application <em>limited usage</em></li>
+  </ol>
+  <div class="font_2">
+      <div class="font_bold font_3">Example 1</div>
+      <div class="font_1 m-t_2">Make the background color primary modified by the shading of negative 2.</div>
+      <div class="flex m-t_3">
+          <div class="flex_auto bg_primary-3 p_3">background-color</div>
+          <div class="flex_auto bg_warning-3 p_3">_</div>
+          <div class="flex_auto bg_highlight-3 p_3">primary</div>
+          <div class="flex_auto bg_alert-3 p_3">-</div>
+          <div class="flex_auto bg_info-3 p_3">n2</div>
+      </div>
+  </div>
+  <div class="font_2">
+      <div class="font_bold font_3">Example 2</div>
+      <div class="font_1 m-t_2">On this container make the padding-top equal to 1rem, the value of 4, when the
+          screen is large.</div>
+      <div class="flex m-t_3">
+          <div class="flex_auto bg_primary-3 p_3">padding-top</div>
+          <div class="flex_auto bg_warning-3 p_3">_</div>
+          <div class="flex_auto bg_highlight-3 p_3">4</div>
+          <div class="flex_auto bg_alert-3 p_3">-</div>
+          <div class="flex_auto bg_info-3 p_3">large</div>
+      </div>
+  </div>
+  <div class="font_2">
+      <div class="font_bold font_3">Example 3</div>
+      <div class="font_1 m-t_2">Alter the background on hover to a lighter value of alert</div>
+      <div class="flex m-t_3">
+          <div class="flex_auto bg_success-3 p_3">hover</div>
+          <div class="flex_auto bg_warning-3 p_3">:</div>
+          <div class="flex_auto bg_primary-3 p_3">background-color</div>
+          <div class="flex_auto bg_warning-3 p_3">_</div>
+          <div class="flex_auto bg_highlight-3 p_3">alert</div>
+          <div class="flex_auto bg_alert-3 p_3">-</div>
+          <div class="flex_auto bg_info-3 p_3">1</div>
+      </div>
+  </div>
+  <ol class="font_0 font_bold c_white m_4 br_solid br_1 br_secondary-4 lh_4" style="list-style-position: inside;">
+      <li class="bg_success p_3">`hover` => the state of hover also could be `focus` </li>
+      <li class="bg_primary p_3">`background-color` => style name</li>
+      <li class="bg_warning p_3">`_` => Concept Divider think of this as an equal mark</li>
+      <li class="bg_highlight p_3">`primary` => Concept Divider think of this as an equal mark</li>
+      <li class="bg_alert p_3">`-` => Modifier Divider think of this as shift value or apply value when</li>
+      <li class="bg_info p_3">`n2` => Modifier Values most follow a [n5 , n4, n3, n2, n1, {0 is
+          default} , 1, 2, 3, 4, 5], or responsive [{small is defulat}, medium, large]</li>
+  </ol>   
+
+ Styleguide 100.1
+*/

@@ -11,33 +11,32 @@
 	.texture_disabled              				- This texture is used to paint disabled buttons and ui items giving it a greyed and X'ed out appearand. 
 
 	markup:
-	<div class="{$modifiers} padding_5 border-color_black-8 border-width_1 border_solid text-center">{$modifiers}</div>
+	<div class="{$modifiers} p_5 br_black-8 br_1 br_solid text-center">{$modifiers}</div>
 
-	Styleguide 81.3
+	Styleguide 90.3
 
  */
 
-
-
-.texture_light{
+.texture_light {
 	@include texture-light;
 }
-.texture_medium{
+.texture_medium {
 	@include texture-medium;
 }
-.texture_dark{
+.texture_dark {
 	@include texture-dark;
 }
-.texture_dust{
+.texture_dust {
 	@include texture-dust;
 }
-.texture_disabled,.disabled, .disabled:hover{
+.texture_disabled,
+.disabled,
+.disabled:hover {
 	@include texture-disabled;
 }
-.texture_cross{
+.texture_cross {
 	@include texture-cross;
 }
-
 
 /*
 	Textures Plus Background Colors
@@ -56,13 +55,13 @@
 	.texture_disabled.back_alert             	- textures are slightly transparent so they can be colored with background-color classess
 
 	markup:
-	<div class="{$modifiers} padding_5 border-color_black-8 border-width_1 border_solid text-center">{$modifiers}</div>
+	<div class="{$modifiers} p_5 br_black-8 br_1 br_solid text-center">{$modifiers}</div>
 
-	Styleguide 81.4
+	Styleguide 90.4
 
  */
 
- /*
+/*
 	Textures Plus Background Shades
 
 	All textures are slightly transparent.  You can further shade the background colors to achieve even more flexablity.  
@@ -86,12 +85,12 @@
 
 	markup:
 	<div class="grid-x">
-		<div class="{$modifiers}-n3 padding_3 cell auto text-center color_white">n3</div>
-		<div class="{$modifiers}-n1 padding_3 cell auto text-center color_white">n1</div>
-		<div class="{$modifiers}-1 padding_3 cell auto text-center color_white">1</div>
-		<div class="{$modifiers}-3 padding_3 cell auto text-center color_white">3</div>
+		<div class="{$modifiers}-n3 p_3 cell auto text-center c_white">n3</div>
+		<div class="{$modifiers}-n1 p_3 cell auto text-center c_white">n1</div>
+		<div class="{$modifiers}-1 p_3 cell auto text-center c_white">1</div>
+		<div class="{$modifiers}-3 p_3 cell auto text-center c_white">3</div>
 	</div>
 
-	Styleguide 81.5
+	Styleguide 90.5
 
  */

@@ -40,7 +40,7 @@ markup:
 		border-color: transparent;
 	}
 	&.shadow{
-		@extend %hover-transition !optional;
+		@extend %hover_transition !optional;
 		box-shadow: make-shadow(3,"drop",#000,.4);
 		 
 		&:hover{

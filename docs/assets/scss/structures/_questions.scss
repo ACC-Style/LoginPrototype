@@ -1,0 +1,206 @@
+/*
+
+    Question Structure
+
+    default - default decoration when there is no validation run on the input.
+
+    markup:
+    <div class="question required {$modifiers}">
+    <label for="input-x" class="grid-x color_{$modifiers} font_1">
+        <span class="text cell shrink">Question Text</span>
+        <span class="required-holder cell shrink">
+            <i class="fas fa-asterisk color_warning font_n3 vertical-align_top"></i>
+        </span>
+    </label>
+    <div class="input-holder grid-x color_{$modifiers}">
+        <div class="alert b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-square"></i></span>
+        </div>
+        <div class="warning b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-triangle"></i></span>
+        </div>
+        <div class="info b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-lightbulb-exclamation"></i></span>
+        </div>
+        <div class="success b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-check-square"></i></span>
+        </div>
+        <div class="input-space cell auto">
+            <input id="input-x" type="text" class="margin-bottom_0 b_{$modifiers}-3 " />
+        </div>
+    </div>
+    <div class="message-holder font_n1">
+        <div class="alert padding_2 bg_alert-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-square margin-right_3 margin-left_2"></i> Error message</div>
+        <div class="warning padding_2 bg_warning-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-triangle margin-right_3 margin-left_2"></i> Warning message</div>
+        <div class="info padding_2 bg_info-n1 color_white">
+        <i class="fas fa-fw fa-lightbulb-exclamation margin-right_3 margin-left_2"></i> Informational message about your input</div>
+    </div>
+    <div class="hint margin-top_2 font_n1 color_secondary padding_2 padding-top_0">This is some hint text</div>
+    </div>
+
+    Styleguide 30.1
+*/
+/*
+
+    Question Structure with States applied
+
+    default - default decoration when there is no validation run on the input.
+    alert   - alert settings for questions
+    warning - warning decoration for when required is missing. 
+    info - sometimes inputs show extra informaiton when an item is selected or when a value is entered.
+    success - On rare occations it is needed for a success response on an input.
+
+    markup:
+    <div class="question required {$modifiers}">
+    <label for="input-x" class="grid-x color_{$modifiers} font_1">
+        <span class="text cell shrink">Question Text</span>
+        <span class="required-holder cell shrink">
+            <i class="fas fa-asterisk color_warning font_n3 vertical-align_top"></i>
+        </span>
+        </label>
+    <div class="input-holder grid-x color_{$modifiers}">
+        <div class="alert b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-square"></i></span>
+        </div>
+        <div class="warning b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-triangle"></i></span>
+        </div>
+        <div class="info b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-lightbulb-exclamation"></i></span>
+        </div>
+        <div class="success b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-check-square"></i></span>
+        </div>
+        <div class="input-space cell auto">
+            <input id="input-x" type="text" class="margin-bottom_0 b_{$modifiers}-3 " />
+        </div>
+    </div>
+    <div class="message-holder font_n1">
+        <div class="alert padding_2 bg_alert-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-square margin-right_3 margin-left_2"></i> Error message</div>
+        <div class="warning padding_2 bg_warning-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-triangle margin-right_3 margin-left_2"></i> Warning message</div>
+        <div class="info padding_2 bg_info-n1 color_white">
+        <i class="fas fa-fw fa-lightbulb-exclamation margin-right_3 margin-left_2"></i> Informational message about your input</div>
+    </div>
+    <div class="hint margin-top_2 font_n1 color_secondary padding_2 padding-top_0">This is some hint text</div>
+    </div>
+
+    Styleguide 30.1.1
+*/
+.question div.alert,
+.question div.warning,
+.question div.info,
+.question div.success
+       {
+    display: none;
+}
+.alert.question div.alert,
+.warning.question div.warning,
+.info.question div.info,
+.success.question div.success,
+       {
+    display: block;
+}
+
+/*
+
+    Question Input Value Area
+
+    default - default decoration when there is no validation run on the input.
+    alert   - alert settings for questions
+    warning - warning decoration for when required is missing. 
+    info - sometimes inputs show extra informaiton when an item is selected or when a value is entered.
+    success - On rare occations it is needed for a success response on an input.
+
+    markup:
+    <div class="question required {$modifiers}">
+    <label for="input-x" class="grid-x color_{$modifiers} font_1">
+        <span class="text cell shrink">Question Text</span>
+        <span class="required-holder cell shrink">
+            <i class="fas fa-asterisk color_warning font_n3 vertical-align_top"></i>
+        </span>
+        </label>
+    <div class="input-holder grid-x color_{$modifiers}">
+        <div class="alert b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-square"></i></span>
+        </div>
+        <div class="warning b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-triangle"></i></span>
+        </div>
+        <div class="info b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-lightbulb-exclamation"></i></span>
+        </div>
+        <div class="success b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-check-square"></i></span>
+        </div>
+        <div class="input-space cell auto">
+            <input id="input-x" type="text" class="margin-bottom_0 b_{$modifiers}-3 " />
+        </div>
+        <div class="b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="value">Years</span>
+        </div>
+    </div>
+    <div class="message-holder font_n1">
+        <div class="alert padding_2 bg_alert-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-square margin-right_3 margin-left_2"></i> Error message</div>
+        <div class="warning padding_2 bg_warning-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-triangle margin-right_3 margin-left_2"></i> Warning message</div>
+        <div class="info padding_2 bg_info-n1 color_white">
+        <i class="fas fa-fw fa-lightbulb-exclamation margin-right_3 margin-left_2"></i> Informational message about your input</div>
+    </div>
+    <div class="hint margin-top_2 font_n1 color_secondary padding_2 padding-top_0">This is some hint text</div>
+    </div>
+
+    Styleguide 30.2
+*/
+
+/*
+
+    Question with grouped inputs
+
+    default - default decoration when there is no validation run on the input.
+
+    markup:
+    <div class="question required {$modifiers}">
+    <label for="input-x" class="grid-x color_{$modifiers} font_1">
+        <span class="text cell shrink">Question Text</span>
+        <span class="required-holder cell shrink">
+            <i class="fas fa-asterisk color_warning font_n3 vertical-align_top"></i>
+        </span>
+        </label>
+    <div class="input-holder grid-x color_{$modifiers}">
+        <div class="alert b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-square"></i></span>
+        </div>
+        <div class="warning b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-exclamation-triangle"></i></span>
+        </div>
+        <div class="info b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-lightbulb-exclamation"></i></span>
+        </div>
+        <div class="success b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="color_{$modifiers} padding_2"><i class="fas fa-fw fa-check-square"></i></span>
+        </div>
+        <div class="input-space cell auto">
+            <input id="input-x" type="text" class="margin-bottom_0 b_{$modifiers}-3 " />
+        </div>
+        <div class="b_{$modifiers}-3  bg_{$modifiers}-4  value-space cell shrink  b_solid b-w_1 padding_3 padding-bottom_2 b_secondary-4 texture_light">
+            <span class="value">Years</span>
+        </div>
+    </div>
+    <div class="message-holder font_n1">
+        <div class="alert padding_2 bg_alert-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-square margin-right_3 margin-left_2"></i> Error message</div>
+        <div class="warning padding_2 bg_warning-n1 color_white">
+        <i class="fas fa-fw fa-exclamation-triangle margin-right_3 margin-left_2"></i> Warning message</div>
+        <div class="info padding_2 bg_info-n1 color_white">
+        <i class="fas fa-fw fa-lightbulb-exclamation margin-right_3 margin-left_2"></i> Informational message about your input</div>
+    </div>
+    <div class="hint margin-top_2 font_n1 color_secondary padding_2 padding-top_0">This is some hint text</div>
+    </div>
+
+    Styleguide 30.3
+*/

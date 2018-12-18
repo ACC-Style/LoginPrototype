@@ -1,14 +1,14 @@
 <template>
   <div class="search texture_light" style="min-height:100vh;">
     <transition name="slideInDown">
-      <div v-if="hasPageMessage" style="z-index=0" v-bind:class="{'back_alert':pageMessageType=='error','back_success':pageMessageType=='success','back_info':pageMessageType=='message'}" class=" font_0 margin-bottom_0 padding_3">
-        <p class="margin-bottom_0 color_white"><span class="font_bold">{{pageMessageType.toUpperCase()}}:</span> {{pageMessage}}</p>
+      <div v-if="hasPageMessage" style="z-index=0" v-bind:class="{'bg_alert':pageMessageType=='error','bg_success':pageMessageType=='success','bg_info':pageMessageType=='message'}" class=" font_0 m-b_0 p_3">
+        <p class="m-b_0 color_white"><span class="font_bold">{{pageMessageType.toUpperCase()}}:</span> {{pageMessage}}</p>
       </div>
     </transition>
-    <div class="back_white border_secondary-3 border_solid border-bottom-width_1 padding_3" style="z-index=1;">
+    <div class="bg_white  br_secondary-3  br_solid br-b-width_1 p_3 shadow_3" style="z-index=1;">
       <form @submit.prevent="fireSearch(searchTerm)">
-        <div class="input-group margin-bottom_0">
-          <input class="input-group-field" type="text" v-model="searchTerm" placeholder="Search via Name, email, badge...">
+        <div class="input-group m-b_0">
+          <input class="input-group-field" type="text" v-model="searchTerm" placeholder="Search via Name or Email or Badge...">
             <div class="input-group-button">
             <button type="submit" class="button"><i class="fas fa-search"></i></button>
           </div>
@@ -18,8 +18,8 @@
     <transition-group
     appear 
     name="search"
-    enter-active-class="animate fadeInRight"
-    appear-active-class="animated fadeInRight" leave-active-class="animated fadeOutLeft"
+    enter-active-class="animate fadeInr"
+    appear-active-class="animated fadeInr" leave-active-class="animated fadeOutl"
     :duration="1000"
     >
     <searchResult v-for="(member, index) in resultsOnPage" v-bind="member" v-bind:key="index" 
@@ -30,16 +30,16 @@
       v-on:share-record="setSharedRecord(member)"
       v-on:breakLinkRepeater="breakLinkData(member,$event.child)" />
     </transition-group>
-    <pagination :paginator="{currentPage:currentPage, maxPages:maxPages, listSize:paginatorListSize}" class="margin-right_3 margin-left_3"></pagination>
+    <pagination :paginator="{currentPage:currentPage, maxPages:maxPages, listSize:paginatorListSize}" class="m-r_3 m-l_3"></pagination>
     <reveal ref="emailReveal">
       <h3 slot="header">Edit Email</h3>
       <div slot="content">
         <div class="">
-          <div class="input-group margin-bottom_4">
-            <span class="input-group-label padding-left_3 padding-right_3"><i class="fas fa-at"></i></span>
+          <div class="input-group m-b_4">
+            <span class="input-group-label p-l_3 p-r_3"><i class="fas fa-at"></i></span>
             <input class="input-group-field" type="email" placeholder="youremail@email.com" :value="editEmailAddress">
             <div class="input-group-button " v-if="editEmailAddress !=''">
-              <button type="submit" class="button secondaryalt hollow padding-left_3 padding-right_3" @click="editEmailAddress=''"><i
+              <button type="submit" class="button secondaryalt hollow p-l_3 p-r_3" @click="editEmailAddress=''"><i
                   class="fas fa-times"></i></button>
             </div>
             <div class="input-group-button">
@@ -47,22 +47,22 @@
             </div>
           </div>
         </div>
-        <div class="grid-x border-top-width_1 border_dashed border_primary padding-top_4">
-          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@gmail.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+        <div class="grid-x br-t-width_1  br_dashed  br_primary padding-t_4">
+          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@gmail.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>gmail.com</a></div>
-          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@hotmail.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@hotmail.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>hotmail.com</a></div>
-          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@yahoo.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@yahoo.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>yahoo.com</a></div>
-          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@mail.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@mail.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>mail.com</a></div>
-          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@outlook.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@outlook.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>outlook.com</a></div>
-          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@aol.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editEmailAddress = editEmailAddress +'@aol.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>aol.com</a></div>
         </div>
         <div class="">
-          <div class="padding-top_2"><button class="button secondary expanded small margin-bottom_0" data-close
+          <div class="padding-t_2"><button class="button secondary expanded small m-b_0" data-close
               aria-label="Close modal">Cancel</button></div>
         </div>
       </div>
@@ -71,11 +71,11 @@
       <h3 slot="header">Edit UserName</h3>
       <div slot="content">
         <div class="">
-          <div class="input-group margin-bottom_4">
-            <span class="input-group-label padding-left_3 padding-right_3"><i class="fal fa-user-circle"></i></span>
+          <div class="input-group m-b_4">
+            <span class="input-group-label p-l_3 p-r_3"><i class="fal fa-user-circle"></i></span>
             <input class="input-group-field" type="email" placeholder="youremail@email.com" :value="editUserName">
             <div class="input-group-button" v-if="editUserName !=''">
-              <button type="submit" class="button secondaryalt hollow padding-left_3 padding-right_3" @click="editUserName=''"><i
+              <button type="submit" class="button secondaryalt hollow p-l_3 p-r_3" @click="editUserName=''"><i
                   class="fas fa-times"></i></button>
             </div>
             <div class="input-group-button">
@@ -83,22 +83,22 @@
             </div>
           </div>
         </div>
-        <div class="grid-x border-top-width_1 border_dashed border_primary padding-top_4">
-          <div class="cell small-4"><a @click="editUserName = editUserName +'@gmail.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+        <div class="grid-x br-t-width_1  br_dashed  br_primary padding-t_4">
+          <div class="cell small-4"><a @click="editUserName = editUserName +'@gmail.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>gmail.com</a></div>
-          <div class="cell small-4"><a @click="editUserName = editUserName +'@hotmail.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editUserName = editUserName +'@hotmail.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>hotmail.com</a></div>
-          <div class="cell small-4"><a @click="editUserName = editUserName +'@yahoo.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editUserName = editUserName +'@yahoo.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>yahoo.com</a></div>
-          <div class="cell small-4"><a @click="editUserName = editUserName +'@mail.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editUserName = editUserName +'@mail.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>mail.com</a></div>
-          <div class="cell small-4"><a @click="editUserName = editUserName +'@outlook.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editUserName = editUserName +'@outlook.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>outlook.com</a></div>
-          <div class="cell small-4"><a @click="editUserName = editUserName +'@aol.com'" class="button small expanded secondaryalt margin-bottom_0"><i
+          <div class="cell small-4"><a @click="editUserName = editUserName +'@aol.com'" class="button small expanded secondaryalt m-b_0"><i
                 class="fal fa-at"></i>aol.com</a></div>
         </div>
         <div class="">
-          <div class="padding-top_2"><button class="button secondary expanded small margin-bottom_0" data-close
+          <div class="padding-t_2"><button class="button secondary expanded small m-b_0" data-close
               aria-label="Close modal">Cancel</button></div>
         </div>
       </div>
@@ -108,7 +108,7 @@
       <div slot="content">
         <p class="color_primary font_2">{{memberEdit.fullName}}</p>
         <p class="font_1">Do you want to remove the brute force lock from user?</p>
-        <div class="grid-x grid-center grid-margin-x">
+        <div class="grid-x grid-center grid-m-x">
           <div class="cell auto"><a @click="removeBruteForceLock()" class="button primary expanded color_whtie">Yes</a></div>
           <div class="cell auto"><a href="" class="button secondary expanded hollow" data-close aria-label="Close modal">No</a></div>
         </div>
@@ -118,22 +118,22 @@
       <h3 slot="header">Change Password</h3>
       <div slot="content">
         <div class="">
-          <div class="input-group margin-bottom_4">
-            <span class="input-group-label padding-left_3 padding-right_3"><i class="fal fa-key"></i></span>
+          <div class="input-group m-b_4">
+            <span class="input-group-label p-l_3 p-r_3"><i class="fal fa-key"></i></span>
             <input class="input-group-field" type="text" placeholder="8 characters with numbers" v-model="editPassword">
             <div class="input-group-button" v-if="editPassword !=''">
-              <button class="button secondaryalt hollow padding-left_3 padding-right_3" @click="editPassword=''"><i
+              <button class="button secondaryalt hollow p-l_3 p-r_3" @click="editPassword=''"><i
                   class="fas fa-times"></i></button>
             </div>
             <div class="input-group-button">
-              <button class="button secondaryalt hollow padding-left_3 padding-right_3" @click="generatePassword"><i
+              <button class="button secondaryalt hollow p-l_3 p-r_3" @click="generatePassword"><i
                   class="fas fa-cogs"></i></button>
             </div>
 
           </div>
         </div>
 
-        <div class="grid-x grid-center grid-margin-x">
+        <div class="grid-x grid-center grid-m-x">
           <div class="cell auto"><a @click="saveChangedPassword(editPassword)" v-bind:disabled="editPassword==''" class="button primary expanded color_whtie">Save</a></div>
           <div class="cell auto"><a href="" class="button secondary expanded hollow" data-close aria-label="Close modal">Cancel</a></div>
         </div>
@@ -166,8 +166,8 @@ export default {
       "passwordPart2",
       "passwordPart3"
     ]),
-    maxPages: function(){
-      return Math.round(this.fullResults.length/10);
+    maxPages: function() {
+      return Math.round(this.fullResults.length / 10);
     }
   },
   methods: {
@@ -179,20 +179,29 @@ export default {
     ]),
     ...mapActions(["replaceMemberData"]),
     fireSearch: function(val) {
-        this.runSearch(val);
-        this.saveSearchHistory(val);
-
+      this.runSearch(val);
+      this.saveSearchHistory(val);
     },
-    saveSearchHistory:function(val){
-        if(this.resultsOnPage.length>0)
-        this.ADD_SEARCH_HISTORY(Object({searchTerm: val.toLowerCase(), resultCount: this.resultsOnPage.length}));
+    saveSearchHistory: function(val) {
+      if (this.resultsOnPage.length > 0)
+        this.ADD_SEARCH_HISTORY(
+          Object({
+            searchTerm: val.toLowerCase(),
+            resultCount: this.resultsOnPage.length
+          })
+        );
     },
-    runSearch:function(val){
-      this.fullResults = this.searchReturn.filter(function(result){ 
-        return result.fullName.includes(val) || result.emailAddress.includes(val)|| String(result.personifyNumber).includes(val) || String(result.badgeNumber).includes(val) || result.userName.includes(val);
+    runSearch: function(val) {
+      this.fullResults = this.searchReturn.filter(function(result) {
+        return (
+          result.fullName.includes(val) ||
+          result.emailAddress.includes(val) ||
+          String(result.personifyNumber).includes(val) ||
+          String(result.badgeNumber).includes(val) ||
+          result.userName.includes(val)
+        );
       });
-      this.resultsOnPage = this.fullResults.slice(0 , 10);
-      
+      this.resultsOnPage = this.fullResults.slice(0, 10);
     },
     openEmailReveal: function(member) {
       this.setMemberEdit(member);
@@ -248,8 +257,8 @@ export default {
           this.memberEdit.fullName
       );
     },
-    breakLinkData:function(parent, child){
-      let payload = Object({parent:parent,child:child})
+    breakLinkData: function(parent, child) {
+      let payload = Object({ parent: parent, child: child });
       this.UNLINK_ACCOUNT(payload);
     },
     saveChangedPassword: function(val) {
@@ -292,14 +301,16 @@ export default {
       hasPageMessage: false,
       pageMessageType: "message",
       pageMessage: "",
-      currentPage:1,
-      paginatorListSize:5,
-      resultsOnPage:[],
-      fullResults:[],
+      currentPage: 1,
+      paginatorListSize: 5,
+      resultsOnPage: [],
+      fullResults: []
     };
   },
-  mounted () {
-    this.runSearch(this.$route.query.q !== undefined ? this.$route.query.q : "");
+  mounted() {
+    this.runSearch(
+      this.$route.query.q !== undefined ? this.$route.query.q : ""
+    );
   }
 };
 </script>

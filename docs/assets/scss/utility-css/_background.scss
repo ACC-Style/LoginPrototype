@@ -1,11 +1,4 @@
 /*
-  Utility CSS: Backgrounds 
- 
-  Background of containers can be easily maniputlated with textures and colors.  
-  
-  Styleguide 81.0
-*/
-/*
   Background Colors
  
   Background colors can be easily change with back_{{color-name}}  
@@ -16,16 +9,16 @@
   back_warning            	- background color warning color
   back_success              - background color success color
   back_info              - background color success color
-  back_hightlight              - background color success color
+  back_highlight              - background color success color
 
 
   markup:
   <div class="{$modifiers} padding_3 color_white">Background Color of {$modifiers}</div>
  
-  Styleguide 81.1
+  Styleguide 104.1
  
  */
- /*
+/*
   Background Color Shades
  
   Background colors can be shifted by appending a modifier back_{{color-name}}-{{n5 to 5}}.  The negative(n) numbers mix the color with black and the positive numbers mix the color with white.   
@@ -33,7 +26,7 @@
   back_primary              - background color modified light to dark
   back_secondary              - background color modified light to dark
   back_info              - background color modified light to dark
-  back_hightlight              - background color success color
+  back_highlight              - background color success color
   back_success              - background color modified light to dark
   back_warning              - background color modified light to dark
   back_alert              - background color modified light to dark
@@ -56,27 +49,26 @@
   </div>
 
  
-  Styleguide 81.2
+  Styleguide 104.2
  
  */
 
-@each $color-name, $color in $acc-palette{
-  	@include color-loop(background-color, $color-name, $color);
+@each $color-name, $color in $acc-palette {
+	@include color-loop(background-color, $color-name, $color);
 }
 
-.back_white{
-  background-color: $white;
+.bg_white {
+	background-color: $white;
 }
-.back_black{
-  background-color: $black;
+.bg_black {
+	background-color: $black;
 }
-
-
-/*
-  CSS Utlitiy: Hover
-
-  Make any Object hover action. 
-
-  Styleguide 84.0
-*/
-
+@if $short-names-only {
+  
+  .back_white {
+		@extend .bg_white;
+	}
+	.back_black {
+		@extend .bg_black;
+	}
+}

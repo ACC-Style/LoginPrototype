@@ -1,224 +1,520 @@
-$values:(
-	wholenumber:(
-		0:0,
-		1:1px,
-		2:.25,
-		3:.5,
-		4:1,
-		5:2,
-		n1:-1px,
-		n2:-.25,
-		n3:-.5,
-		n4:-1,
-		n5:-2
-		),
-	positive:(
-		0:0,
-		1:1px,
-		2:.25,
-		3:.5,
-		4:1,
-		5:2
-		),
-	negative:(
+// styleguide:ignore:start
+$valueParams: (
+	size: (
+		0: 0,
+		n5: -2 * $basicSizeMultiplier,
+		n4: -1 * $basicSizeMultiplier,
+		n3: -0.5 * $basicSizeMultiplier,
+		n2: -0.25 * $basicSizeMultiplier,
 		n1: -1px,
-		n2: -.25,
-		n3: -.5,
-		n4: -1,
-		n5: -2
-		),
-	unitless-positive:(
-		0:0,
-		1:1,
-		2:2,
-		3:3,
-		4:4,
-		5:5
-		),
-	unitless-negative:(
-		n1:-1,
-		n2:-2,
-		n3:-3,
-		n4:-4,
-		n5:-5
-		),
-	line-height:(
-		0:0,
-		1:1,
-		2:1.45,
-		3:1.655,
-		4:1.75,
-		5:2,
-		),
-	percent-positive:(
-		0:0%,
-		1:15%,
-		2:37%,
-		3:60%,
-		4:78%,
-		5:90%
-		),
-	percent-negative:(
-		n1:10%,
-		n2:25%,
-		n3:45%,
-		n4:60%,
-		n5:75%
-		),
-	border-radius:(
+		1: 1px,
+		2: 0.25 * $basicSizeMultiplier,
+		3: 0.5 * $basicSizeMultiplier,
+		4: 1 * $basicSizeMultiplier,
+		5: 2 * $basicSizeMultiplier
+	),
+	size-positive: (
+		0: 0,
+		1: 1px,
+		2: 0.25 * $basicSizeMultiplier,
+		3: 0.5 * $basicSizeMultiplier,
+		4: 1 * $basicSizeMultiplier,
+		5: 2 * $basicSizeMultiplier
+	),
+	unitless: (
+		0: 0,
+		n5: -5,
+		n4: -4,
+		n3: -3,
+		n2: -2,
+		n1: -1,
+		1: 1,
+		2: 2,
+		3: 3,
+		4: 4,
+		5: 5
+	),
+	unitless-positive: (
+		0: 0,
+		1: 1,
+		2: 2,
+		3: 3,
+		4: 4,
+		5: 5
+	),
+	line-height: (
+		0: 0,
+		1: 1,
+		2: 1.25,
+		3: 1.45,
+		4: 1.75,
+		5: 2.5
+	),
+	percent-positive: (
+		0: 0%,
+		1: 15%,
+		2: 37%,
+		3: 60%,
+		4: 78%,
+		5: 90%
+	),
+	percent-negative: (
+		n1: 10%,
+		n2: 25%,
+		n3: 45%,
+		n4: 60%,
+		n5: 75%
+	),
+	percent: (
+		0: 0%,
+		1: 15%,
+		2: 37%,
+		3: 60%,
+		4: 78%,
+		5: 90%,
+		n1: -10%,
+		n2: -25%,
+		n3: -45%,
+		n4: -60%,
+		n5: -75%
+	),
+	radius: (
 		square: 0px,
 		radius: 5px,
 		round: 999px,
-		circle:100%,
+		circle: 100%
+	),
+	border-style: (
+		none: none,
+		solid: solid,
+		dashed: dashed,
+		dotted: dotted
+	),
+	font-size: (
+		0: 0%,
+		1: 15%,
+		2: 37%,
+		3: 60%,
+		4: 78%,
+		5: 90%,
+		n1: -10%,
+		n2: -25%,
+		n3: -45%,
+		n4: -60%,
+		n5: -75%
+	),
+	display: (
+		block: block,
+		inline: inline,
+		inline-block: inline-block,
+		none: none,
+		flex: flex,
+		flex-inline: flex-inline
+	),
+	hover: (
+		dark: -50%,
+		light: 50%
+	),
+	border-width: (
+		0: 0px,
+		1: 1px,
+		2: 3px,
+		3: 5px,
+		4: 0.5rem,
+		5: 1rem
+	),
+	font-family: (
+		slab: (
+			"Roboto Slab",
+			"Times New Roman",
+			"Lucida Bright",
+			Georgia,
+			serif
 		),
+		display: (
+			"Maven Pro",
+			"Open Sans",
+			"Helvetica Neue",
+			"Helvetica",
+			Helvetica,
+			Arial,
+			sans-serif
+		),
+		copy: (
+			"Muli",
+			"Open Sans",
+			"Helvetica Neue",
+			"Helvetica",
+			Helvetica,
+			Arial,
+			sans-serif
+		)
+	),
+	shadow: (
+		0: 2px 2px 8px 1px rgba(0, 0, 0, 0.65),
+		1: 2px 2px 8px 1px rgba(0, 0, 0, 0.65),
+		2: 2px 2px 8px 1px rgba(0, 0, 0, 0.65),
+		3: 2px 2px 8px 1px rgba(0, 0, 0, 0.65),
+		4: 2px 2px 8px 1px rgba(0, 0, 0, 0.65),
+		5: 2px 2px 8px 1px rgba(0, 0, 0, 0.65),
+		n1: inset 0.5px 0.5px 2px 0.25px rgba(0, 0, 0, 0.1),
+		n2: inset 0.5px 0.5px 2px 0.25px rgba(0, 0, 0, 0.1),
+		n3: inset 0.5px 0.5px 2px 0.25px rgba(0, 0, 0, 0.1),
+		n4: inset 0.5px 0.5px 2px 0.25px rgba(0, 0, 0, 0.1),
+		n5: inset 0.5px 0.5px 2px 0.25px rgba(0, 0, 0, 0.1)
+	)
 );
-
-$style-definition:(
-	margin:(
-		short-name:'.m',
-		css-style:'margin',
-		long-name:'.margin',
+$style-definition: (
+	margin: (
+		short-name: ".m",
+		css-style: (
+			"margin"
 		),
-	margin-top:(
-		short-name:'.mt',
-		css-style:'margin-top',
-		long-name:'.margin-top',
+		long-name: ".margin",
+		unit: map-get($valueParams, "size")
+	),
+	margin-horizontal: (
+		short-name: ".m-x",
+		css-style: (
+			"margin-right",
+			"margin-left"
 		),
-	margin-bottom:(
-		short-name:'.mb',
-		css-style:'margin-bottom',
-		long-name:'.margin-bottom',
+		long-name: ".margin-x",
+		unit: map-get($valueParams, "size")
+	),
+	margin-vertical: (
+		short-name: ".m-y",
+		css-style: (
+			"margin-top",
+			"margin-bottom"
 		),
-	margin-left:(
-		short-name:'.ml',
-		css-style:'margin-left',
-		long-name:'.margin-left',
+		long-name: ".margin-y",
+		unit: map-get($valueParams, "size")
+	),
+	margin-top: (
+		short-name: ".m-t",
+		css-style: (
+			"margin-top"
 		),
-	margin-right:(
-		short-name:'.mr',
-		css-style:'margin-right',
-		long-name:'.margin-right',
+		long-name: ".margin-top",
+		unit: map-get($valueParams, "size")
+	),
+	margin-bottom: (
+		short-name: ".m-b",
+		css-style: (
+			"margin-bottom"
 		),
-	padding:(
-		short-name:'.p',
-		css-style:'padding',
-		long-name:'.padding',
+		long-name: ".margin-bottom",
+		unit: map-get($valueParams, "size")
+	),
+	margin-left: (
+		short-name: ".m-l",
+		css-style: (
+			"margin-left"
 		),
-	padding-top:(
-		short-name:'.pt',
-		css-style:'padding-top',
-		long-name:'.padding-top',
+		long-name: ".margin-left",
+		unit: map-get($valueParams, "size")
+	),
+	margin-right: (
+		short-name: ".m-r",
+		css-style: (
+			"margin-right"
 		),
-	padding-bottom:(
-		short-name:'.pb',
-		css-style:'padding-bottom',
-		long-name:'.padding-bottom',
+		long-name: ".margin-right",
+		unit: map-get($valueParams, "size")
+	),
+	top: (
+		short-name: ".t",
+		css-style: (
+			"top"
 		),
-	padding-left:(
-		short-name:'.pl',
-		css-style:'padding-left',
-		long-name:'.padding-left',
+		long-name: ".top",
+		unit: map-get($valueParams, "size")
+	),
+	bottom: (
+		short-name: ".b",
+		css-style: (
+			"bottom"
 		),
-	padding-right:(
-		short-name:'.pr',
-		css-style:'padding-right',
-		long-name:'.padding-right',
+		long-name: ".bottom",
+		unit: map-get($valueParams, "size")
+	),
+	right: (
+		short-name: ".r",
+		css-style: (
+			"right"
 		),
-	line-height:(
-		short-name:'.lh',
-		css-style:'line-height',
-		long-name:'.line-height',
-		),	
-	font-size:(
-		short-name:'.fs',
-		css-style:'font-size',
-		long-name:'.font-size',
-		),	 
-	color:(
-		short-name:'.color',
-		css-style:'color',
-		long-name:'.font-color',
-	 	),	 
-	background-color:(
-		short-name:'.back',
-		css-style:'background-color',
-		long-name:'.background-color',
+		long-name: ".right",
+		unit: map-get($valueParams, "size")
+	),
+	left: (
+		short-name: ".l",
+		css-style: (
+			"left"
 		),
-	border-color:(
-		short-name:'.border',
-		css-style:'border-color',
-		long-name:'.border-color',
+		long-name: ".left",
+		unit: map-get($valueParams, "size")
+	),
+	padding: (
+		short-name: ".p",
+		css-style: (
+			"padding"
 		),
-	border-radius:(
-		short-name:'.br',
-		css-style:'border-radius',
-		long-name:'.border-radius',
+		long-name: ".padding",
+		unit: map-get($valueParams, "size-positive")
+	),
+	padding-horizontal: (
+		short-name: ".p-x",
+		css-style: (
+			"padding-left",
+			"padding-right"
 		),
-	border-top-right-radius:(
-		short-name:'.br-tr',
-		css-style:'border-top-right-radius',
-		long-name:'.border-top-right-radius',
+		long-name: ".padding-x",
+		unit: map-get($valueParams, "size-positive")
+	),
+	padding-vertical: (
+		short-name: ".p-y",
+		css-style: (
+			"padding-bottom",
+			"padding-top"
 		),
-	border-top-left-radius:(
-		short-name:'.br-tl',
-		css-style:'border-top-left-radius',
-		long-name:'.border-top-left-radius',
+		long-name: ".padding-y",
+		unit: map-get($valueParams, "size-positive")
+	),
+	padding-top: (
+		short-name: ".p-t",
+		css-style: (
+			"padding-top"
 		),
-	border-bottom-right-radius:(
-		short-name:'.br-br',
-		css-style:'border-bottom-right-radius',
-		long-name:'.border-bottom-right-radius',
+		long-name: ".padding-top",
+		unit: map-get($valueParams, "size-positive")
+	),
+	padding-bottom: (
+		short-name: ".p-b",
+		css-style: (
+			"padding-bottom"
 		),
-	border-bottom-left-radius:(
-		short-name:'.br-bl',
-		css-style:'border-bottom-left-radius',
-		long-name:'.border-bottom-left-radius',
+		long-name: ".padding-bottom",
+		unit: map-get($valueParams, "size-positive")
+	),
+	padding-left: (
+		short-name: ".p-l",
+		css-style: (
+			"padding-left"
 		),
-	width:(
-		short-name:'.w',
-		css-style:'width',
-		long-name:'.width',
+		long-name: ".padding-left",
+		unit: map-get($valueParams, "size-positive")
+	),
+	padding-right: (
+		short-name: ".p-r",
+		css-style: (
+			"padding-right"
 		),
-	border-width:(
-		short-name:'.border',
-		css-style:'border-width',
-		long-name:'.border-width',
-		),	
-	border-top-width:(
-		short-name:'.border-top',
-		css-style:'border-top-width',
-		long-name:'.border-top-width',
-		),	
-	border-right-width:(
-		short-name:'.border-right',
-		css-style:'border-right-width',
-		long-name:'.border-right-width',
-		),	
-	border-left-width:(
-		short-name:'.border-left',
-		css-style:'border-left-width',
-		long-name:'.border-left-width',
-		),	
-	border-bottom-width:(
-		short-name:'.border-bottom',
-		css-style:'border-bottom-width',
-		long-name:'.border-bottom-width',
+		long-name: ".padding-right",
+		unit: map-get($valueParams, "size-positive")
+	),
+	line-height: (
+		short-name: ".lh",
+		css-style: (
+			"line-height"
 		),
-	hover-bg:(
-		short-name:'.hover',
-		css-style:'background-color',
-		long-name:'.hover-back',
+		long-name: ".line-height",
+		unit: map-get($valueParams, "line-height")
+	),
+	font-size: (
+		short-name: ".font",
+		css-style: (
+			"font-size"
 		),
-	hover-text:(
-		short-name: '.hover-text',
-		css-style: 'color',
-		long-name: '.hover-text',
-		),		
-
+		long-name: ".font-size"
+	),
+	font-family: (
+		short-name: ".font",
+		css-style: (
+			"font-family"
+		),
+		long-name: ".font-family",
+		unit: map-get($valueParams, "font-family")
+	),
+	color: (
+		short-name: ".c",
+		css-style: (
+			"color"
+		),
+		long-name: ".color",
+		unit: map-get($valueParams, "percent")
+	),
+	background-color: (
+		short-name: ".bg",
+		css-style: (
+			"background-color"
+		),
+		long-name: ".back",
+		unit: map-get($valueParams, "percent")
+	),
+	border-color: (
+		short-name: ".br",
+		css-style: (
+			"border-color"
+		),
+		long-name: ".border",
+		unit: map-get($valueParams, "percent")
+	),
+	border-style: (
+		short-name: ".br",
+		css-style: (
+			"border-style"
+		),
+		long-name: ".border",
+		unit: map-get($valueParams, "border-style")
+	),
+	border-radius: (
+		short-name: ".br",
+		css-style: (
+			"border-radius"
+		),
+		long-name: ".radius",
+		unit: map-get($valueParams, "radius")
+	),
+	border-top-right-radius: (
+		short-name: ".br-tr",
+		css-style: (
+			"border-top-right-radius"
+		),
+		long-name: ".border-top-right-radius",
+		unit: map-get($valueParams, "radius")
+	),
+	border-top-left-radius: (
+		short-name: ".br-tl",
+		css-style: (
+			"border-top-left-radius"
+		),
+		long-name: ".border-top-left-radius",
+		unit: map-get($valueParams, "radius")
+	),
+	border-bottom-right-radius: (
+		short-name: ".br-br",
+		css-style: (
+			"border-bottom-right-radius"
+		),
+		long-name: ".border-bottom-right-radius",
+		unit: map-get($valueParams, "radius")
+	),
+	border-bottom-left-radius: (
+		short-name: ".br-bl",
+		css-style: (
+			"border-bottom-left-radius"
+		),
+		long-name: ".border-bottom-left-radius",
+		unit: map-get($valueParams, "radius")
+	),
+	width: (
+		short-name: ".w",
+		css-style: (
+			"width"
+		),
+		long-name: ".width"
+	),
+	border-width: (
+		short-name: ".br",
+		css-style: (
+			"border-width"
+		),
+		long-name: ".border-width",
+		unit: map-get($valueParams, border-width)
+	),
+	border-top-width: (
+		short-name: ".br-t",
+		css-style: (
+			"border-top-width"
+		),
+		long-name: ".border-top-width",
+		unit: map-get($valueParams, border-width)
+	),
+	border-right-width: (
+		short-name: ".br-r",
+		css-style: (
+			"border-right-width"
+		),
+		long-name: ".border-right-width",
+		unit: map-get($valueParams, border-width)
+	),
+	border-left-width: (
+		short-name: ".br-l",
+		css-style: (
+			"border-left-width"
+		),
+		long-name: ".border-left-width",
+		unit: map-get($valueParams, border-width)
+	),
+	border-bottom-width: (
+		short-name: ".br-b",
+		css-style: (
+			"border-bottom-width"
+		),
+		long-name: ".border-bottom-width",
+		unit: map-get($valueParams, border-width)
+	),
+	hover-bg: (
+		short-name: ".hover\\3A bg",
+		css-style: (
+			"background-color"
+		),
+		long-name: ".hover\\3A back",
+		unit: map-get($valueParams, "hover")
+	),
+	hover-text: (
+		short-name: ".hover\\3A c",
+		css-style: (
+			"color"
+		),
+		long-name: ".hover\\3A color",
+		unit: map-get($valueParams, "hover")
+	),
+	display: (
+		short-name: ".d",
+		css-style: (
+			"display"
+		),
+		long-name: "display",
+		unit: map-get($valueParams, "display"),
+		alt: "none"
+	),
+	shadow: (
+		short-name: ".shadow",
+		css-name: "box-shadow",
+		long-name: ".box-shadow",
+		unit: map-get($valueParams, "shadow"),
+		alt: "none"
+	)
 );
-
-
-
-
-
-
+// styleguide:ignore:end
+$debug-trace: true !default;
+$margin_0: get-css-size(margin, 0);
+$margin_1: get-css-size(margin, 1);
+$margin_2: get-css-size(margin, 2);
+$margin_3: get-css-size(margin, 3);
+$margin_4: get-css-size(margin, 4);
+$margin_5: get-css-size(margin, 5);
+// $margin_0:get-css-size(margin, 0);
+$margin_n1: get-css-size(margin, n1);
+$margin_n2: get-css-size(margin, n2);
+$margin_n3: get-css-size(margin, n3);
+$margin_n4: get-css-size(margin, n4);
+$margin_n5: get-css-size(margin, n5);
+$padding_0: get-css-size(padding, 0);
+$padding_1: get-css-size(padding, 1);
+$padding_2: get-css-size(padding, 2);
+$padding_3: get-css-size(padding, 3);
+$padding_4: get-css-size(padding, 4);
+$padding_5: get-css-size(padding, 5);
+$border_square: 0;
+$border_radius: get-css-size(border-radius, radius);
+$border_round: get-css-size(border-radius, round);
+$border_circle: get-css-size(border-radius, circle);
+$border-width_0: get-css-size(border-width, 0);
+$border-width_1: get-css-size(border-width, 1);
+$border-width_2: get-css-size(border-width, 2);
+$border-width_3: get-css-size(border-width, 3);
+$border-width_4: get-css-size(border-width, 4);
+$border-width_5: get-css-size(border-width, 5);

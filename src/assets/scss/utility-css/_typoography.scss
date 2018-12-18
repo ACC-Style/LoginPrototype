@@ -1,5 +1,14 @@
+.font_unset {
+	font-style: unset;
+	font-weight: unset;
+	font-size: unset;
+	text-decoration: unset;
+	text-align: unset;
+	text-transform: unset;
+	white-space: unset;
+}
 /*
-  Utlitity CSS: Fonts
+  Font Family
 
   You can change the features of the text with some simple use classes.
 
@@ -9,152 +18,274 @@
 
   markup:
   <div class="{$modifiers} font_3">
-    <div class="text-lowercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
-    <div class="text-uppercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    <div class="lowercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    <div class="uppercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
   </div>
 
-  Styleguide 82.0
+  Styleguide 102.1
  */
-.font_slab,.font-family_slab{
-   font-family: 'Roboto Slab', "Times New Roman",  'Lucida Bright', Georgia, serif !important;
-}
 
-.font_normal,.font-family_normal{
-    font-family:'Muli','Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
-}
-.font_display,.font-family_display{
-    font-family:'Maven Pro','Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
-}
-
+@include loop-style(font-family);
 /*
   Font Style
 
   You can change the features of the text with some simple use classes.
 
-  .font-style_normal            - Sets font style to normal
-  .font-style_italic            - Sets font style to italic      
+  .font_normal            - Sets font style to normal
+  .font_italic            - Sets font style to italic      
 
   markup:
   <div class="{$modifiers} font-family_normal font_2">
-    <div class="text-lowercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
-    <div class="text-uppercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    <div class="lowercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    <div class="uppercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
   </div>
 
-  Styleguide 82.1
+  Styleguide 102.2
  */
-.font-style_normal{ font-style: normal !important;}
-.font-style_italic{ font-style: italic !important;}
-
-
-
-
-
-
-@include size-loop(line-height, line-height, 1);
-
-@each $color-name, $hex-value in $acc-palette{
-  @include color-loop(color, $color-name,$hex-value);
+.font_normal {
+	font-style: normal !important;
 }
-.color_white{color:$white;}
-.color_black{color:$black;}
-.color_inherit{color:inherit;}
+.font_italic {
+	font-style: italic !important;
+}
 
+@include loop-style(line-height);
 
-
+@each $color-name, $hex-value in $acc-palette {
+	@include color-loop(color, $color-name, $hex-value);
+}
+.c_white {
+	color: $white;
+}
+.c_black {
+	color: $black;
+}
+.c_inherit {
+	color: inherit;
+}
+@if ($short-names-only == false) {
+	.color_white {
+		@extend .c_white;
+	}
+	.color_black {
+		@extend .c_black;
+	}
+	.color_inherit {
+		@extend .c_inherit;
+	}
+}
 
 /*
   Font Weight
 
   You can change the features of the text with some simple use classes.
 
-  .font-weight_light            -  Light, 100
-  .font-weight_regular          -  Regular, 400           
-  .font-weight_bold             -  Bold, 900     
+  .font_light            -  Light, 100
+  .font_regular          -  Regular, 400           
+  .font_bold             -  Bold, 900     
 
   markup:
   <div class="{$modifiers} font-family_normal font_2">
-    <div class="text-lowercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
-    <div class="text-uppercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    <div class="lowercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    <div class="uppercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
   </div>
 
-  Styleguide 82.2
+  Styleguide 102.3
  */
-.font-weight_light,.font_light{ font-weight: 100 !important;}
-.font-weight_regular,.font_regular{ font-weight: 400 !important;}
-.font-weight_bold,.font_bold{ font-weight: 900 !important;}
-
-
-
-
-
-
-
-
+.font-weight_light,
+.font_light {
+	font-weight: 100 !important;
+}
+.font-weight_regular,
+.font_regular {
+	font-weight: 400 !important;
+}
+.font-weight_bold,
+.font_bold {
+	font-weight: 700 !important;
+}
+.font-weight_xbold,
+.font_xbold {
+	font-weight: 900 !important;
+}
 
 /*
   Font Size
 
-  You can change the features of the text with some simple use classes.
+  You can alter the size fo the font with 'font_x' 
 
-  .font_x               - font size of    
+  .font_5 - Largest
+  .font_4 - Large
+  .font_3 - Big
+  .font_2 - Big-ish
+  .font_1 - Slightly Bigger
+  .font_0 - Default Size
+  .font_n1 - Shrunk
+  .font_n2 - small
+  .font_n3 - smaller
+  .font_n4 - even smaller
+  .font_n5 - smallest
 
   markup:
-  <div class="{$modifiers} font-family_normal font_2">
+  <div class="{$modifiers} font-family_normal">
+    <div class="lowercase pre-wrap">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+    <div class="uppercase pre-wrap">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+  </div>
+
+  Styleguide 102.4
+ */
+
+.font-size_0,
+.font_0 {
+	font-size: ms(0) / 1em * 1rem;
+}
+
+.font-size_1,
+.font_1 {
+	font-size: ms(1) / 1em * 1rem;
+}
+
+.font-size_2,
+.font_2 {
+	font-size: ms(2) / 1em * 1rem;
+}
+
+.font-size_3,
+.font_3 {
+	font-size: ms(3) / 1em * 1rem;
+}
+
+.font-size_4,
+.font_4 {
+	font-size: ms(4) / 1em * 1rem;
+}
+
+.font-size_5,
+.font_5 {
+	font-size: ms(5) / 1em * 1rem;
+}
+.font-size_10,
+.font_10 {
+	font-size: ms(10) / 1em * 1rem;
+}
+
+.font-size_n1,
+.font_n1 {
+	font-size: ms(-1) / 1em * 1rem;
+}
+
+.font-size_n2,
+.font_n2 {
+	font-size: ms(-2) / 1em * 1rem;
+}
+
+.font-size_n3,
+.font_n3 {
+	font-size: ms(-3) / 1em * 1rem;
+}
+
+.font-size_n4,
+.font_n4 {
+	font-size: ms(-4) / 1em * 1rem;
+}
+
+.font-size_n5,
+.font_n5 {
+	font-size: ms(-5) / 1em * 1rem;
+}
+
+.wrap {
+	white-space: normal;
+}
+.pre-wrap {
+	white-space: pre-wrap;
+	letter-spacing: -0.1em;
+}
+.nowrap {
+	white-space: nowrap;
+}
+.lowercase {
+	text-transform: lowercase;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.underline {
+	text-decoration: underline;
+}
+.dotted {
+	text-decoration: dotted;
+}
+.double {
+	text-decoration: double;
+}
+.dashed {
+	text-decoration: dashed;
+}
+.text_right {
+	text-align: right !important;
+}
+.text_center {
+	text-align: center !important;
+}
+.text_left {
+	text-align: left !important;
+}
+
+.overflow_hidden {
+	overflow: hidden;
+}
+
+.overflow_visible {
+	overflow: visible;
+}
+.overflow_auto {
+	overflow: auto;
+}
+.overflow_auto {
+	overflow: auto;
+}
+.overflow-clip {
+	@extend .overflow_hidden;
+	text-overflow: clip;
+}
+
+.overflow-ellipsis {
+	@extend .overflow_hidden;
+	text-overflow: ellipsis;
+}
+/*
+  Font Color
+
+  You can change the color of the text with some simple use classes.
+
+
+
+  .color_white - text that's white
+  .color_black -  text that's black
+  .color_primary -  text that's primary
+  .color_alert -  text that's alert
+  .color_info -  text that's info
+  .color_inherit - text that inherits from its parent
+
+  markup:
+  <div class="{$modifiers} font-family_normal font_2 back_secondary-4 padding_3">
     <div class="text-lowercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
     <div class="text-uppercase">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
   </div>
 
-  Styleguide 82.3
+
+  Styleguide 82.4
  */
-.font-size_0 ,.font_0 {
-  font-size: ms(0)/1em * 1rem;
+@each $color-name, $hex-value in $acc-palette {
+	@include color-loop(color, $color-name, $hex-value);
 }
-
-.font-size_1 ,.font_1 {
-  font-size: ms(1)/1em * 1rem;
+.color_white {
+	color: $white;
 }
-
-.font-size_2 ,.font_2 {
-  font-size: ms(2)/1em * 1rem;
+.color_black {
+	color: $black;
 }
-
-.font-size_3 ,.font_3 {
-  font-size: ms(3)/1em * 1rem;
+.color_inherit {
+	color: inherit;
 }
-
-.font-size_4 ,.font_4 {
-  font-size: ms(4)/1em * 1rem;
-}
-
-.font-size_5 ,.font_5 {
-  font-size: ms(5)/1em * 1rem;
-}
-.font-size_10 ,.font_10 {
-  font-size: ms(10)/1em * 1rem;
-}
-
-.font-size_n1,.font_n1 {
-  font-size: ms(-1)/1em * 1rem;
-}
-
-.font-size_n2,.font_n2 {
-  font-size: ms(-2)/1em * 1rem;
-}
-
-.font-size_n3,.font_n3 {
-  font-size: ms(-3)/1em * 1rem;
-}
-
-.font-size_n4,.font_n4 {
-  font-size: ms(-4)/1em * 1rem;
-}
-
-.font-size_n5,.font_n5 {
-  font-size: ms(-5)/1em * 1rem;
-}
-
-
-.text-lowercase,.text-uppercase,.text-numbers{white-space: pre-wrap;  letter-spacing: -.1em;}
-.text-lowercase{ text-transform: lowercase;}
-.text-uppercase{ text-transform: uppercase;}
-.text-underline{ text-decoration: underline;}

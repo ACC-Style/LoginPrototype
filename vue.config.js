@@ -5,6 +5,7 @@ module.exports = {
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
+
   css: {
     sourceMap: true,
     loaderOptions: {
@@ -15,5 +16,7 @@ module.exports = {
         data: `@import "@/assets/scss/config/_colors.scss";`
       }
     }
-  }
+  },
+
+  lintOnSave: undefined
 };

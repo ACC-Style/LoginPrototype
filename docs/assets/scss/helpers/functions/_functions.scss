@@ -7,3 +7,26 @@
 // @import "deep-map-check";
 // @import "deep-map-get";
 // @import "get";
+
+
+
+@function get-themecolor($key:primary, $modifier:0){
+
+  @if $modifier == 0{
+    @return map-get($acc-palette, $key);
+  } 
+  @else{
+    $mod: 50%;
+    $mix: map-get($valueParams, percent-positive);
+    @if $modifier < 0 {
+      $modifier: $modifier * -1;
+      $mod:map-get($mix, $modifier) * -1;
+    }
+    @else{
+      $mod:map-get($mix, $modifier);
+    }
+    @return scale-color( map-get($acc-palette, $key), $lightness: $mod )
+  }
+
+};
+

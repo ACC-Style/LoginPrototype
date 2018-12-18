@@ -121,9 +121,9 @@
 
   // Containers
   @include foundation-accordion;
-  @include foundation-media-object;
-  @include foundation-orbit;
-  @include foundation-responsive-embed;
+  // @include foundation-media-object;
+  // @include foundation-orbit;
+  // @include foundation-responsive-embed;
   @include foundation-tabs;
   @include foundation-thumbnail;
   // Menu-based containers
@@ -137,12 +137,12 @@
   @include foundation-off-canvas;
   @include foundation-reveal;
   @include foundation-sticky;
-  @include foundation-title-bar;
-  @include foundation-top-bar;
+  // @include foundation-title-bar;
+  // @include foundation-top-bar;
 
   // Helpers
   @include foundation-float-classes;
   @if $flex { @include foundation-flex-classes; }
   @include foundation-visibility-classes;
-  @if $prototype { @include foundation-prototype-classes; }
+  // @if $prototype { @include foundation-prototype-classes; }
 }

@@ -31,9 +31,11 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
+    },
+    "rules": {
+      "vue/script-indent": "warning"
     }
   },
   "postcss": {

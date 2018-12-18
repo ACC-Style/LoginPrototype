@@ -1,0 +1,87 @@
+/*
+    Icon Toggle
+    
+    Many momment there are needs for toggles of icon when the parent is in the state `is-active`
+
+    .icon-toggle_plus-minus - Toggle between plus and minus square
+    .icon-toggle_chevron-double-up-down - Toggle the double chevron to point up when active
+    .icon-toggle_caret-circle-right-down - Toggle the caret to point down when active.
+    .icon-toggle_arrow-circle - Toggle the arrow to have a circle when active.
+    .icon-toggle_check - Toggle a check mark to show.
+
+    markup:
+    <li class="font_bold border_solid border_secondary-5 padding_3 border-width_1">
+        <div class="font_bold color_secondary-3">FA Solid {$modifiers}</div>
+        <div class="padding_2 font_4"><span>Default => <i class="fas fa-fw {$modifiers}"></i></span> vs
+            <span class="is-active">IS_Acitve => <i class="fas {$modifiers}"></i></span></div>
+    </li>
+    <li class="font_bold border_solid border_secondary-5 padding_3 border-width_1">
+        <div class="font_bold color_secondary-3">FA Regular {$modifiers}</div>
+        <div class="padding_2 font_4"><span>Default => <i class="far fa-fw {$modifiers}"></i></span> vs
+            <span class="is-active">IS_Acitve => <i class="far {$modifiers}"></i></span></div>
+    </li>
+    <li class="font_bold border_solid border_secondary-5 padding_3 border-width_1">
+        <div class="font_bold color_secondary-3">FA Light {$modifiers}</div>
+        <div class="padding_2 font_4"><span>Default => <i class="fal fa-fw {$modifiers}"></i></span> vs
+            <span class="is-active">IS_Acitve => <i class="fal {$modifiers}"></i></span></div>
+    </li>
+
+    sg-wrapper: 
+    <ul class="no-bullet"><sg-wrapper-content/></ul>
+
+    Styleguide 20.100
+*/
+
+%icon-toggle-space{
+    margin: $margin_0 $margin_2;
+}
+
+
+i.icon-toggle_plus-minus:before {
+    @extend %icon-toggle-space;
+
+    content: "\f0fe";
+
+    .is-active & {
+        content: '\f146'
+    }
+}
+i.icon-toggle_chevron-double-up-down:before {
+    @extend %icon-toggle-space;
+    content: "\f103";
+    .is-active & {
+        content: '\f325'
+    }
+}
+
+i.icon-toggle_chevron-double-left-right:before {
+    @extend %icon-toggle-space;
+    content: "\f324";
+   .is-active & {
+        content: '\f323'
+    }
+}
+
+i.icon-toggle_caret-circle-right-down:before {
+    @extend %icon-toggle-space;
+    content: "\f330";
+    .is-active & {
+        content: '\f32d'
+    }
+}
+i.icon-toggle_arrow-circle:before {
+    @extend %icon-toggle-space;
+    content: "\f356";
+    .is-active & {
+        content: '\f0a9'
+    }
+}
+
+i.icon-toggle_check:before {
+    @extend %icon-toggle-space;
+    content: "";
+    .is-active & {
+        content: '\f00c'
+    }
+}
+
