@@ -57,10 +57,11 @@ export default {
         console.log(value);
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
             this.inputState = "";
-            this.$emit("usernameUpdate", value);
+            this.$emit("update:username", value);
         } else {
             this.inputState = "alert";
             this.stateMessage = "Not an email.";
+            this.$emit("update:username", "");
         }
     },
   }

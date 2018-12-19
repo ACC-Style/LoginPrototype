@@ -18,10 +18,10 @@
             <form class="grid-container">
               <div class="grid-x grid-padding-x p-y_3">
                 <div class="medium-6 cell">
-                  <inputUsername :label="'Username'" :required="true" :pageHasError="pageHasError()"></inputUsername>
+                  <inputUsername :label="'Username'" :required="true" :pageHasError="pageHasError()" v-on:update:username="username = $event"></inputUsername>
                 </div>
                 <div class="medium-6 cell">
-                  <inputPassword :label="'Password'"  :pageHasError="pageHasError()"></inputPassword>
+                  <inputPassword :label="'Password'"  :pageHasError="pageHasError()" v-on:update:password="password = $event"></inputPassword>
                   </div>
 
                 
@@ -60,7 +60,6 @@ export default {
       username: "",
       password: "",
       pageError: "",
-      passwordShow: false
     };
   },
   methods: {
@@ -82,7 +81,9 @@ export default {
       } else {
         this.pageError = "";
       }
-    }
+    },
+    updateUsername(){},
+    updatePassword(){},
   }
 };
 </script>
