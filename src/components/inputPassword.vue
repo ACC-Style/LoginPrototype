@@ -11,13 +11,7 @@
 			</span>
 		</label>
 		<div class="input-holder grid-x">
-			<label
-				for="email"
-				class="value-space cell shrink br_solid br-w_1 p_3 p-b_2 br_secondary-4 texture_light"
-				v-bind:class="{'br_alert c_alert': inputState == 'alert','br_warning c_warning': inputState == 'warning'}"
-			>
-				<i class="fal fa-key"></i>
-			</label>
+			<valueIcon :icon="'fa-key'" :inputState="inputState"></valueIcon>
 			<div class="input-space cell auto">
 				<input
 					v-if="!passwordShow"
@@ -26,7 +20,12 @@
 					v-model="password"
 					placeholder="password"
 					required
-					v-bind:class="{' br_alert': inputHasError}"
+					v-bind:class="{
+						'br_alert-n1': inputState == 'alert',
+						'br_warning-n1': inputState == 'warning',
+						'br_info-n1': inputState == 'info',
+						'br_success-n1': inputState == 'success'
+                        }"
 					@change="onChange(password)"
 				>
 				<input
@@ -36,7 +35,12 @@
 					v-model="password"
 					placeholder="password"
 					required
-					v-bind:class="{' br_alert': inputHasError}"
+					v-bind:class="{
+						'br_alert-n1': inputState == 'alert',
+						'br_warning-n1': inputState == 'warning',
+						'br_info-n1': inputState == 'info',
+						'br_success-n1': inputState == 'success'
+                        }"
 					@change="onChange(password)"
 				>
 			</div>
@@ -45,7 +49,7 @@
 				v-if="password !=''"
 				type="button"
 				class="c_secondary-4 hover:c_black value-space cell shrink br_solid br-w_1 p_3 p-b_2 br_secondary-4 texture_light"
-				@click="password=''"
+				@click="resetPassword"
 			>
 				<i class="fas fa-times"></i>
 			</button>
@@ -59,24 +63,22 @@
 				<i v-if="!passwordShow" class="fas fa-eye-slash"></i>
 			</button>
 		</div>
-		<div class="message-holder font_n1">
-			<div
-				for="email"
-				v-if="inputState=='alert'"
-				v-bind:class="{'bg_alert-n1': inputState == 'alert','bg_warning-n1': inputState == 'warning'}"
-				class="p_2 c_white"
-			>
-				<i class="fas fa-fw fa-exclamation-square m-x_2"></i>
-				{{stateMessage}}
-			</div>
-		</div>
+		<messageHolder v-bind:inputState="inputState" v-bind:stateMessage="stateMessage"></messageHolder>
 	</div>
 </template>
 <script>
+import messageHolder from "@/components/subComponents/inputMessageHolder.vue";
+import valueIcon from "@/components/subComponents/inputValueIcon.vue";
 export default {
 	name: "inputPassword",
 	props: {
-		label: { type: String, default: "Password" }
+		label: { type: String, default: "Password" },
+		required: { type: Boolean, default: "true" },
+		pageHasError: { type: Boolean, default: false }
+	},
+	components: {
+		messageHolder,
+		valueIcon
 	},
 	data() {
 		return {
@@ -91,9 +93,31 @@ export default {
 		passwordShowToggle() {
 			this.passwordShow = !this.passwordShow;
 		},
+		resetPassword() {
+			this.password = "";
+			this.onChange(this.password);
+		},
 		onChange(value) {
-			// write any logic around how this should be protected, escaped, validated.S
-			this.$emit("update:password", value);
+			// write any logic around how this should be protected, escaped, validated.
+			var emitvalue = "",
+				passwordLength = 5;
+
+			if (value.length > passwordLength) {
+				this.inputState = "";
+				this.stateMessage = "";
+				emitvalue = value;
+			}
+			if (value.length <= passwordLength) {
+				this.inputState = "alert";
+				this.stateMessage = "Password is too short";
+				emitvalue = "";
+			}
+			if (value == "") {
+				this.inputState = "";
+				this.stateMessage = "";
+				emitvalue = "";
+			}
+			this.$emit("update:password", emitvalue);
 		}
 	}
 };

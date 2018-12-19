@@ -7379,7 +7379,7 @@ i.icon-toggle_check:before {
 }
 
 .pagination .disabled:hover {
-  background-image: url("./assets/img/cross_disabled.png");
+  background-image: url("../img/cross_disabled.png");
 }
 
 /*
@@ -11500,27 +11500,27 @@ tfoot,
 
  */
 .texture_light {
-  background-image: url("./assets/img/whisper.png");
+  background-image: url("../img/whisper.png");
 }
 
 .texture_medium {
-  background-image: url("./assets/img/billie-holiday-speck.png");
+  background-image: url("../img/billie-holiday-speck.png");
 }
 
 .texture_dark {
-  background-image: url("./assets/img/cross_stripes.png");
+  background-image: url("../img/cross_stripes.png");
 }
 
 .texture_dust {
-  background-image: url("./assets/img/dust.png");
+  background-image: url("../img/dust.png");
 }
 
 .texture_disabled, .disabled, .disabled:hover {
-  background-image: url("./assets/img/cross_disabled.png");
+  background-image: url("../img/cross_disabled.png");
 }
 
 .texture_cross {
-  background-image: url("./assets/img/cross_color.png");
+  background-image: url("../img/cross_color.png");
 }
 
 /*
@@ -11619,7 +11619,7 @@ tfoot,
  
  */
 a:focus {
-  all: unset;
+  color: unset;
 }
 
 .hover\:opacity, .button.shadow, .tabs-title > a,
