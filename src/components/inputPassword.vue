@@ -73,6 +73,7 @@ export default {
 	name: "inputPassword",
 	props: {
 		label: { type: String, default: "Password" },
+		value: { type: String, default: "" },
 		required: { type: Boolean, default: "true" },
 		pageHasError: { type: Boolean, default: false }
 	},
@@ -82,7 +83,7 @@ export default {
 	},
 	data() {
 		return {
-			password: "",
+			password: this.value,
 			passwordShow: false,
 			inputHasError: false,
 			inputState: "",

@@ -42,12 +42,13 @@ export default {
 	name: "inputEmail",
 	props: {
 		label: { type: String, default: "UserName" },
+		value: { type: String, default: "" },
 		required: { type: Boolean, default: "true" },
 		pageHasError: { type: Boolean, default: false }
 	},
 	data() {
 		return {
-			username: "",
+			username: this.value,
 			inputState: "",
 			stateMessage: ""
 		};

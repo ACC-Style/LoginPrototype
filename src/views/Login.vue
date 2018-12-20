@@ -1,11 +1,11 @@
 <template>
 	<div class="home texture_light p_4" style="height:100vh;">
 		<div class="grid-x">
-			<div class="cell small-10 medium-10 large-8 m_auto">
+			<div class="cell small-12 medium-10 large-8 m_auto" style="max-width:54em">
 				<div>
 					<h1 class="logo-lockup p-b_3">
 						<img src="assets/img/mobileLogo.svg" alt="American College of Cardiology" class="logo p-r_3">
-						<span class="text">Customer&nbsp;
+						<span class="text">Customer &nbsp;
 							<br class="show-for-medium">Service Tool
 						</span>
 					</h1>
@@ -26,52 +26,92 @@
 								</p>
 							</div>
 						</transition>
-						<form class="grid-container">
-							<div class="grid-x grid-padding-x p-y_3">
-								<div class="medium-6 cell">
-									<inputUsername
-										:label="'Username'"
-										:required="true"
-										:pageHasError="pageHasError()"
-										v-on:update:username="username = $event"
-									></inputUsername>
-								</div>
-								<div class="medium-6 cell">
-									<inputPassword
-										:label="'Password'"
-										:required="true"
-										:pageHasError="pageHasError()"
-										v-on:update:password="password = $event"
-									></inputPassword>
+						<transition name="slideInRight">
+							<div v-if=" mode == 'login' ">
+								<form class="grid-container">
+									<div class="grid-x grid-padding-x p-y_3">
+										<div class="medium-6 cell">
+											<inputUsername
+												class="m-t_2 m-t_0:medium"
+												:label="'Username'"
+												:required="true"
+												:pageHasError="pageHasError()"
+												:value="username"
+												:hint="''"
+												v-on:update:username="username = $event"
+											></inputUsername>
+										</div>
+										<div class="medium-6 cell">
+											<inputPassword
+												class="m-t_4 m-t_0:medium"
+												:label="'Password'"
+												:required="true"
+												:pageHasError="pageHasError()"
+												:value="password"
+												:hint="''"
+												v-on:update:password="password = $event"
+											></inputPassword>
+											<div
+												class="hover:underline float-right m-t_3 m-t_0:medium"
+												@click="onModeChange('resetStart')"
+											>reset my password</div>
+										</div>
+									</div>
+								</form>
+								<div class="grid-container">
+									<div class="grid-x justify-end">
+										<div class="medium-4 cell m-t_4 m-t_0:medium">
+											<a
+												@click="pageValidation()"
+												v-if="!submitDisabled()"
+												class="button display-block color_white m-b_0 br_radius expanded disabled"
+											>
+												Log In
+												<i class="fal fa-ban"></i>
+											</a>
+											<router-link
+												to="/search"
+												v-if="submitDisabled()"
+												class="button display-block color_white m-b_0 br_radius expanded"
+											>
+												Log In
+												<i class="fal fa-arrow-alt-right"></i>
+											</router-link>
+										</div>
+									</div>
 								</div>
 							</div>
-						</form>
-						<div class="grid-container">
-							<div class="grid-x justify-end">
-								<div class="medium-4 cell">
-									<a
-										@click="pageValidation()"
-										v-if="!submitDisabled()"
-										class="button display-block color_white m-b_0 br_radius expanded disabled"
-									>
-										Log In
-										<i class="fal fa-ban"></i>
-									</a>
-									<router-link
-										to="/search"
-										v-if="submitDisabled()"
-										class="button display-block color_white m-b_0 br_radius expanded"
-									>
-										Log In
-										<i class="fal fa-arrow-alt-right"></i>
-									</router-link>
-								</div>
+						</transition>
+						<transition name="slideInRight">
+							<div v-if="mode == 'resetStart'">
+								<form class="grid-container">
+									<div class="grid-x">
+										<div class="cell auto">
+											<h1 class="font_2">Password Reset</h1>
+											<p class="font_1">Select the most convient way to reset your password</p>
+											<ul class="no-bullet">
+												<li>
+													<a href class="button primary exapnded">Text me an unlock code</a>
+												</li>
+												<li>
+													<a href class="button primary exapnded">Email me a reset link</a>
+												</li>
+												<li>
+													<a href class="button primary exapnded">Answer security questions</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</form>
 							</div>
-						</div>
+						</transition>
+					</div>
+					<div class="texture_light p_3 text-center">
+						<a class="link secondary hover:underline">I don't have an account</a>
 					</div>
 				</div>
 				<div class="p_3 font_n1 text-center">
-					<router-link class="link secondary text_underline" to="/about">
+					<router-link class="link secondary underline" to="/about">
 						<i class="fas fa-info-square"></i> About this utility
 					</router-link>
 				</div>
@@ -95,7 +135,8 @@ export default {
 		return {
 			username: "",
 			password: "",
-			pageError: ""
+			pageError: "",
+			mode: "login"
 		};
 	},
 	methods: {
@@ -113,14 +154,15 @@ export default {
 		},
 		pageValidation() {
 			if (this.pageError == "") {
-				this.pageError =
-					"Your email and password does not match our records.";
+				this.pageError = "Your email and password does not match our records.";
 			} else {
 				this.pageError = "";
 			}
 		},
-		updateUsername() {},
-		updatePassword() {}
+		onModeChange(value) {
+			this.pageError = "";
+			this.mode = value;
+		}
 	}
 };
 </script>
@@ -160,5 +202,25 @@ export default {
 		border-top: 0 none;
 		font-size: 40px;
 	}
+}
+
+.slideInRight-enter-active,
+.slideInRight-leave-active {
+	transition: transform 0.5s ease, opacity 0.25s ease 0.25s;
+}
+.slideInRight-leave-to /* .slideIn-leave-active below version 2.1.8 */ {
+	transform: translateX(-100%);
+	opacity: 0;
+}
+.slideInRight-enter /* .slideIn-leave-active below version 2.1.8 */ {
+	transform: translateX(100%);
+	opacity: 0;
+}
+.slideInRight-enter-to {
+	transform: translateX(1);
+	opacity: 1;
+}
+.slideInRight-move {
+	transition: transform 0.5s ease;
 }
 </style>
