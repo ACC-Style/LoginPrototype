@@ -16,8 +16,13 @@
 						style="z-index:10"
 						v-bind:class="{'bg_alert': pageHasError() , 'bg_primary': !pageHasError()}"
 						@click="pageValidation()"
-					>ACC Staff Login</div>
-					<div class="card-section">
+					>
+						<transition name="crossFade" mode="out-in">
+							<span v-if=" mode == 'login'">Login</span>
+							<span v-if="mode == 'resetStart'">Password Reset</span>
+						</transition>
+					</div>
+					<div class="card-section relative">
 						<transition name="slideInDown">
 							<div v-if="pageHasError()" style="z-index:0" class="bg_alert-4 font_0 m-b_0 m_n4 p_3">
 								<p class="m-b_0">
@@ -26,9 +31,9 @@
 								</p>
 							</div>
 						</transition>
-						<transition name="slideInRight">
-							<div v-if=" mode == 'login' ">
-								<form class="grid-container">
+						<transition name="slideInRight" mode="out-in">
+							<div v-if=" mode == 'login' " key="login">
+								<form class="grid-container clearfix">
 									<div class="grid-x grid-padding-x p-y_3">
 										<div class="medium-6 cell">
 											<inputUsername
@@ -58,7 +63,7 @@
 										</div>
 									</div>
 								</form>
-								<div class="grid-container">
+								<div class="grid-container clearfix">
 									<div class="grid-x justify-end">
 										<div class="medium-4 cell m-t_4 m-t_0:medium">
 											<a
@@ -81,24 +86,34 @@
 									</div>
 								</div>
 							</div>
-						</transition>
-						<transition name="slideInRight">
-							<div v-if="mode == 'resetStart'">
-								<form class="grid-container">
+							<div v-if="mode == 'resetStart'" key="start">
+								<form class="grid-container m_auto" style="max-width:35em;">
 									<div class="grid-x">
 										<div class="cell auto">
-											<h1 class="font_2">Password Reset</h1>
 											<p class="font_1">Select the most convient way to reset your password</p>
 											<ul class="no-bullet">
 												<li>
-													<a href class="button primary exapnded">Text me an unlock code</a>
+													<a
+														href
+														class="button secondary expanded br_radius hollow hover:bg_secondary-4"
+													>Text me an unlock code</a>
 												</li>
 												<li>
-													<a href class="button primary exapnded">Email me a reset link</a>
+													<a
+														href
+														class="button secondary expanded br_radius hollow hover:bg_secondary-4"
+													>Email me a reset link</a>
 												</li>
 												<li>
-													<a href class="button primary exapnded">Answer security questions</a>
+													<a
+														href
+														class="button secondary expanded br_radius hollow hover:bg_secondary-4"
+													>Answer security questions</a>
 												</li>
+												<li
+													@click="onModeChange('login')"
+													class="text-center hover:bg_secondary-5 font_0 underline hover:none c_primary center p-x_5 p-y_2 br_radius"
+												>go back to login</li>
 											</ul>
 										</div>
 									</div>
@@ -208,6 +223,9 @@ export default {
 .slideInRight-leave-active {
 	transition: transform 0.5s ease, opacity 0.25s ease 0.25s;
 }
+/*.slideInRight-enter-active {
+	transition-delay: 0.5s;
+}*/
 .slideInRight-leave-to /* .slideIn-leave-active below version 2.1.8 */ {
 	transform: translateX(-100%);
 	opacity: 0;
@@ -222,5 +240,27 @@ export default {
 }
 .slideInRight-move {
 	transition: transform 0.5s ease;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+
+.crossFade-enter-active,
+.crossFade-leave-active {
+	transition: opacity 0.25s ease 0.25s;
+}
+
+.crossFade-leave-to /* .slideIn-leave-active below version 2.1.8 */ {
+	opacity: 0;
+}
+.crossFade-enter /* .slideIn-leave-active below version 2.1.8 */ {
+	opacity: 0;
+}
+.crossFade-enter-to {
+	opacity: 1;
+}
+.crossFade-move {
+	transition: opacity 0.5s ease;
 }
 </style>
