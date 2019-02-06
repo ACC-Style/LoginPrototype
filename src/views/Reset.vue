@@ -9,7 +9,7 @@
 					@click="pageValidation()"
 				>
 					<transition name="crossFade" mode="out-in">
-						<span v-if="mode == 'resetPassword'">Password Reset</span>
+						<span v-if="mode == 'resetPassword'">Please enter your new password.</span>
 					</transition>
 				</div>
 				<div class="card-section relative">
@@ -26,12 +26,9 @@
 							<form class="grid-container m_auto">
 								<div class="grid-x">
 									<div class="cell auto">
-										<p class="font_2 bold">
-											Please enter your new password.
-											<em
-												class="font_n1 block c-secondary_2 lh_1"
-											>Passwords must be atleast 7 characters long. Password must include numbers and characters with one special characters and a capital letter.</em>
-										</p>
+										<p
+											class="font_0 lh_3 bold p-y_3 c_secondary-n3"
+										>Your new passwords must be at least 7 characters long. Password must include numbers and characters with one special characters and a capital letter.</p>
 										<div class="grid-x grid-margin-x">
 											<div class="cell large-6">
 												<inputPassword
@@ -67,7 +64,7 @@
 											v-if="!submitDisabled()"
 											class="button display-block color_white m-b_0 br_radius expanded disabled"
 										>
-											Log In
+											Change Password
 											<i class="fal fa-ban"></i>
 										</a>
 										<router-link
@@ -75,7 +72,7 @@
 											v-if="submitDisabled()"
 											class="button display-block color_white m-b_0 br_radius expanded"
 										>
-											Log In
+											Change Password
 											<i class="fal fa-arrow-alt-right"></i>
 										</router-link>
 									</div>
