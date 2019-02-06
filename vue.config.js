@@ -1,7 +1,7 @@
 module.exports = {
-  outputDir: "docs",
-  assetsDir: "assets",
-  baseUrl: "/CSTool/",
+  outputDir: 'docs',
+  assetsDir: 'assets',
+  baseUrl: '/LoginPrototype/',
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
@@ -9,11 +9,8 @@ module.exports = {
   css: {
     sourceMap: true,
     loaderOptions: {
-      // pass options to sass-loader
       sass: {
-        // @/ is an alias to src/
-        // so this assumes you have a file named `src/variables.scss`
-        data: `@import "@/assets/scss/config/_colors.scss";`
+        data: '@import "@/assets/scss/config/_colors.scss";'
       }
     }
   },
