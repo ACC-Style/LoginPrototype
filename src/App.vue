@@ -2,7 +2,7 @@
 	<div class="texture_light" style="min-height:100vh;">
 		<div class="grid-x">
 			<div class="cell small-12 medium-10 large-8 m_auto" style="max-width:54em">
-				<div>
+				<div class="p-t_4">
 					<h1 class="logo-lockup p-b_3">
 						<img src="assets/img/mobileLogo.svg" alt="American College of Cardiology" class="logo p-r_3">
 						<span class="text">Universal &nbsp;
@@ -12,7 +12,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="app" class="p_4">
+		<div id="app" class="p_4 p-t_4">
 			<div class="viewport">
 				<router-view/>
 			</div>
