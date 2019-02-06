@@ -1,4 +1,6 @@
-# CSTOOLVUE
+# Login Prototype
+
+This is a play area to construct a proof of concept for the universal login area for ACC. 
 
 ## Project setup
 ```
