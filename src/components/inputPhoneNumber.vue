@@ -24,7 +24,7 @@
 						'br_alert-n1': inputState == 'alert',
 						'br_warning-n1': inputState == 'warning',
 						'br_info-n1': inputState == 'info',
-						'br_success-n1': inputState == 'success'
+						'br_success-n2': inputState == 'success'
                         }"
 					@change="onChange(phone)"
 				>
