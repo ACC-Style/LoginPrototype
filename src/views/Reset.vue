@@ -6,7 +6,7 @@
 					class="card-divider color_white font_3 p_4 texture_dust"
 					style="z-index:10"
 					v-bind:class="{'bg_alert': pageHasError() , 'bg_primary': !pageHasError()}"
-					@click="pageValidation()"
+					@click="pageValidation('empty')"
 				>
 					<transition name="crossFade" mode="out-in">
 						<span v-if="mode == 'resetPassword'">Please enter your new password.</span>
@@ -60,8 +60,8 @@
 								<div class="grid-x justify-end">
 									<div class="medium-4 cell m-t_4 m-t_0:medium p-t_4">
 										<a
-											@click="pageValidation()"
-											v-if="!submitDisabled()"
+											@click="pageValidation('empty')"
+											v-if="submitDisabled()"
 											class="button display-block color_white m-b_0 br_radius expanded disabled"
 										>
 											Change Password
@@ -69,7 +69,7 @@
 										</a>
 										<router-link
 											to="/search"
-											v-if="submitDisabled()"
+											v-if="!submitDisabled()"
 											class="button display-block color_white m-b_0 br_radius expanded"
 										>
 											Change Password
@@ -104,16 +104,24 @@ export default {
 		return {
 			username: "",
 			password: "",
+			password_1: "",
+			password_2: "",
 			pageError: "",
 			mode: "resetPassword"
 		};
 	},
 	methods: {
 		submitDisabled: function() {
-			if (this.password_1 != "" && this.password_2 != "") {
-				return true;
+			if (
+				this.password_1 != "" &&
+				this.password_2 != "" &&
+				this.password_1 === this.password_2
+			) {
+				this.pageError = "";
+				return false;
 			}
-			return false;
+
+			return true;
 		},
 		pageHasError: function() {
 			if (this.pageError != "") {
@@ -121,9 +129,11 @@ export default {
 			}
 			return false;
 		},
-		pageValidation() {
-			if (this.pageError == "") {
-				this.pageError = "Your email and password does not match our records.";
+		pageValidation(error) {
+			if (error == "empty") {
+				this.pageError = "Please complete the inputs.";
+			} else if (error == "notMatching") {
+				this.pageError = "Your passwords don't match eachother.";
 			} else {
 				this.pageError = "";
 			}

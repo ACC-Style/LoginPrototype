@@ -5,8 +5,9 @@
 				<div class="p-t_4">
 					<h1 class="logo-lockup p-b_3">
 						<img src="assets/img/mobileLogo.svg" alt="American College of Cardiology" class="logo p-r_3">
-						<span class="text">Universal &nbsp;
-							<br class="show-for-medium hide-for-large">Log in
+						<span class="text">
+							Universal
+							<br class="show-for-medium hide-for-large">ACC Login
 						</span>
 					</h1>
 				</div>
