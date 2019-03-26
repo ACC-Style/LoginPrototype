@@ -3,7 +3,7 @@
 		<div class="cell small-12 medium-10 large-8 m_auto" style="max-width:54em">
 			<div class="card shadow_2 cell">
 				<div
-					class="card-divider color_white font-size_3 p_4 texture_dust"
+					class="card-divider color_white font_3 p_4 texture_dust"
 					style="z-index:10"
 					v-bind:class="{'bg_alert': pageHasError() , 'bg_primary': !pageHasError()}"
 					@click="pageValidation()"
@@ -123,8 +123,7 @@ export default {
 		},
 		pageValidation() {
 			if (this.pageError == "") {
-				this.pageError =
-					"Your email and password does not match our records.";
+				this.pageError = "Your email and password does not match our records.";
 			} else {
 				this.pageError = "";
 			}

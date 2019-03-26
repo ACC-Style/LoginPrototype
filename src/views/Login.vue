@@ -3,7 +3,7 @@
 		<div class="cell small-12 medium-10 large-8 m_auto" style="max-width:54em">
 			<div class="card shadow_2 cell">
 				<div
-					class="card-divider color_white font-size_3 p_4 texture_dust"
+					class="card-divider c_white font_display font_3 p_4 texture_dust"
 					style="z-index:10"
 					v-bind:class="{'bg_alert': pageHasError() , 'bg_primary': !pageHasError()}"
 					@click="pageValidation()"
@@ -28,7 +28,7 @@
 								<div class="grid-x grid-padding-x p-y_3">
 									<div class="medium-6 cell">
 										<inputUsername
-											class="m-t_2 m-t_0:medium"
+											class="m-t_2 m-t_0:md"
 											:label="'Username'"
 											:required="true"
 											:pageHasError="pageHasError()"
@@ -39,7 +39,7 @@
 									</div>
 									<div class="medium-6 cell">
 										<inputPassword
-											class="m-t_4 m-t_0:medium"
+											class="m-t_4 m-t_0:md"
 											:label="'Password'"
 											:required="true"
 											:pageHasError="pageHasError()"
@@ -47,20 +47,47 @@
 											:hint="''"
 											v-on:update:password="password = $event"
 										></inputPassword>
-										<div
-											class="hover:underline float-right m-t_3 m-t_0:medium"
-											@click="onModeChange('resetStart')"
-										>reset my password</div>
+										<div class="row">
+											<div
+												class="alert progress m_0"
+												role="progressbar"
+												tabindex="0"
+												aria-valuenow="25"
+												aria-valuemin="0"
+												aria-valuetext="25 percent"
+												aria-valuemax="100"
+												style="height:3px"
+											>
+												<div class="progress-meter" style="width: 10%">
+													<p class="progress-meter-text"></p>
+												</div>
+											</div>
+										</div>
+										<div class="grid-x c_secondary-1 font_n1 font_italic">
+											<div class="cell auto">
+												<span class="h:underline float-left m-t_2 m-t_0:md h:c_black">
+													<i class="fas fa-question-circle"></i>
+													password strength:
+													<span class="font_bold c_alert-n2">weak</span>
+												</span>
+											</div>
+											<div class="cell auto">
+												<span
+													class="h:underline float-right m-t_2 m-t_0:md h:c_black"
+													@click="onModeChange('resetStart')"
+												>reset my password</span>
+											</div>
+										</div>
 									</div>
 								</div>
 							</form>
 							<div class="grid-container clearfix">
 								<div class="grid-x justify-end">
-									<div class="medium-4 cell m-t_4 m-t_0:medium">
+									<div class="medium-4 cell m-t_4 m-t_0:md">
 										<a
 											@click="pageValidation()"
 											v-if="!submitDisabled()"
-											class="button display-block color_white m-b_0 br_radius expanded disabled"
+											class="button display-block c_white m-b_0 br_radius expanded disabled"
 										>
 											Log In
 											<i class="fal fa-ban"></i>
@@ -68,7 +95,7 @@
 										<router-link
 											to="/search"
 											v-if="submitDisabled()"
-											class="button display-block color_white m-b_0 br_radius expanded"
+											class="button display-block c_white m-b_0 br_radius expanded"
 										>
 											Log In
 											<i class="fal fa-arrow-alt-right"></i>
@@ -86,24 +113,24 @@
 											<li>
 												<a
 													href
-													class="button secondary expanded br_radius hollow hover:bg_secondary-4"
+													class="button secondary expanded br_radius hollow h:bg_secondary-4"
 												>Text me an unlock code</a>
 											</li>
 											<li>
 												<a
 													href
-													class="button secondary expanded br_radius hollow hover:bg_secondary-4"
+													class="button secondary expanded br_radius hollow h:bg_secondary-4"
 												>Email me a reset link</a>
 											</li>
 											<li>
 												<a
 													href
-													class="button secondary expanded br_radius hollow hover:bg_secondary-4"
+													class="button secondary expanded br_radius hollow h:bg_secondary-4"
 												>Answer security questions</a>
 											</li>
 											<li
 												@click="onModeChange('login')"
-												class="text-center hover:bg_secondary-5 font_0 underline hover:none c_primary center p-x_5 p-y_2 br_radius"
+												class="text-center h:bg_secondary-5 font_0 underline h:none c_primary center p-x_5 p-y_2 br_radius"
 											>go back to login</li>
 										</ul>
 									</div>
@@ -113,7 +140,7 @@
 					</transition>
 				</div>
 				<div class="texture_light p_3 text-center">
-					<a class="link secondary hover:underline">I don't have an account</a>
+					<a class="link secondary h:underline">I don't have an account</a>
 				</div>
 			</div>
 			<div class="p_3 font_n1 text-center">
@@ -159,8 +186,7 @@ export default {
 		},
 		pageValidation() {
 			if (this.pageError == "") {
-				this.pageError =
-					"Your email and password does not match our records.";
+				this.pageError = "Your email and password does not match our records.";
 			} else {
 				this.pageError = "";
 			}
