@@ -17,7 +17,7 @@
 					v-if="!passwordShow"
 					class="m-b_0"
 					type="password"
-					v-model="password"
+					v-model.lazy="password"
 					placeholder="password"
 					required
 					v-bind:class="{
@@ -41,7 +41,7 @@
 						'br_info-n1': inputState == 'info',
 						'br_success-n1': inputState == 'success'
                         }"
-					@change="onChange(password)"
+					v-bind:change="onChange(password)"
 				>
 			</div>
 
@@ -91,6 +91,7 @@ export default {
 			stateMessage: ""
 		};
 	},
+	computed: {},
 	methods: {
 		passwordShowToggle() {
 			this.passwordShow = !this.passwordShow;

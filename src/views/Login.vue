@@ -10,8 +10,9 @@
 				>
 					<transition name="crossFade" mode="out-in">
 						<span v-if=" mode == 'login'">Login</span>
-						<span v-if="mode == 'resetStart'">Password Reset</span>
-						<span v-if="mode == 'resetByPhone'">Password Reset</span>
+						<span
+							v-if="(mode == 'resetStart' || mode == 'resetByPhone' || mode == 'resetByEmail')"
+						>Password Reset</span>
 					</transition>
 				</div>
 				<div class="card-section relative">
@@ -122,6 +123,7 @@
 											</li>
 											<li>
 												<a
+													@click="onModeChange('resetByEmail')"
 													class="button secondary expanded br_radius hollow h:bg_secondary-4"
 												>Email me a reset link</a>
 											</li>
@@ -141,15 +143,20 @@
 						</div>
 						<div v-if="mode == 'resetByPhone'" key="resetByPhone">
 							<div class="grid-container p_5">
-								<p class="font_1 text-center">
-									We have sent you an access code to
-									<strong class="c_primary">
-										***-***-
-										<span class="font_italic">5555</span>
-									</strong>
-								</p>
 								<div class="grid-x">
-									<div class="cell center small-4 small-offset-4 text-right">
+									<div class="cell small-12 medium-6 m_auto">
+										<p class="font_1 text-center">
+											We have sent you an access code to
+											<br>
+											<strong class="c_primary">
+												***-***-
+												<span class="font_italic">5555</span>
+											</strong>
+										</p>
+									</div>
+								</div>
+								<div class="grid-x">
+									<div class="cell small-12 medium-6 m_auto">
 										<accessCodeInput
 											class="font_4 text-left"
 											:label="'Access Code'"
@@ -159,9 +166,67 @@
 											:hint="''"
 											v-on:update:accessCode="accessCode = $event"
 										></accessCodeInput>
-										<a v-if="!submitAccessDisabled()" class="button radius m-t_3 disabled" to="/reset">Submit</a>
-
-										<router-link v-if="submitAccessDisabled()" class="button radius m-t_3" to="/reset">Submit</router-link>
+										<div class="grid-x text-right">
+											<div class="cell auto">
+												<a
+													v-if="!submitAccessDisabled()"
+													class="button radius m-t_3 disabled"
+													to="/reset"
+												>Submit</a>
+												<router-link
+													v-if="submitAccessDisabled()"
+													class="button radius m-t_3"
+													to="/reset"
+												>Submit</router-link>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="grid-x">
+									<div class="cell small-12 medium-6 m_auto">
+										<div
+											@click="onModeChange('resetStart')"
+											class="text-center h:bg_secondary-5 font_0 br_secondary-5 br_solid br_1 h:none c_primary center p-x_5 p-y_2 br_radius"
+										>
+											<i class="fa fa-arrow-left"></i> go back
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div v-if="mode == 'resetByEmail'" key="resetByEmail">
+							<div class="grid-container p_5">
+								<p class="font_1 text-center"></p>
+								<div class="grid-x">
+									<div class="cell small-12 medium-6 m_auto">
+										<p>Enter your email bellow and we will send you a reset link to your inbox.</p>
+									</div>
+								</div>
+								<div class="grid-x">
+									<div class="cell small-12 medium-6 m_auto">
+										<inputUsername
+											class="font_4 text-left"
+											:label="'Email'"
+											:required="true"
+											:pageHasError="pageHasError()"
+											:value="accessCode"
+											:hint="''"
+											v-on:update:accessCode="accessCode = $event"
+										></inputUsername>
+										<div class="text-right">
+											<a v-if="!submitAccessDisabled()" class="button radius m-t_3 disabled" to="/reset">Submit</a>
+											<router-link v-if="submitAccessDisabled()" class="button radius m-t_3" to="/reset">Submit</router-link>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="grid-x">
+								<div class="cell small-12 medium-6 m_auto">
+									<div
+										@click="onModeChange('resetStart')"
+										class="text-center h:bg_secondary-5 font_0 br_secondary-5 br_solid br_1 h:none c_primary center p-x_5 p-y_2 br_radius"
+									>
+										<i class="fa fa-arrow-left"></i> go back
 									</div>
 								</div>
 							</div>

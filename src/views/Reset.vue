@@ -40,6 +40,40 @@
 													:hint="''"
 													v-on:update:password="password_1 = $event"
 												></inputPassword>
+												<div class="row">
+													<div
+														class="alert progress m_0"
+														role="progressbar"
+														tabindex="0"
+														aria-valuenow="25"
+														aria-valuemin="0"
+														aria-valuetext="25 percent"
+														aria-valuemax="100"
+														style="height:3px"
+													>
+														<div class="progress-meter" style="width: 10%">
+															<p class="progress-meter-text"></p>
+														</div>
+													</div>
+												</div>
+												<div class="grid-x c_secondary-1 font_n1 font_italic">
+													<ul class="no-bullet font_n2 p_2">
+														<li>
+															<i class="far icon-complete_check-circle"></i>
+															password strength:
+															<span class="font_bold c_alert-n2">weak</span>
+														</li>
+														<li>
+															<i class="far icon-complete_check-circle"></i>8 characters long
+														</li>
+														<li>
+															<i class="far icon-complete_check-circle"></i>1 capital letter
+														</li>
+														<li>
+															<i class="far icon-complete_check-circle"></i>1 special character
+														</li>
+													</ul>
+												</div>
 											</div>
 											<div class="cell large-6">
 												<inputPassword
@@ -51,6 +85,13 @@
 													:hint="'passwords must match'"
 													v-on:update:password="password_2 = $event"
 												></inputPassword>
+												<div class="grid-x c_secondary-1 font_n1 font_italic">
+													<ul class="no-bullet font_n2 p_2">
+														<li v-bind:class="{'is-complete font_bold c_success': onPasswordConfirmed}">
+															<i class="far icon-complete_check-circle"></i> passwords confirmed
+														</li>
+													</ul>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -61,7 +102,7 @@
 									<div class="medium-4 cell m-t_4 m-t_0:medium p-t_4">
 										<a
 											@click="pageValidation('empty')"
-											v-if="submitDisabled()"
+											v-if="submitDisabled"
 											class="button display-block color_white m-b_0 br_radius expanded disabled"
 										>
 											Change Password
@@ -69,7 +110,7 @@
 										</a>
 										<router-link
 											to="/search"
-											v-if="!submitDisabled()"
+											v-if="!submitDisabled"
 											class="button display-block color_white m-b_0 br_radius expanded"
 										>
 											Change Password
@@ -82,8 +123,8 @@
 					</transition>
 				</div>
 				<div class="p_3 font_n1 text-center bg_secondary-4">
-					<router-link class="link secondary underline" to="/login">
-						<i class="fas fa-sign-out-alt"></i> return to log in.
+					<router-link class="link secondary underline" to="/">
+						<i class="fas fa-arrow-left"></i> return to log in.
 					</router-link>
 				</div>
 			</div>
@@ -110,7 +151,18 @@ export default {
 			mode: "resetPassword"
 		};
 	},
-	methods: {
+	computed: {
+		onPasswordConfirmed: function() {
+			if (
+				this.password_1 != "" &&
+				this.password_2 != "" &&
+				this.password_1 === this.password_2
+			) {
+				return true;
+			} else {
+				return false;
+			}
+		},
 		submitDisabled: function() {
 			if (
 				this.password_1 != "" &&
@@ -122,7 +174,9 @@ export default {
 			}
 
 			return true;
-		},
+		}
+	},
+	methods: {
 		pageHasError: function() {
 			if (this.pageError != "") {
 				return true;
@@ -138,6 +192,7 @@ export default {
 				this.pageError = "";
 			}
 		},
+
 		onModeChange(value) {
 			this.pageError = "";
 			this.mode = value;
