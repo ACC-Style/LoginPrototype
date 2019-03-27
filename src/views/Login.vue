@@ -66,16 +66,7 @@
 											</div>
 										</div>
 										<div class="grid-x c_secondary-1 font_n1 font_italic">
-											<div class="cell auto">
-												<span
-													class="h:underline float-left m-t_2 m-t_0:md h:c_black"
-													@click="openPasswordStrengthReveal()"
-												>
-													<i class="fas fa-question-circle"></i>
-													password strength:
-													<span class="font_bold c_alert-n2">weak</span>
-												</span>
-											</div>
+											<div class="cell auto"></div>
 											<div class="cell auto">
 												<span
 													class="h:underline float-right m-t_2 m-t_0:md h:c_black"
