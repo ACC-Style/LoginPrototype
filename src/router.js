@@ -37,6 +37,24 @@ export default new Router({
 			// which is lazy-loaded when the route is visited.
 			component: () =>
 				import(/* webpackChunkName: "Reset" */ "./views/Reset.vue")
+		},
+		{
+			path: "/accountCreation",
+			name: "accountCreation",
+			// route level code-splitting
+			// this generates a separate chunk (Reset.[hash].js) for this route
+			// which is lazy-loaded when the route is visited.
+			component: () =>
+				import(/* webpackChunkName: "Reset" */ "./views/AccountCreation.vue")
+		},
+		{
+			path: "/demoACC",
+			name: "demoACC",
+			// route level code-splitting
+			// this generates a separate chunk (demoLogin.[hash].js) for this route
+			// which is lazy-loaded when the route is visited.
+			component: () =>
+				import(/* webpackChunkName: "demoLogin" */ "./views/demoLogin.vue")
 		}
 	],
 	scrollBehavior(to, from, savedPosition) {

@@ -88,14 +88,14 @@
 											Log In
 											<i class="fal fa-ban"></i>
 										</a>
-										<router-link
-											to="/search"
+										<a
+											href="ACC_LoggedIn.html"
 											v-if="submitDisabled()"
 											class="button display-block c_white m-b_0 br_radius expanded"
 										>
 											Log In
 											<i class="fal fa-arrow-alt-right"></i>
-										</router-link>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -125,8 +125,10 @@
 											</li>
 											<li
 												@click="onModeChange('login')"
-												class="text-center h:bg_secondary-5 font_0 underline h:none c_primary center p-x_5 p-y_2 br_radius"
-											>go back to login</li>
+												class="text-center h:bg_secondary-5 font_0 br_secondary-5 br_solid br_1 h:none c_primary center p-x_5 p-y_2 br_radius"
+											>
+												<i class="fa fa-arrow-left"></i> go back to login
+											</li>
 										</ul>
 									</div>
 								</div>
@@ -143,6 +145,11 @@
 												***-***-
 												<span class="font_italic">5555</span>
 											</strong>
+											<br>
+											<a
+												href
+												class="link c_primary p_2 p-x_5 m-t_3 font_n1 br_radius br_secondary-4 br_solid br_1 h:bg_secondary-4"
+											>Send Code Again</a>
 										</p>
 									</div>
 								</div>
@@ -226,7 +233,7 @@
 					</transition>
 				</div>
 				<div class="texture_light p_3 text-center">
-					<a class="link secondary h:underline">I don't have an account</a>
+					<router-link class="link secondary h:underline" to="accountCreation">I don't have an account</router-link>
 				</div>
 			</div>
 			<div class="p_3 font_n1 text-center">
