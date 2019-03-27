@@ -9,7 +9,7 @@
             'bg_sucess-4 br_sucess c_sucess': inputState == 'sucess'
             }"
 	>
-		<i class="fal fa-key" v-bind:class="icon"></i>
+		<i class="fal" v-bind:class="icon"></i>
 	</label>
 </template>
 

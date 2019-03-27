@@ -57,20 +57,30 @@
 													</div>
 												</div>
 												<div class="grid-x c_secondary-1 font_n1 font_italic">
-													<ul class="no-bullet font_n2 p_2">
-														<li>
+													<ul class="no-bullet font_n2 p_2 small-12">
+														<li v-on:click="openPasswordStrengthReveal()">
 															<i class="far icon-complete_check-circle"></i>
-															password strength:
+															password strength
 															<span class="font_bold c_alert-n2">weak</span>
-														</li>
-														<li>
-															<i class="far icon-complete_check-circle"></i>8 characters long
+															<span class="c_primary h:underline float-right">
+																help
+																<i class="fas fa-question-circle"></i>
+															</span>
 														</li>
 														<li>
 															<i class="far icon-complete_check-circle"></i>1 capital letter
 														</li>
 														<li>
+															<i class="far icon-complete_check-circle"></i>1 lowercase letter
+														</li>
+														<li>
 															<i class="far icon-complete_check-circle"></i>1 special character
+														</li>
+														<li>
+															<i class="far icon-complete_check-circle"></i>1 number
+														</li>
+														<li>
+															<i class="far icon-complete_check-circle"></i>8 characters long
 														</li>
 													</ul>
 												</div>
@@ -109,7 +119,7 @@
 											<i class="fal fa-ban"></i>
 										</a>
 										<router-link
-											to="/search"
+											to="/resetSuccess"
 											v-if="!submitDisabled"
 											class="button display-block color_white m-b_0 br_radius expanded"
 										>
@@ -129,17 +139,176 @@
 				</div>
 			</div>
 		</div>
+		<reveal ref="passwordStrength">
+			<h3 slot="header">Password Strength</h3>
+			<div slot="content">
+				<div class>
+					<p
+						class="font_bold font_1 lh_2"
+					>Passwords must be 8 characters long and must include all of the bellow.</p>
+					<ul class="no-bullet">
+						<li class="clearfix">
+							At least one capital letter
+							<i class="fas fas-info-square"></i>
+							<div class="br_radius d_none bg_secondary-5 p_2 grid-x font_bold">
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">A</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">B</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">C</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">D</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">E</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">F</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">G</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">H</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">I</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">J</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">K</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">L</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">M</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">N</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">O</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">P</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">Q</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">R</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">S</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">T</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">U</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">V</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">W</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">X</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">Y</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">Z</span>
+							</div>
+						</li>
+						<li class="clearfix">
+							At least one lowercase letter
+							<i class="fas fas-info-square"></i>
+							<div class="br_radius d_none bg_secondary-5 p_2 grid-x font_bold">
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">a</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">b</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">c</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">d</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">e</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">f</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">g</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">h</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">i</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">j</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">k</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">l</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">m</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">n</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">o</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">p</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">q</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">r</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">s</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">t</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">u</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">v</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">w</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">x</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">y</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">z</span>
+							</div>
+						</li>
+						<li class="clearfix">
+							At least one special character
+							<i class="fas fas-info-square"></i>
+							<div class="br_radius d_none bg_secondary-5 p_2 grid-x font_bold">
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">{</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">}</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">[</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">]</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">(</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">)</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">&lt;</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">&gt;</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">:</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">&apos;</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">&quot;</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">?</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">/</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">|</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">`</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">~</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">!</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">@</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">#</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">$</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">%</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">^</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">&amp;</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">*</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">_</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">-</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">+</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">=</span>
+							</div>
+						</li>
+						<li class="clearfix">
+							At least one number
+							<i class="fas fas-info-square"></i>
+							<div class="br_radius d_none bg_secondary-5 p_2 grid-x font_bold">
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">1</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">2</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">3</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">4</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">5</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">6</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">7</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">8</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">9</span>
+								<span class="cell shrink p-y_1 p-x_3 m_1 bg_secondary-4 br_radius">0</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="grid-x">
+					<div class="cell auto bg_alert-4 br_radius text-center m_2 p_4">
+						<h5>
+							<span class="font_2">
+								<i class="fa fa-thumbs-down"></i>
+							</span>&nbsp;Weak Password
+						</h5>
+						<div class="p_3 br_solid br_black-3 bg_white-3 br_1 br_radius br_solid">
+							<span>Checkup1!</span>
+						</div>
+					</div>
+					<div class="cell auto bg_success-4 br_radius text-center m_2 p_4">
+						<h5>
+							<span class="font_2">
+								<i class="fa fa-thumbs-up"></i>
+							</span>&nbsp;Strong Password
+						</h5>
+						<div class="p_3 br_solid br_black-3 bg_white-3 br_1 br_radius br_solid">
+							<span>Ch#c&gt;Up214</span>
+						</div>
+					</div>
+				</div>
+				<div class="grid-x flex-row-reverse">
+					<div class="cell shrink p-t_2 float-right">
+						<button
+							class="button secondary expanded small m-b_0 radius"
+							data-close
+							aria-label="Close modal"
+						>Close</button>
+					</div>
+				</div>
+			</div>
+		</reveal>
 	</div>
 </template>
 
 <script>
 // @ is an alias to /src
 import inputPassword from "@/components/inputPassword.vue";
+import reveal from "@/components/Reveal.vue";
 
 export default {
 	name: "reset",
 	components: {
-		inputPassword
+		inputPassword,
+		reveal
 	},
 	data() {
 		return {
@@ -196,6 +365,9 @@ export default {
 		onModeChange(value) {
 			this.pageError = "";
 			this.mode = value;
+		},
+		openPasswordStrengthReveal() {
+			this.$refs.passwordStrength.openReveal();
 		}
 	}
 };

@@ -18,7 +18,7 @@
 				<router-view/>
 			</div>
 		</div>
-		<div id="nav" class="bg_acc grid-x c_white shadow_5 font_2">
+		<div id="nav" class="bg_acc grid-x c_white shadow_5 font_n2">
 			<router-link
 				class="auto text-center p_2 cell center clear c_secondary-5 c_white hover:c_primary-4 m-b_0"
 				to="/"
@@ -32,6 +32,13 @@
 			>
 				<i class="fas fa-info-square"></i>
 				<span class="font_0 p-y_1">&nbsp; Reset Password</span>
+			</router-link>
+			<router-link
+				class="auto text-center p_2 cell center clear c_secondary-5 c_white hover:c_primary-4 m-b_0"
+				to="/resetSuccess"
+			>
+				<i class="fas fa-check-circle"></i>
+				<span class="font_0 p-y_1">&nbsp; Reset Success</span>
 			</router-link>
 			<router-link
 				class="auto text-center p_2 cell center clear c_secondary-5 c_white hover:c_primary-4 m-b_0"

@@ -202,6 +202,7 @@
 											:pageHasError="pageHasError()"
 											:value="accessCode"
 											:hint="''"
+											:icon="'fa-at'"
 											v-on:update:accessCode="accessCode = $event"
 										></inputUsername>
 										<div class="text-right">
@@ -242,7 +243,9 @@
 					<ul>
 						<li>8 characters long</li>
 						<li>1 capital letter</li>
+						<li>1 lowercase letter</li>
 						<li>1 special character</li>
+						<li>1 number</li>
 					</ul>
 				</div>
 				<div class>

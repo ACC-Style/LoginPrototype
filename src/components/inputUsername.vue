@@ -11,7 +11,7 @@
 			</span>
 		</label>
 		<div class="input-holder grid-x">
-			<valueIcon :icon="'fa-user'" :inputState="inputState"></valueIcon>
+			<valueIcon :icon="icon" :inputState="inputState"></valueIcon>
 			<div class="input-space cell auto">
 				<input
 					id="email"
@@ -43,6 +43,7 @@ export default {
 	props: {
 		label: { type: String, default: "UserName" },
 		value: { type: String, default: "" },
+		icon: { type: String, default: "fa-user" },
 		required: { type: Boolean, default: "true" },
 		pageHasError: { type: Boolean, default: false }
 	},
