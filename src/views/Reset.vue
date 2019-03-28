@@ -3,7 +3,7 @@
 		<div class="cell small-12 medium-10 large-8 m_auto" style="max-width:54em">
 			<div class="card shadow_2 cell">
 				<div
-					class="card-divider color_white font_3 p_4 texture_dust"
+					class="card-divider c_white font_3 p_4 texture_dust"
 					style="z-index:10"
 					v-bind:class="{'bg_alert': pageHasError() , 'bg_primary': !pageHasError()}"
 					@click="pageValidation('empty')"
@@ -133,7 +133,7 @@
 					</transition>
 				</div>
 				<div class="p_3 font_n1 text-center bg_secondary-4">
-					<router-link class="link secondary underline" to="/">
+					<router-link class="link secondary underline" to="/login/product">
 						<i class="fas fa-arrow-left"></i> return to log in.
 					</router-link>
 				</div>

@@ -246,7 +246,7 @@
 					</transition>
 				</div>
 				<div class="texture_light p_3 text-center">
-					<router-link class="link secondary h:underline" to="accountCreation">I don't have an account</router-link>
+					<router-link class="link secondary h:underline" to="/accountCreation">I don't have an account</router-link>
 				</div>
 			</div>
 			<div class="p_3 font_n1 text-center">

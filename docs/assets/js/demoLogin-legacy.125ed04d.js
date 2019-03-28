@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["demoLogin"],{f6ab:function(e,n,t){"use strict";t.r(n);var o=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"m_n4",staticStyle:{height:"100vh",width:"100vw",background:"url('accLoggedIn.png') no-repeat center top","background-size":"cover"}})},c=[],i=t("2877"),a={},r=Object(i["a"])(a,o,c,!1,null,null,null);r.options.__file="demoLogin.vue";n["default"]=r.exports}}]);
-//# sourceMappingURL=demoLogin-legacy.125ed04d.js.map
