@@ -7,7 +7,7 @@ Vue.use(Router);
 export default new Router({
 	routes: [
 		{
-			path: "/",
+			path: "/login/:redirect",
 			name: "login",
 			component: Login
 		},
@@ -48,13 +48,13 @@ export default new Router({
 				import(/* webpackChunkName: "Reset" */ "./views/AccountCreation.vue")
 		},
 		{
-			path: "/demoACC",
-			name: "demoACC",
+			path: "/product",
+			name: "product",
 			// route level code-splitting
 			// this generates a separate chunk (demoLogin.[hash].js) for this route
 			// which is lazy-loaded when the route is visited.
 			component: () =>
-				import(/* webpackChunkName: "demoLogin" */ "./views/demoLogin.vue")
+				import(/* webpackChunkName: "demoLogin" */ "./views/demoProduct.vue")
 		}
 	],
 	scrollBehavior(to, from, savedPosition) {

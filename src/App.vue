@@ -19,9 +19,17 @@
 			</div>
 		</div>
 		<div id="nav" class="bg_acc grid-x c_white shadow_5 font_n2">
+			<a
+				href="AccLogin.html"
+				class="auto text-center p_2 cell center clear c_secondary-5 c_white hover:c_primary-4 m-b_0"
+			>ACC Demo</a>
+			<a
+				href="CVQualityLogin.html"
+				class="auto text-center p_2 cell center clear c_secondary-5 c_white hover:c_primary-4 m-b_0"
+			>CVQuality Demo</a>
 			<router-link
 				class="auto text-center p_2 cell center clear c_secondary-5 c_white hover:c_primary-4 m-b_0"
-				to="/"
+				to="/login/product"
 			>
 				<i class="fas fa-sign-out-alt"></i>
 				<span class="font_0 p-y_1">&nbsp; Login</span>
@@ -46,6 +54,13 @@
 			>
 				<i class="fas fa-info-square"></i>
 				<span class="font_0 p-y_1">&nbsp; About</span>
+			</router-link>
+			<router-link
+				class="auto text-center p_2 cell center clear c_secondary-5 c_white hover:c_primary-4 m-b_0"
+				to="/product"
+			>
+				<i class="fas fa-sign-out-alt"></i>
+				<span class="font_0 p-y_1">&nbsp; Product</span>
 			</router-link>
 		</div>
 	</div>

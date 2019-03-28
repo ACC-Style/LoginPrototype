@@ -61,12 +61,16 @@ export default {
 	methods: {
 		onChange: function(value) {
 			console.log(value);
-			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+			if (value == "") {
+				this.inputState = "alert";
+				this.stateMessage = "You didn't seem to type anything.";
+				this.$emit("update:username", "");
+			} else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
 				this.inputState = "";
 				this.$emit("update:username", value);
 			} else {
 				this.inputState = "alert";
-				this.stateMessage = "Not an email.";
+				this.stateMessage = "This is not an email.";
 				this.$emit("update:username", "");
 			}
 		}

@@ -5,8 +5,8 @@
 				<div
 					class="card-divider c_white font_display font_3 p_4 texture_dust"
 					style="z-index:10"
-					v-bind:class="{'bg_alert': pageHasError() , 'bg_primary': !pageHasError()}"
-					@click="pageValidation()"
+					v-bind:class="{'bg_alert': pageHasError , 'bg_primary': !pageHasError}"
+					@click="pageValidation('Your email and password does not match our records.')"
 				>
 					<transition name="crossFade" mode="out-in">
 						<span v-if=" mode == 'login'">Login</span>
@@ -17,9 +17,9 @@
 				</div>
 				<div class="card-section relative">
 					<transition name="slideInDown">
-						<div v-if="pageHasError()" style="z-index:0" class="bg_alert-4 font_0 m-b_0 m_n4 p_3">
+						<div v-if="pageHasError" style="z-index:0" class="bg_alert-4 font_0 m-b_0 m_n4 p_3">
 							<p class="m-b_0">
-								<span class="font_bold">Error Loging In:</span>
+								<span class="font_bold">Error:</span>
 								{{pageError}}
 							</p>
 						</div>
@@ -33,7 +33,7 @@
 											class="m-t_2 m-t_0:md"
 											:label="'Username'"
 											:required="true"
-											:pageHasError="pageHasError()"
+											:pageHasError="pageHasError"
 											:value="username"
 											:hint="''"
 											v-on:update:username="username = $event"
@@ -44,7 +44,7 @@
 											class="m-t_4 m-t_0:md"
 											:label="'Password'"
 											:required="true"
-											:pageHasError="pageHasError()"
+											:pageHasError="pageHasError"
 											:value="password"
 											:hint="''"
 											v-on:update:password="password = $event"
@@ -80,16 +80,24 @@
 							<div class="grid-container clearfix">
 								<div class="grid-x justify-end">
 									<div class="medium-4 cell m-t_4 m-t_0:md">
-										<a
-											@click="pageValidation()"
-											v-if="!submitDisabled()"
+										<div
+											@click="pageValidation('Your email and password does not match our records.')"
+											v-if="!submitDisabled() && password !='' && username != '' "
 											class="button display-block c_white m-b_0 br_radius expanded disabled"
 										>
 											Log In
 											<i class="fal fa-ban"></i>
-										</a>
+										</div>
+										<div
+											@click="pageValidation('Please follow instructions.')"
+											v-if="!submitDisabled() && ( password =='' || username == '') "
+											class="button display-block c_white m-b_0 br_radius expanded disabled"
+										>
+											Log In
+											<i class="fal fa-ban"></i>
+										</div>
 										<a
-											href="ACC_LoggedIn.html"
+											v-bind:href="urlPath()"
 											v-if="submitDisabled()"
 											class="button display-block c_white m-b_0 br_radius expanded"
 										>
@@ -159,18 +167,19 @@
 											class="font_4 text-left"
 											:label="'Access Code'"
 											:required="true"
-											:pageHasError="pageHasError()"
+											:pageHasError="pageHasError"
 											:value="accessCode"
 											:hint="''"
 											v-on:update:accessCode="accessCode = $event"
 										></accessCodeInput>
 										<div class="grid-x text-right">
 											<div class="cell auto">
-												<a
+												<div
 													v-if="!submitAccessDisabled()"
 													class="button radius m-t_3 disabled"
 													to="/reset"
-												>Submit</a>
+													@click="pageValidation('Please Follow Instructions')"
+												>Submit</div>
 												<router-link
 													v-if="submitAccessDisabled()"
 													class="button radius m-t_3"
@@ -206,15 +215,19 @@
 											class="font_4 text-left"
 											:label="'Email'"
 											:required="true"
-											:pageHasError="pageHasError()"
-											:value="accessCode"
+											:pageHasError="pageHasError"
+											:value="emailReset"
 											:hint="''"
 											:icon="'fa-at'"
-											v-on:update:accessCode="accessCode = $event"
+											v-on:update:username="emailReset = $event"
 										></inputUsername>
 										<div class="text-right">
-											<a v-if="!submitAccessDisabled()" class="button radius m-t_3 disabled" to="/reset">Submit</a>
-											<router-link v-if="submitAccessDisabled()" class="button radius m-t_3" to="/reset">Submit</router-link>
+											<div
+												v-if="!submitEmailDisabled"
+												class="button radius m-t_3 disabled"
+												@click="pageValidation('Please Follow Instructions')"
+											>Submit</div>
+											<router-link v-if="submitEmailDisabled" class="button radius m-t_3" to="/reset">Submit</router-link>
 										</div>
 									</div>
 								</div>
@@ -289,11 +302,38 @@ export default {
 			username: "",
 			password: "",
 			accessCode: "",
+			emailReset: "",
 			pageError: "",
-			mode: "login"
+			mode: "login",
+			redirect:
+				this.$route.params.redirect !== undefined
+					? this.$route.params.redirect
+					: ""
 		};
 	},
+	computed: {
+		submitEmailDisabled: function() {
+			if (this.emailReset != "") {
+				return true;
+			}
+			return false;
+		},
+		pageHasError: function() {
+			if (this.pageError != "") {
+				return true;
+			}
+			return false;
+		}
+	},
 	methods: {
+		urlPath: function() {
+			console.log(this.redirect);
+			if (this.redirect == "" || this.redirect == "product") {
+				return "index.html#/product";
+			} else {
+				return this.redirect + ".html";
+			}
+		},
 		submitDisabled: function() {
 			if (this.username != "" && this.password != "") {
 				return true;
@@ -306,19 +346,9 @@ export default {
 			}
 			return false;
 		},
-		pageHasError: function() {
-			if (this.pageError != "") {
-				return true;
-			}
-			return false;
-		},
-		pageValidation() {
-			if (this.pageError == "") {
-				this.pageError =
-					"Your email and password does not match our records.";
-			} else {
-				this.pageError = "";
-			}
+
+		pageValidation(message) {
+			this.pageError = message;
 		},
 		onModeChange(value) {
 			this.pageError = "";
